@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Grid + Flex</title>
+    <style>
+        html {font-size: 3vh;}
+
+        body > * {  /* this is just shading to show the different regions */
+            background-color: #CDDCDB;
+            padding: .2rem;
+        }
+
+        body { /* page layout - desktop version */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 3fr 1fr;
+            grid-gap: 1rem;
+
+            grid-template-areas: 
+                "header header header header"
+                "main2 main2 main2 main2"
+                "main3 main3 mian3 main3"
+                "footer footer footer footer";
+            }
+        
+        /* assign regions of the page to the grid */
+        header {grid-area: header;}
+        /* aside {grid-area: aside;} */
+        main {grid-area: main;}
+        main {grid-area: main1;}
+        main {grid-area: main2;}
+        /* aside {grid-area: aside1;} */
+        footer{grid-area:footer;}
+
+        li {display: inline;}
+
+        @media screen and (max-width: 640px) {  /* page layout for phones */
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<!-- content of webpage begins here -->
+<body>
+    <header>
+        <li>Diabetes@Home</li>
+        <li>Dark Mode</li>
+        <li>Back</li>
+    </header>
+
+    <aside1>
+        <p>Background picture</p>
+    </aside1>
+
+    <main>
+        <h1>Login</h1>
+        <h2>Your are a:</h2>
+    </main>
+
+    <main1>
+        <h1>Main</h1>
+        <p>The main content goes here.</p>
+        <p>May include text, lists, tables, pictures or whatever is required.</p>
+    </main1>
+
+    <aside>
+        <p>Background picture</p>
+    </aside>
+
+    <main2>
+        <h1>Main</h1>
+        <p>The main content goes here.</p>
+        <p>May include text, lists, tables, pictures or whatever is required.</p>
+    </main2>
+</body>
+
+</html>
