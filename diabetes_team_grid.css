@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+html {font-size: 3vh;}
+
+body { 
+    background-color: #CDDCDB;
+}
+
+.top_left{
+    grid-area: top_left;
+    
+}
+
+.top_right{
+    grid-area: top_right;
+}
+
+.down_left{
+    grid-area: down_left;
+
+}
+.down_right{
+    grid-area: down_right;
+}
+
+.grid_box{
+    display: grid;
+    grid-template-areas:
+        'top_left top_left top_left  top_right'
+        'down_left down_left down_right down_right';
+        gap: 1vw;
+        background-color: #CDDCDB;
+        padding: 10px;
+
+}
+
+.grid_box > div {
+    text-align: justify;
+    padding: 1vw;
+    line-height: 3vw;
+}
+
+
+@media screen and (max-width: 640px) {  /* page layout for phones */
+    .grid_box {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.flex_box{
+    display: flex;
+    /* background-color: aqua; */
+    justify-content: flex-end;
+
+}
+
+.flex_box > div{
+    margin: 1vw;
+    padding: 0.5vw;
+}
+
+
+
+.text_background{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px; 
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 2vw;
+}
+
+#video{
+    width: 50vw;
+    height: 30vw;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px;  
+}
+
+#links{
+    margin-top: 2vw;            
+    padding: 1vw;
+    line-height: 1vw;        
+}
+
+#links a{         
+    color: black;
+}
+
+#website-image{
+    width: 10vw;
+    height: 10vw;
+    float: inline-end;
+    border-radius: 45px;
+}
+
+
