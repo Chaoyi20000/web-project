@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about diabetes</title>
+    <style>
+        html {font-size: 3vh;}
+
+        body { 
+            background-color: #CDDCDB;
+        }
+
+        .the_top_left{
+            grid-area: top_left;
+        }
+
+        .the_top_right{
+            grid-area: top_right;
+        }
+
+        .video_and_link{
+            grid-area: video_link;
+
+        }
+        .intro_paragraph{
+            grid-area: intro_paragraph;
+        }
+
+        .grid_box{
+            display: grid;
+            grid-template-areas:
+                'top_left top_left top_left top_left top_right'
+                'video_link video_link video_link intro_paragraph intro_paragraph'
+                'video_link video_link video_link intro_paragraph intro_paragraph'
+                'video_link video_link video_link intro_paragraph intro_paragraph'
+                'video_link video_link video_link intro_paragraph intro_paragraph';
+                gap: 20px;
+                background-color: #CDDCDB;
+                padding: 10px;
+
+        }
+
+        .grid_box > div {
+            /* background-color: rgba(255, 255, 255, 0.8); */
+            text-align: justify;
+            padding: 10px;
+            line-height: 30px;
+        }
+
+
+        @media screen and (max-width: 640px) {  /* page layout for phones */
+            .grid_box {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        
+        .flex_box{
+            display: flex;
+            /* background-color: aqua; */
+            justify-content: flex-end;
+
+        }
+
+        .flex_box > div{
+            margin: 10px;
+            padding: 5px;
+        }
+
+
+
+        .text_background{
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 45px; 
+            background-color: #FFFFFF;
+        }
+
+        #video{
+            width: 50vw;
+            height: 30vw;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 45px;  
+        }
+
+        #links{
+            margin-top: 2vw;            
+            padding: 1vw;
+            line-height: 1vw;        
+        }
+
+        #links a{
+            text-decoration: none;          
+            color: black;
+        }
+    </style>
+
+</head>
+<body>
+    <div class = "grid_box">
+
+        <div class = "the_top_left">
+            <h1>
+                Diabetes@Home
+            </h1>
+            <h1>
+                About Diabetes
+            </h1>
+        </div>
+
+        <div class = "the_top_right"> 
+            <div class = "flex_box">
+                <div class = "text_background">dark mode</div>
+                <div>back</div>
+            </div>           
+  
+        </div>
+
+        <div class = video_and_link>
+            <iframe id="video" src="https://www.youtube.com/embed/wZAjVQWbMlE" title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+
+            <div id = links class = "text_background">         
+                <p><a href="https://www.mayoclinic.org/diseases-conditions/diabetes/symptoms-causes/syc-20371444"> 
+                    Diabetes Symptoms</a>  </p>   
+ 
+                <p><a href="https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes#:
+                     ~:text=Diabetes%%20%20%20%20%20%20%20%20%20%20%20%20%2020is%20a%20disease%20that,to%20be%20used%20for%20energy."> 
+                     What is Diabetes</a>
+                </p>    
+            </div> 
+        </div>
+        <div class = "intro_paragraph" >         
+            <h4 class = "text_background" style="text-align: center; margin-bottom: 5vw;" > 
+                Diabetes Information
+            </h4>
+
+            <p class = "text_background" style="padding: 2vw;"> 
+                Diabetes is a chronic (long-lasting) health condition <br>
+                that affects how your body turns food into energy.
+                Most of the food you eat is broken down into sugar <br>
+                (also called glucose) and released into your bloodstream.<br> 
+                When your blood sugar goes up, it signals your pancreas to release insulin. <br>
+                Insulin acts like a key to let the blood sugar into<br>
+                your body’s cells for use as energy.<br>
+            
+            </p>
+        </div>
+
+
+    </div>
+    
+</body>
+</html>
