@@ -4,78 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login portal</title>
-    <style>
-        html {font-size: 3vh;}
-
-        body > * {  /* this is just shading to show the different regions */
-            background-color: #CDDCDB;
-            padding: .2rem;
-        }
-
-        body { /* page layout - desktop version */
-            display: grid;
-            grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
-            grid-template-rows: 1fr 2fr 3fr;
-            grid-gap: 1rem;
-
-            grid-template-areas: 
-                "header header header header"
-                "main2 main2 main2 main2"
-                "aside main main1 aside1";
-            }
-        
-        /* assign regions of the page to the grid */
-        header {grid-area: header;}
-        aside {grid-area: aside;}
-        main {grid-area: main;}
-        main {grid-area: main1;}
-        aside {grid-area: aside1;}
-        main {grid-area: main2;}
-
-        li {display: inline;}
-
-        @media screen and (max-width: 640px) {  /* page layout for phones */
-            body {
-                display: flex;
-                flex-direction: column;
-            }
-        }
-    </style>
-</head>
-
-<!-- content of webpage begins here -->
+    <title>Responsive Grid + Flex</title>
+    <link rel="stylesheet" href="login.css">
 <body>
-    <header>
-        <li>Diabetes@Home</li>
-        <li>Dark Mode</li>
-        <li>Back</li>
-    </header>
-
-    <aside1>
-        <p>Try</p>
-    </aside1>
-
-    <main>
-        <h1>Main</h1>
-        <p>The main content goes here.</p>
-        <p>May include text, lists, tables, pictures or whatever is required.</p>
-    </main>
-
-    <main1>
-        <h1>Main</h1>
-        <p>The main content goes here.</p>
-        <p>May include text, lists, tables, pictures or whatever is required.</p>
-    </main1>
-
-    <aside>
-        <h2>Aside</h2>
-        <p>You can put special content in an aside.</p>
-    </aside>
-
-    <main2>
-        <ul></ul>
-    </main2>
+    <div class="login_portal">
+        <div class="div1"> 
+            <header>
+                <li>Diabetes@Home</li>
+                <li>Dark Mode</li>
+                <li>Back</li>
+            </header>
+        </div>
+        <div class="div2"> </div>
+        <div class="div3"> </div>
+        <div class="div4"> </div>
+        <div class="div5"> </div>
+        <div class="div6"> </div>
+        <div class="div7"> </div>
+        <div class="div8"> </div>
+        <div class="div9"> </div>
+        <div class="div10"> </div>
+        </div>
 </body>
 
 </html>

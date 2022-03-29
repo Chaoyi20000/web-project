@@ -15,6 +15,7 @@
 
         body { /* page layout - desktop version */
             display: grid;
+<<<<<<< HEAD
             grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
             grid-template-rows: 1fr 2fr 3fr;
             grid-gap: 1rem;
@@ -23,6 +24,21 @@
                 "header1 header1 header1 header1"
                 "main2 main2 main2 main2"
                 "aside main main1 aside1";
+=======
+            grid-template-columns: 0.5fr 1fr 0.5fr;
+            grid-template-rows: 1fr 1fr 2fr 1fr 0.5fr 0.5fr 0.5fr;
+            grid-gap: 1rem;
+
+            grid-template-areas: 
+                "header header header"
+                "main main main"
+                "aside main1 aside1"
+                "aside main2 aside1"
+                "aside main3 aside1"
+                "aside main4 aside1"
+                "aside main5 aside1";
+
+>>>>>>> 3fd267b47afde7ec5f1c4141c838ad9d1b825d02
             }
         
         /* assign regions of the page to the grid */
