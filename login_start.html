@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Grid + Flex</title>
+    <title>Login Start</title>
     <style>
         html {font-size: 3vh;}
 
@@ -15,23 +15,24 @@
 
         body { /* page layout - desktop version */
             display: grid;
-            grid-template-columns: 0.5fr 1fr 0.5fr;
-            grid-template-rows: 1fr 1fr 2fr 0.5fr 0.5fr 0.5fr;
+            grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+            grid-template-rows: 1fr 2fr 3fr;
             grid-gap: 1rem;
 
             grid-template-areas: 
-                "header header header"
-                "main2 main2 main2"
+                "header1 header1 header1 header1"
+                "main2 main2 main2 main2"
                 "aside main main1 aside1";
             }
         
         /* assign regions of the page to the grid */
-        header {grid-area: header;}
+        header {grid-area: header1;}
+        main {grid-area: main2;}
         aside {grid-area: aside;}
         main {grid-area: main;}
         main {grid-area: main1;}
         aside {grid-area: aside1;}
-        main {grid-area: main2;}
+        
 
         li {display: inline;}
 
@@ -45,20 +46,52 @@
 </head>
 
 <!-- content of webpage begins here -->
+<div class="container">
+    <div class="Diabetes\@Home">
+        <h1>Diabetes@Home</h1>
+    </div>
+    <div class="Dark-Mode">
+        <h1>Dark Mode</h1>
+    </div>
+    <div class="Back"><h2>Back</h2></div>
+    <div class="Subtitle"></div>
+    <div class="Patient"></div>
+    <div class="Clinician"></div>
+    <div class="Picture1"></div>
+    <div class="Picture2"></div>
+</div>
 <body>
     <header>
         <li>Diabetes@Home</li>
         <li>Dark Mode</li>
         <li>Back</li>
     </header>
+    <!-- <header1>
+        <li>Dark Mode</li>
+    </header1>
+    <header1>
+        <li>Diabetes@Home</li>
+    </header1>
+    <header1>
+        <li>Back</li>
+    </header1>
+    <header1>
+        <li>Back</li>
+    </header1> -->
+
+    <main2>
+        <h2>Login</h2>
+        <h3>You are a:</h3>
+    </main2>
 
     <aside1>
-        <p>Background picture</p>
+        <p>picture</p>
     </aside1>
 
     <main>
-        <h1>Login</h1>
-        <h2>Your are a:</h2>
+        <h1>Main</h1>
+        <p>The main content goes here.</p>
+        <p>May include text, lists, tables, pictures or whatever is required.</p>
     </main>
 
     <main1>
@@ -68,14 +101,9 @@
     </main1>
 
     <aside>
-        <p>Background picture</p>
+        <p>picture</p>
     </aside>
 
-    <main2>
-        <h1>Main</h1>
-        <p>The main content goes here.</p>
-        <p>May include text, lists, tables, pictures or whatever is required.</p>
-    </main2>
 </body>
 
 </html>
