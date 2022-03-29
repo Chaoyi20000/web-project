@@ -3,123 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="stylesheet" href="login.css">
     <title>Login Start</title>
-    <style>
-        html {font-size: 3vh;}
-
-        body > * {  /* this is just shading to show the different regions */
-            background-color: #CDDCDB;
-            padding: .2rem;
-        }
-
-        body { /* page layout - desktop version */
-            display: grid;
-<<<<<<< HEAD
-            grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
-            grid-template-rows: 1fr 2fr 3fr;
-            grid-gap: 1rem;
-
-            grid-template-areas: 
-                "header1 header1 header1 header1"
-                "main2 main2 main2 main2"
-                "aside main main1 aside1";
-=======
-            grid-template-columns: 0.5fr 1fr 0.5fr;
-            grid-template-rows: 1fr 1fr 2fr 1fr 0.5fr 0.5fr 0.5fr;
-            grid-gap: 1rem;
-
-            grid-template-areas: 
-                "header header header"
-                "main main main"
-                "aside main1 aside1"
-                "aside main2 aside1"
-                "aside main3 aside1"
-                "aside main4 aside1"
-                "aside main5 aside1";
-
->>>>>>> 3fd267b47afde7ec5f1c4141c838ad9d1b825d02
-            }
-        
-        /* assign regions of the page to the grid */
-        header {grid-area: header1;}
-        main {grid-area: main2;}
-        aside {grid-area: aside;}
-        main {grid-area: main;}
-        main {grid-area: main1;}
-        aside {grid-area: aside1;}
-        
-
-        li {display: inline;}
-
-        @media screen and (max-width: 640px) {  /* page layout for phones */
-            body {
-                display: flex;
-                flex-direction: column;
-            }
-        }
-    </style>
 </head>
 
 <!-- content of webpage begins here -->
-<div class="container">
-    <div class="Diabetes\@Home">
-        <h1>Diabetes@Home</h1>
-    </div>
-    <div class="Dark-Mode">
-        <h1>Dark Mode</h1>
-    </div>
-    <div class="Back"><h2>Back</h2></div>
-    <div class="Subtitle"></div>
-    <div class="Patient"></div>
-    <div class="Clinician"></div>
-    <div class="Picture1"></div>
-    <div class="Picture2"></div>
-</div>
-<body>
-    <header>
-        <li>Diabetes@Home</li>
-        <li>Dark Mode</li>
-        <li>Back</li>
-    </header>
-    <!-- <header1>
-        <li>Dark Mode</li>
-    </header1>
-    <header1>
-        <li>Diabetes@Home</li>
-    </header1>
-    <header1>
-        <li>Back</li>
-    </header1>
-    <header1>
-        <li>Back</li>
-    </header1> -->
+<body class="container">
+        <div class="login_start_element" id="Diabetes\@Home">
+            <h1>Diabetes@Home</h1>
+        </div>
 
-    <main2>
-        <h2>Login</h2>
-        <h3>You are a:</h3>
-    </main2>
+        <div class="login_start_element login_start_box" id="Dark-Mode">
+            <h2>Dark Mode</h2>
+        </div>
 
-    <aside1>
-        <p>picture</p>
-    </aside1>
+        <div class="login_start_element" id="Back">
+            <h2>Back</h2>
+        </div>
 
-    <main>
-        <h1>Main</h1>
-        <p>The main content goes here.</p>
-        <p>May include text, lists, tables, pictures or whatever is required.</p>
-    </main>
+        <div class="login_start_element" id="Subtitle">
+            <h1>Login</h1>
+            <h2>You are a:</h2>
+        </div>
 
-    <main1>
-        <h1>Main</h1>
-        <p>The main content goes here.</p>
-        <p>May include text, lists, tables, pictures or whatever is required.</p>
-    </main1>
-
-    <aside>
-        <p>picture</p>
-    </aside>
-
+        <div class="login_start_element login_start_box" id="Patient">
+            <h1>Patient</h1>
+        </div>
+        
+        <div class="login_start_element login_start_box" id="Clinician">
+            <h1>Clinician</h1>
+        </div>
 </body>
 
 </html>
