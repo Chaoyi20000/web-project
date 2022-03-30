@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="login.css">
 <body class="login_portal">
 
-    <div id="home">
-        <ul id="list_horiz">
-            <li> <h2 class="login_start_element login_start_box home_text" style="border-radius: 45px; ">Dark Mode</h2></li>
-            <li> <h1 class="login_start_element home_text";> Diabetes@Home</h1></li>
-            <li> <h2 class="login_start_element main_text">Back</h2></li>
-        </ul>
+    <div class="login_start_element" id="Diabetes\@Home">
+        <h1 style="font-family: 'Courier New',cursive;">Diabetes@Home</h1>
+    </div>
+
+    <div class="login_start_element login_start_box" id="Dark-Mode">
+        <h2>Dark Mode</h2>
+    </div>
+
+    <div class="login_start_element" id="Back">
+        <h2>Back</h2>
     </div>
 
     <div class="login_start_element" id="login">
@@ -33,7 +37,8 @@
 
     <div id="authentication">
         <ul id="list_horiz" >
-            <li> <p class= "login_start_element login_start_box main_text" style="background-color: #F5E8E5; "> send authentication code</p> </li>
+            <li> <p class= "login_start_element login_start_box main_text" style="background-color: #F5E8E5; "> send authentication code</p> 
+            </li>
             <li><p class= "login_start_element login_start_box main_text" style="color: #919191; ">ENTER HERE</p> </li>
             
         </ul>
@@ -46,7 +51,10 @@
     <div id="others">
         <ul id="list_horiz">
             <li >
-                <p class= "login_start_element main_text">Remember me</p>
+                <div style="display:flex;">
+                    <p class= "login_start_element main_text">Remember me</p>
+                    <div class="circle" ></div>
+                </div>
             </li>
             <li >
                 <p class= "login_start_element main_text" >Forgot password</p>

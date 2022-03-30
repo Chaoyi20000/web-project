@@ -14,6 +14,14 @@
   line-height: 500%;
 }
 
+.circle{
+  height:10px;
+  width:10px;
+  border-radius:50%;
+  margin-top: 30%;
+  align-items: center;
+  background-color: #FFFFFF;
+}
 .main_text{
   border-radius: 45px; 
   font-family: 'Roboto Slab';
@@ -21,39 +29,25 @@
   font-weight: 600;
   text-align: center;
   align-items: center;
-  padding-left: 5%;
+  padding-left: 3%;
+  
   color: #000000;
 }
 
-
-.home_text{
-  font-family: 'Courier New' cursive;
-  font-style: normal;
-  font-weight: 400;
-  align-items: center;
-  text-align: center;
-  color: #000000;
-}
 .login_portal {  
     display: grid;
     background-color: #CDDCDB;
-    grid-template-rows: 0.2fr 0.5fr 0.5fr 0.2fr 0.2fr 0.2fr 0.2fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 0.2fr 0.5fr 1fr 0.5fr 0.2fr 0.2fr 0.2fr;
     gap: 10px;
     width: 100vw;
     height: 100vh;
    
   }
   
-
-#home { 
-  grid-row: 1;  
-  margin-left:10%;
-  margin-right: 10%;
-  
-}
-
 #login { 
   grid-row: 2;
+  grid-column: 1/span 6;
   padding-right: 30%;
   padding-left: 30%;
 }
@@ -61,19 +55,22 @@
 
 #details { 
   grid-row:3;
+  grid-column: 1/span 6;
   padding-right: 30%;
   padding-left: 30%;
 }
 
 #authentication { 
   grid-row:4;
-  padding-left: 25%;
-  padding-right: 25%;
+  grid-column: 1/span 6;
+  padding-left: 15%;
+  padding-right: 20%;
 }
 
 
 #submit { 
   grid-row:5; 
+  grid-column: 1/span 6;
   line-height: 200%;
   padding-right: 40%;
   padding-left: 40%;
@@ -82,12 +79,14 @@
 
 #others { 
   grid-row:6;
+  grid-column: 1/span 6;
   padding-right: 25%;
   padding-left: 25%;
 }
 
 #patient_portal { 
   grid-row:7; 
+  grid-column: 1/span 6;
   padding-right: 25%;
   padding-left: 25%;
 }
