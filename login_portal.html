@@ -4,50 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Grid + Flex</title>
+    <title>login portal Clinican</title>
     <link rel="stylesheet" href="login.css">
-<body>
-    <div class="login_portal">
-        <div class="home">
-            <ul id="list_horiz">
-                <li>Dark Mode</li>
-                <li>Diabetes@Home</li>
-                <li>Back</li>
-            </ul>
-        
-        </div>
-        <div class="login">
-            <h2>Clinical Portal</h2>
-        </div>
-        
-        
-        <div class="details">
-            <ul id = "list_vert">
-                <li>userid </li>
-                <li>password </li>
-                
-            </ul>
-        </div>
-        <div class="authentication">
-            <ul id="list_horiz" >
-                <li>send authentication code</li>
-                <li>ENTER HERE</li>
-                
-            </ul>
-        </div>
-        <div class="submit">
-            <h3>login</h3>
-        </div>
-        <div class="others">
-            <ul id="list_horiz">
-                <li>Remember me</li>
-                <li>Forgot password</li>
-            </ul>
-        </div>
-        <div class="patient_portal">
-            <h5>not a clinicial? go to PATIENT PORTAl</h5>
-        </div>
-      </div>
+<body class="login_portal">
+
+    <div id="home">
+        <ul id="list_horiz">
+            <li> <h2 class="login_start_element login_start_box home_text" style="border-radius: 45px">Dark Mode</h2></li>
+            <li> <h1 class="login_start_element home_text"> Diabetes@Home</h1></li>
+            <li> <h2 class="login_start_element main_text">Back</h2></li>
+        </ul>
+    </div>
+
+    <div class="login_start_element" id="login">
+        <h2>Clinical Portal</h2>
+    </div>
+    
+    
+    <div id="details">
+        <ul id = "list_vert">
+            <li >
+                <p class= "login_start_element login_start_box main_text" style="text-align: left; border-radius: 45px; ">userid: </p> </li>
+            <li>
+                <p class= "login_start_element login_start_box main_text" style="text-align: left; border-radius: 45px; ">password: </p> </li>
+            
+        </ul>
+    </div>
+
+    <div id="authentication">
+        <ul id="list_horiz" >
+            <li> <p class= "login_start_element login_start_box main_text" style="background-color: #F5E8E5;"> send authentication code</p> </li>
+            <li><p class= "login_start_element login_start_box main_text" style="color: #919191;">ENTER HERE</p> </li>
+            
+        </ul>
+    </div>
+
+    <div id="submit">
+        <p class= "login_start_element login_start_box main_text">login</p>
+    </div>
+
+    <div id="others">
+        <ul id="list_horiz">
+            <li >
+                <p class= "login_start_element main_text">Remember me</p>
+            </li>
+            <li >
+                <p class= "login_start_element main_text">Forgot password</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="login_start_element" id="patient_portal">
+        <h4>not a clinicial? go to PATIENT PORTAl</h4>
+    </div>
+    
 </body>
 
 </html>
