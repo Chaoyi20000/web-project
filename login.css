@@ -11,6 +11,7 @@
 #list_vert{
   list-style-type: none;
   justify-content:space-evenly;
+  line-height: 500%;
 }
 
 .main_text{
@@ -18,10 +19,9 @@
   font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 600;
-  
-  line-height: 26px;
+  text-align: center;
   align-items: center;
-
+  padding-left: 5%;
   color: #000000;
 }
 
@@ -30,17 +30,15 @@
   font-family: 'Courier New' cursive;
   font-style: normal;
   font-weight: 400;
-  line-height: 43px;
-  
+  align-items: center;
   text-align: center;
-
   color: #000000;
 }
 .login_portal {  
     display: grid;
     background-color: #CDDCDB;
     grid-template-rows: 0.2fr 0.5fr 0.5fr 0.2fr 0.2fr 0.2fr 0.2fr;
-    gap: 20px;
+    gap: 10px;
     width: 100vw;
     height: 100vh;
    
@@ -49,39 +47,49 @@
 
 #home { 
   grid-row: 1;  
+  margin-left:10%;
+  margin-right: 10%;
   
 }
 
 #login { 
   grid-row: 2;
-  margin: auto;
+  padding-right: 30%;
+  padding-left: 30%;
 }
 
 
 #details { 
   grid-row:3;
-  margin-right: 25%;
-  margin-left: 25%;
+  padding-right: 30%;
+  padding-left: 30%;
 }
 
 #authentication { 
   grid-row:4;
-  margin: auto;
+  padding-left: 25%;
+  padding-right: 25%;
 }
 
 
 #submit { 
   grid-row:5; 
-  margin: auto;
+  line-height: 200%;
+  padding-right: 40%;
+  padding-left: 40%;
+  
 }
 
 #others { 
   grid-row:6;
-  margin: auto;
+  padding-right: 25%;
+  padding-left: 25%;
 }
 
 #patient_portal { 
   grid-row:7; 
+  padding-right: 25%;
+  padding-left: 25%;
 }
 
 @media screen and (max-width: 640px) {  /* page layout for phones */
