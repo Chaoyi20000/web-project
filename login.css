@@ -117,43 +117,42 @@ a:hover, a:active{
 
 /* Login_start.html */
 .container {
-    display: grid; 
-    background-color: #CDDCDB;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 0.2fr 0.5fr 1.5fr 2fr; 
-    gap: 20px 20px; 
+  display: grid; 
+  background-color: #CDDCDB;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 0.2fr 0.5fr 1.5fr 2fr; 
+  gap: 20px 20px; 
 }
 .login_start_element {
-    background-color: #CDDCDB;
-    text-align: center;
-    border-radius: 25px;
+  background-color: #CDDCDB;
+  text-align: center;
+  border-radius: 25px;
 }
 .login_start_box {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #F0F0F0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #F0F0F0;
 }
 #Diabetes\\\@Home {
-    grid-area: 1 / 1 / 2 / 3;
-    
+  grid-area: 1 / 1 / 2 / 3;
 }
 #Back {
-    grid-area: 1 / 6 / 2 / 7;
+  grid-area: 1 / 6 / 2 / 7;
 }
 #Dark-Mode {
-    grid-area: 1 / 5 / 2 / 6;
-    margin: auto;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 3px;
+  grid-area: 1 / 5 / 2 / 6;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
 }
 #Patient {
-    grid-area: 4 / 2 / 5 / 4;
-    padding: 70px 0;
+  grid-area: 4 / 2 / 5 / 4;
+  padding: 70px 0;
 }
 #Clinician {
-    grid-area: 4 / 4 / 5 / 6;
-    padding: 70px 0;
+  grid-area: 4 / 4 / 5 / 6;
+  padding: 70px 0;
 }
 #Subtitle {
-    grid-area: 3 / 2 / 4 / 6;
+  grid-area: 3 / 2 / 4 / 6;
 }
