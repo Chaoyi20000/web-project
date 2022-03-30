@@ -1,83 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <link href="register_detail.css" rel="stylesheet" />
+    <link href="login.css" rel="stylesheet" />
+    <title>register detail</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Grid + Flex</title>
-    <style>
-        html {font-size: 3vh;}
+  <body>
+    <div class="container">
+      
+        <div class="login_start_element" id="Diabetes\@Home">
+            <h1>Diabetes@Home</h1>
+        </div>
 
-        body > * {  /* this is just shading to show the different regions */
-            background-color: #CDDCDB;
-            padding: .2rem;
-        }
+        <div class="login_start_element login_start_box" id="Dark-Mode">
+            <h1>Dark Mode</h1>
+        </div>
 
-        body { /* page layout - desktop version */
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr 3fr 1fr;
-            grid-gap: 1rem;
+        <div class="login_start_element" id="Back">
+            <h2>Back</h2>
+        </div>
 
-            grid-template-areas: 
-                "header header header header"
-                "main2 main2 main2 main2"
-                "main3 main3 mian3 main3"
-                "footer footer footer footer";
-            }
+        <div class="login_start_element" id="info">
+            <h1>Register a new account</h1>
+            
+        </div>
+
         
-        /* assign regions of the page to the grid */
-        header {grid-area: header;}
-        /* aside {grid-area: aside;} */
-        main {grid-area: main;}
-        main {grid-area: main1;}
-        main {grid-area: main2;}
-        /* aside {grid-area: aside1;} */
-        footer{grid-area:footer;}
+        <div class="subtitle"></div>
+        
+        <div class="List1">
+            <div class="email login_start_element login_start_box "><h2>emial:</h2></div>
+            <div class="first login_start_element login_start_box "><h2>firname:</h2> </div>
+            <div class="date-of-birdth login_start_element login_start_box "><h2>data of birdth(dd/mm/yy):</h2></div>
+            <div class="password login_start_element login_start_box "><h2>password:</h2></div>
+            <div class="comfired-password login_start_element login_start_box "><h2>comefire password:</h2></div>
+        </div>
+        
+        
+        <div class="List">
+            <div class="Screen-name login_start_element login_start_box "><h2>screen name:</h2></div>
+            <div class="Last-name login_start_element login_start_box "><h2>lastname:</h2></div>
+            <div class="bio-text login_start_element login_start_box "><h2>bio text:</h2></div>
+        </div>
 
-        li {display: inline;}
+        <div class="submit login_start_element login_start_box "><h1>submit:</h1> </div>
 
-        @media screen and (max-width: 640px) {  /* page layout for phones */
-            body {
-                display: flex;
-                flex-direction: column;
-            }
-        }
-    </style>
-</head>
 
-<!-- content of webpage begins here -->
-<body>
-    <header>
-        <li>Diabetes@Home</li>
-        <li>Dark Mode</li>
-        <li>Back</li>
-    </header>
-
-    <aside1>
-        <p>Background picture</p>
-    </aside1>
-
-    <main>
-        <h1>Login</h1>
-        <h2>Your are a:</h2>
-    </main>
-
-    <main1>
-        <h1>Main</h1>
-        <p>The main content goes here.</p>
-        <p>May include text, lists, tables, pictures or whatever is required.</p>
-    </main1>
-
-    <aside>
-        <p>Background picture</p>
-    </aside>
-
-    <main2>
-        <h1>Main</h1>
-        <p>The main content goes here.</p>
-        <p>May include text, lists, tables, pictures or whatever is required.</p>
-    </main2>
-</body>
-
+    </div>
+  </body>
 </html>
