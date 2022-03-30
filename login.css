@@ -1,84 +1,102 @@
-
+/*login portal css*/
 #list_horiz{
     display:flex;
     width:100%;
     list-style-type: none;
     justify-content:space-evenly;
+
 }
+
 
 #list_vert{
   list-style-type: none;
   justify-content:space-evenly;
+  line-height: 500%;
+}
+
+.main_text{
+  border-radius: 45px; 
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 600;
+  text-align: center;
+  align-items: center;
+  padding-left: 5%;
+  color: #000000;
 }
 
 
+.home_text{
+  font-family: 'Courier New' cursive;
+  font-style: normal;
+  font-weight: 400;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
 .login_portal {  
     display: grid;
     background-color: #CDDCDB;
-    grid-template-rows: 1fr 1fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr;
-    grid-gap: 10px;
+    grid-template-rows: 0.2fr 0.5fr 0.5fr 0.2fr 0.2fr 0.2fr 0.2fr;
+    gap: 10px;
     width: 100vw;
     height: 100vh;
    
   }
   
 
-  .home { 
-    grid-row: 1;
-    border-color: yellowgreen;
-    border-style: solid;
-    text-align: center;
-}
+#home { 
+  grid-row: 1;  
+  margin-left:10%;
+  margin-right: 10%;
   
-  .login { 
-    
-    grid-row: 2;
-    border-color: yellowgreen;
-    border-style: solid;
-    text-align: center;
-}
-  
-  
-  .details { 
-    grid-row:3;
-    border-color: yellowgreen;
-    border-style: solid; 
-    text-align: center;
-}
-  
-  .authentication { 
-    grid-row:4;
-    border-color: yellowgreen; 
-    border-style: solid;
-    text-align: center;
-}
-  
-  .submit { 
-    grid-row:5; 
-    border-color: yellowgreen;
-    border-style: solid;
-    text-align: center;
-}
-  
-  .others { 
-    grid-row:6;
-    border-color: yellowgreen;
-    border-style: solid;
-    text-align: center;
- }
-  
-  .patient_portal { 
-    grid-row:7; 
-    border-color: yellowgreen;
-    border-style: solid;
-    text-align: center;
 }
 
-  @media screen and (max-width: 640px) {  /* page layout for phones */
-    body {
-        display: flex;
-        flex-direction: column;
-    }
+#login { 
+  grid-row: 2;
+  padding-right: 30%;
+  padding-left: 30%;
+}
+
+
+#details { 
+  grid-row:3;
+  padding-right: 30%;
+  padding-left: 30%;
+}
+
+#authentication { 
+  grid-row:4;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+
+#submit { 
+  grid-row:5; 
+  line-height: 200%;
+  padding-right: 40%;
+  padding-left: 40%;
+  
+}
+
+#others { 
+  grid-row:6;
+  padding-right: 25%;
+  padding-left: 25%;
+}
+
+#patient_portal { 
+  grid-row:7; 
+  padding-right: 25%;
+  padding-left: 25%;
+}
+
+@media screen and (max-width: 640px) {  /* page layout for phones */
+  body {
+      display: flex;
+      flex-direction: column;
+  }
 }
 
 
