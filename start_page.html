@@ -1,4 +1,134 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @media screen and (max-width: 640px) {  /* page layout for phones */
+            .grid_box {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        html {font-size: 3vh;}
+        .flex_container{
+            background-color: #FFFFFF;
+            display: grid;
+            grid-template-areas:
+            'top top top top top_right'
+            'main1 main main2 right right'
+            'bottom bottom bottom bottom bottom_right';
+            gap: 1vw;
+            padding:10px;
+
+        }
+        .flex_container > div {
+            text-align: justify;
+            padding: 4vw;
+            line-height: 3vw;
+        }
+        .mode{
+            grid-area: top_right;
+        }
+        .title1{
+            grid-area: main
+        }
+        .about_diabetes{
+            grid-area: right;
+        }
+        .text_2{
+            padding: 4vw;
+        }
+        .text_background{
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 45px; 
+            background-color: #CDDCDB ;
+            text-align: center;
+            padding: 0vw;
+        }
+        .text_2_box{
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 45px; 
+            background-color: #CDDCDB ;
+            text-align: center;
+            padding: 1vw;
+
+        }
+        .text_3_box{
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 45px; 
+            background-color: #CDDCDB ;
+            text-align: center;
+            padding: 1vw;
+        }
+        .sign{
+            grid-area: bottom_right
+        }
+        .text4{
+            padding: 0vw;
+        }
+
+
+    </style>
+</head>
+    <body>
+        <div class = "flex_container">
+            <div class="title1">
+                <p style=" font-family: 'Revalia';font-size: 80px;">
+                    Diabetes@Home
+                </p>
+                <p class="text1", style="font-family: 'Revalia'; font-size: 50px;">
+                    welcome to our family!
+                </p>
+            </div>
+            <div class="mode">
+                <div class="text_background">
+                    Dark Mode
+                </div>
+            </div>
+            <div class=" about_diabetes">
+                <div class="text_2">
+                    <p class="text_2_box", style= "font-family: 'Revalia';font-style: normal; font-size: 40px; align-items: center;">
+                        About diabetes
+                    </p>
+                    <p class="text_3_box", style="font-family: 'Revalia';font-style: normal; font-size: 40px; align-items: center;">
+                        About this website
+                    </p>
+                </div>
+            </div>
+            <div class="sign">
+                <p class="text4" style="font-family: 'Revalia';font-style: normal;font-size: 50px;">
+                    Sign in
+                </p>
+            </div>
+
+        </div>
+
+
+    
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 
 <html lang="en">
 
@@ -61,4 +191,4 @@
 
 
 
-</body>
+</body> -->
