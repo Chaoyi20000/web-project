@@ -1,191 +1,94 @@
-*{
-    width: 1920px;
-    height: 1080px;
-    padding: 50px;
-    margin: 20px;
-    background: #FFFFFF;
+
+
+html {font-size: 2vw;}
+.flex_container{
+    background-color: #FFFFFF;
+    display: grid;
+    grid-template-areas:
+    'top top top top top_right'
+    'main1 main main2 right right'
+    'bottom bottom bottom bottom bottom_right';
+    /* gap: 1vw; */
+    padding:2px;
+    background-image: url("/image/background.jpg");
+    background-repeat: no-repeat; 
+    background-size: cover;
+    /* background-repeat: repeat; */
+    width: 100vw;
+    height: 100vh;
 }
+/* body{
+    background-image: url("/image/background.jpg");
+    background-color: rebeccapurple;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+} */
 
-
-
-.title{
-    position: absolute;
-    width: 857px;
-    height: 423px;
-    left: 350px;
-    top: 147px;
-
-    font-family: 'Revalia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 80px;
-    line-height: 99px;
-    display: flex;
-    align-items: center;
-
-    color: #505050;
-    background-color: transparent;
-
+.flex_container > div {
+    /* text-align: justify; */
+    padding: 4vw;
+    line-height: 3vw;
 }
-
-.title2{
-    position: absolute;
-    width: 707px;
-    height: 62px;
-    left: 341px;
-    top: 508px;
-
-    font-family: 'Revalia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 50px;
-    line-height: 62px;
-
-    display: flex;
-    align-items: center;
-
-    color: #000000;
-    background-color: transparent;
-}
-
-.start_page_blank_2{
-    position: absolute;
-    width: 1228px;
-    height: 1195px;
-    left: -403px;
-    top: -328px;
-    border-radius: 0 0 1000px 0;
-
-    background: #FFF3F3;
-}
-.start_page_blank_3{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-    
-    position: absolute;
-    width: 775px;
-    height: 726px;
-    left: 628px;
-    top: 74px;
-    background: rgba(202, 220, 234, 0.5);
-    border-radius: 50%;
-}
-
-.start_page_blank_4{
-    position: absolute;
-    width: 565px;
-    height: 480px;
-    left: 420px;
-    top: 620px;
-    border-radius: 50%;
-
-    background: rgba(175, 185, 210, 0.5);
-}
-.start_page_blank_5{
-    position: absolute;
-    width: 494px;
-    height: 402px;
-    left: 909px;
-    top: 722px;
-
-    border-radius: 50%;
-    background: rgba(229, 229, 229, 0.9);
-    opacity: 0.4;
-}
-.blank_mode{
-    position: absolute;
-    width: 319px;
-    height: 89px;
-    left: 1556px;
-    top: 58px;
-    background: rgba(205, 220, 219, 0.7);
-    border-radius: 50px;
+.logo{
+    grid-area: top;
 }
 .mode{
-    position: absolute;
-    width: 240px;
-    height: 43px;
-    left: 1615px;
-    top: 81px;
-
-    font-family: 'Revalia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 43px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-color: transparent;
-
-    color: #505050;
+    grid-area: top_right;
 }
-
-.start_page_blank_6{
-    position: absolute;
-    background: rgba(205, 220, 219, 0.7);
+.title1{
+    grid-area: main
+}
+.about_diabetes{
+    grid-area: right;
+}
+.text0{
+    padding: 2vw;
+}
+.text1{
+    padding: 2vw;
+}
+.text_2{
+    padding-top: 10vw;
+}
+.text_background{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 45px;
+    border-radius: 45px; 
+    background-color: #CDDCDB ;
+    text-align: center;
+    padding: 0vw;
 }
-#box1{
-    width: 645px;
-    height: 89px;
-    left: 1227px;
-    top: 393px;
-}
+.text_2_box{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px; 
+    background-color: #CDDCDB ;
+    text-align: center;
 
-.content{
-    position: absolute;
-
-    font-family: 'Revalia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 50px;
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    color: #505050;
 }
-#text1{
-    width: 382px;
-    height: 51px;
-    left: 1370px;
-    top: 412px;
-    align-items: center;
+.text_3_box{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px; 
+    background-color: #CDDCDB ;
+    text-align: center;
+}
+.sign{
+    grid-area: bottom_right
 }
 
-#box2{
-    width: 645px;
-    height: 89px;
-    left: 1230px;
-    top: 650px;
-}
-
-#text2{
-    width: 479px;
-    height: 41px;
-    left: 1336px;
-    top: 665px;
-    align-items: center;
-}
-
-.sign_in{
-    position: absolute;
-    width: 183px;
-    height: 92px;
-    left: 1508px;
-    top: 877px;
-
-    font-family: 'Revalia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 50px;
-    display: flex;
-    align-items: center;
-
-    color: #505050;
+@media screen and (max-width: 640px) {  /* page layout for phones */
+    .flex_container{
+        display: grid;
+        /* flex-direction: column; */
+        font-size: 80%;
+        grid-template-areas: 
+        'top  top_right'
+        'main main'
+        'right right '
+        'bottom bottom_right';
+        padding:2px;
+        background-image: url("/image/background.jpg");
+        background-repeat: no-repeat; 
+        background-size: cover;
+        /* width: 100vw;
+        height: 100vh; */
+    }
 }
