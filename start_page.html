@@ -23,12 +23,24 @@
             'bottom bottom bottom bottom bottom_right';
             gap: 1vw;
             padding:10px;
-
+            background-image: url("/image/background.jpg");
+            background-repeat: no-repeat; 
+            background-size: cover; 
         }
+        /* body{
+            background-image: url("/image/background.jpg");
+            background-color: rebeccapurple;
+            background-repeat: no-repeat; 
+            background-size: cover; 
+        } */
+
         .flex_container > div {
-            text-align: justify;
+            /* text-align: justify; */
             padding: 4vw;
             line-height: 3vw;
+        }
+        .logo{
+            grid-area: top;
         }
         .mode{
             grid-area: top_right;
@@ -82,6 +94,10 @@
 </head>
     <body>
         <div class = "flex_container">
+            <div class="logo" >
+                <img src="image/logo.jpg"
+                alt="unable to show picture"/>
+            </div>
             <div class="title1">
                 <h1 class="text0",style=" font-family: 'Revalia';">
                     Diabetes@Home
@@ -110,8 +126,9 @@
                     Sign in
                 </p>
             </div>
-
         </div>
+
+
 
 
     
