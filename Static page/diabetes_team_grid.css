@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-html {font-size: 3vh;}
+
+
 
 body { 
     background-color: #CDDCDB;
+    font-size: 3vh;
+    box-sizing: border-box;
 }
 
-.top_left{
-    grid-area: top_left;
-    
-}
-
-.top_right{
-    grid-area: top_right;
+header{
+    grid-area: header;
 }
 
 .down_left{
@@ -26,12 +24,11 @@ body {
 .grid_box{
     display: grid;
     grid-template-areas:
-        'top_left top_left top_left  top_right'
-        'down_left down_left down_right down_right';
+        'header header'
+        'down_left down_right';
         gap: 1vw;
         background-color: #CDDCDB;
         padding: 10px;
-
 }
 
 .grid_box > div {
@@ -47,6 +44,21 @@ body {
         flex-direction: column;
     }
 }
+.header_box{
+    display: grid;
+    grid-template-areas: 'left left left right';
+    gap: 1vw;
+    /* background-color: red; */
+    padding: 10px;
+}
+
+.left{
+    grid-area: left;
+}
+
+.right{
+    grid-area: right;
+}
 
 .flex_box{
     display: flex;
@@ -58,6 +70,8 @@ body {
 .flex_box > div{
     margin: 1vw;
     padding: 0.5vw;
+    /* background-color: aliceblue; */
+    align-self:center;
 }
 
 
