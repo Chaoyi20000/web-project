@@ -1,17 +1,23 @@
 /*login portal css*/
 #list_horiz{
     display:flex;
-    width:100%;
+    width:50%;
     list-style-type: none;
-    justify-content:space-evenly;
+    justify-content:space-around;
+    align-content: center;
+    margin: auto;
 
 }
 
 
-#list_vert{
+#list_vert {
   list-style-type: none;
-  justify-content:space-evenly;
+  justify-content:space-around;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   line-height: 500%;
+  
 }
 
 a:link, a:visited{
@@ -60,29 +66,28 @@ a:hover, a:active{
     gap: 10px;
     width: 100vw;
     height: 100vh;
+    margin: auto;
    
   }
   
 #login { 
   grid-row: 2;
   grid-column: 1/span 6;
-  padding-right: 30%;
-  padding-left: 30%;
+  margin: auto;
 }
 
 
 #details { 
   grid-row:3;
   grid-column: 1/span 6;
-  padding-right: 30%;
-  padding-left: 30%;
+  width:50vw;
+  margin: auto;
 }
 
 #authentication { 
   grid-row:4;
   grid-column: 1/span 6;
-  padding-left: 15%;
-  padding-right: 20%;
+  
 }
 
 
@@ -90,23 +95,21 @@ a:hover, a:active{
   grid-row:5; 
   grid-column: 1/span 6;
   line-height: 200%;
-  padding-right: 40%;
-  padding-left: 40%;
+  width:20vw;
+  margin: auto;
   
 }
 
 #others { 
   grid-row:6;
   grid-column: 1/span 6;
-  padding-right: 25%;
-  padding-left: 20%;
+ 
 }
 
 #other_portal { 
   grid-row:7; 
   grid-column: 1/span 6;
-  padding-right: 25%;
-  padding-left: 25%;
+ 
 }
 
 @media screen and (max-width: 640px) {  /* page layout for phones */
@@ -116,6 +119,8 @@ a:hover, a:active{
       font-size: 70%;
       
   }
+  
+
 }
 
 
@@ -135,6 +140,7 @@ a:hover, a:active{
 .login_start_box {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: #F0F0F0;
+  box-sizing: 2em;
 }
 #Diabetes\\\@Home {
   grid-area: 1 / 1 / 2 / 3;

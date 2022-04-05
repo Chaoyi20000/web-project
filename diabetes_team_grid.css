@@ -45,6 +45,7 @@ body {
     .grid_box {
         display: flex;
         flex-direction: column;
+        font-size: 80%;
     }
 }
 
