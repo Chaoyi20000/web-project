@@ -1,0 +1,51 @@
+html {font-size: 2vw;}
+
+.flex_container{
+    background-color: #FFFFFF;
+    display: grid;
+    grid-template-areas:
+    'top_left top_left top_middle_left top_middle_right top_right top_right_1'
+    'name name blood weight does exercise'
+    'main1 main1 main1 main1 main1 main1'
+    'main2 main2 main2 main2 main2 main2'
+    'main3 main3 main3 main3 main3 main3'
+    'main4 main4 main4 main4 main4 main4';
+    /* gap: 1vw; */
+    padding:2px;
+    /* background-repeat: repeat; */
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.Diabetes\@Home{
+    grid-area: top_left;
+}
+.mode1{
+    grid-area: top_right;
+}
+
+/* .recording_element {
+    background-color: #CDDCDB;
+    text-align: center;
+    border-radius: 25px;
+  }
+  .recording_box {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #F0F0F0;
+  }
+
+
+  #Diabetes\\\@Home {
+    grid-area: top_left;
+  }
+  #Back {
+    grid-area: top_right1;
+  }
+  #Dark-Mode {
+    grid-area: top_right;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+  } */
