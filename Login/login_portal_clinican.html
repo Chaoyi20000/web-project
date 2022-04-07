@@ -6,79 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login portal clinican</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../patient-dashboard.css">
+    <link rel="stylesheet" href="../patient_details(clinican).css">
 </head>
-<body class="login_portal">
+<body >
+    <header class = "header-grid">
+        <div class = "diabete-home">
+            <h1 style="font-family: 'Courier New',cursive;">
+                <a href="../Static page/start_page.html">Diabetes@Home</a>
+            </h1>
+        </div>
+        <div class = "dark-mode"><button>Dark&nbspMode</button> </div>
+        <div class = "back">Back</div>
+    </header>
 
-    <div class="login_start_element" id="Diabetes\@Home">
-        <h1 style="font-family: 'Courier New',cursive;">
-            <a href="../Static page/start_page.html">Diabetes@Home</a>
-        </h1>
-    </div>
-
-    <div class="login_start_element login_start_box" id="Dark-Mode">
-        <h2>
-            <a href="#">Dark Mode</a>
-        </h2>
-    </div>
-
-    <div class="login_start_element" id="Back">
-        <h2>
-            <a href="javascript:history.back()">Back</a></h2>
-    </div>
-
-    <div class="login_start_element" id="login">
-        <h1>Clinican Portal</h1>
-    </div>
+   
+    <main class="login_portal">
+        <div class="login_start_element main_text" id="login">
+            Clinican Portal
+        </div>
+        
+        
+        <div id="details">
+            <ul id = "list_vert">
+                <li >
+                    <p class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left: 3%; ">userid: </p> </li>
+                <li>
+                    <p class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left:3%; ">password: </p> </li>
+                
+            </ul>
+        </div>
     
+        <div id="authentication">
+            <ul id="list_horiz" >
+                <li> 
+                    <p class= "login_start_element login_start_box main_text" style="background-color: #F5E8E5; ">
+                        <a href="#"> send authentication code</a>
+                    </p>
+                </li>
+                <li ><p class= "login_start_element login_start_box main_text" style="color: #919191; ">
+                    ENTER HERE
+                </p> </li>
+                
+            </ul>
+        </div>
     
-    <div id="details">
-        <ul id = "list_vert">
-            <li >
-                <p class= "login_start_element login_start_box main_text" style="text-align: left; border-radius: 45px; ">userid: </p> </li>
-            <li>
-                <p class= "login_start_element login_start_box main_text" style="text-align: left; border-radius: 45px; ">password: </p> </li>
-            
-        </ul>
-    </div>
-
-    <div id="authentication">
-        <ul id="list_horiz" >
-            <li> <p class= "login_start_element login_start_box main_text" style="background-color: #F5E8E5; "> 
-                <a href="#"> send authentication code</a>
-            </p> 
-            </li>
-            <li><p class= "login_start_element login_start_box main_text" style="color: #919191; ">ENTER HERE</p> </li>
-            
-        </ul>
-    </div>
-
-    <div id="submit">
-        <p class= "login_start_element login_start_box main_text">
-            <a href="#">login</a>
-        </p>
-    </div>
-
-    <div id="others">
-        <ul id="list_horiz">
-            <li >
-                <div style="display:flex;">
-                    <p class= "login_start_element main_text">Remember me</p>
-                    <div class="circle" >
-                        <a href="#"> </a>
+        <div id="submit">
+            <p class= "login_start_element login_start_box main_text">
+                <a href="#">login</a>
+            </p>
+        </div>
+    
+        <div id="others">
+            <ul id="list_horiz">
+                <li >
+                    <div class= "login_start_element main_text" style="display:flex;">
+                        Remember me
+                        <div class="circle" >
+                            <a href="#"> </a>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li >
-                <p class= "login_start_element main_text" >Forgot password?</p>
-            </li>
-        </ul>
-    </div>
-
-    <div class="login_start_element main_text" id="other_portal">
-        <h4>
-            <a href="login_portal_patient.html" style="color:#505050">not a clinician? go to PATIENT PORTAl</a></h4>
-    </div>
+                </li>
+                <li class= "login_start_element main_text" >
+                    Forgot password?
+                </li>
+            </ul>
+        </div>
     
+        <div class="login_start_element" id="other_portal">
+            <a href="login_portal_patient.html" style="color:#505050">not a clinician? go to PATIENT PORTAl</a>
+        </div>
+
+    </main>
+
+    <footer class="footer-grid">
+        <h5>copy rights reserved by Diabetes@Home</h5>
+    </footer>
+       
 </body>
 
 </html>
