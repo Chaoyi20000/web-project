@@ -13,7 +13,7 @@ body {
 .clinician-comment-wrapper{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 0.2fr 2fr 2fr;
+    grid-template-rows: 0.2fr  2fr 2fr;
     gap: 3vw;
 }
 
@@ -84,3 +84,4 @@ main >ul >li::before{
 .support-message, input{
     float: right;
 }
+

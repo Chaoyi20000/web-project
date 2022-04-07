@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+
+
+body { 
+    background-color: #CDDCDB;
+    font-size: 3vh;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab';
+}
+
+.header-grid{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    /* background-color: aqua; */
+}
+
+.diabete-home{
+    grid-area: 1/1/2/3;
+    /* background-color: aliceblue; */
+}
+
+.dark-mode{
+    grid-area: 1/5/2/6;
+    /* background-color: aliceblue;    */
+}
+
+.dark-mode button{
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 2vw;
+    font-family: 'Courier New',cursive;
+    align-self:auto;
+}
+
+.back{
+    grid-area: 1/6/2/7;
+}
+
+header div{
+    text-align: center;
+}
+
+
+.main-grid{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+    /* background-color: bisque; */
+
+}
+
+.patient-nav{
+    grid-area: 1/1/2/2;
+    /* background-color: aliceblue; */
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+nav ul li {
+    margin-bottom: 3vw;
+    background-color:#FFFFFF;
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);    
+    padding: 2vw;    
+}
+
+a{
+    text-decoration: none;
+    color: black;
+
+
+}
+
+.patient-info{
+    grid-area: 1/2/2/3;
+    /* background-color:aquamarine; */
+}
+
+.patient-info p{
+text-align: center;
+}
+
+.image-and-button{
+    display: grid;
+    grid-template-areas: 'photo  buttons';
+}
+
+.photo{
+    grid-area: photo;
+    text-align: center;
+    /* background-color:beige; */
+}
+
+.photo img{
+    display: block;
+    margin: auto;
+    border-radius: 45px;
+    width: 60%;
+    border: solid black;
+}
+
+.buttons{
+    grid-area: buttons;
+    /* background-color: antiquewhite; */
+}
+
+.buttons img{
+    width: 6vw;
+}
+
+button{
+    border: none;
+    padding: 1vw;
+    margin-bottom: 2vw;
+    background-color: #F8F0F0;
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+}
+
+.speech-bubble{
+    background-color: #FFFFFF;
+    padding: 1vw;
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+}
+
+
+
+
+@media screen and (max-width: 640px) {  /* page layout for phones */
+    .main-grid {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* medal 1 */
+
+
