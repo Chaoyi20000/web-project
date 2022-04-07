@@ -6,43 +6,36 @@
     <title>Patient details (clinician view)</title>
     <link rel="stylesheet" href="patient_details(clinican).css">
     <link rel="stylesheet" href="../Login/login.css">
+    <link rel="stylesheet" href="patient-dashboard.css">
 </head>
 
-<body>
-    <div class="patient_details_container">
-        
-        <div class="login_start_element" id="Diabetes\\\@Home">
+<body>      
+    <header class="header-grid">
+        <div class = "diabete-home">
             <h1 style="font-family: 'Courier New',cursive;">
                 <a href="../Static page/start_page.html">Diabetes@Home</a>
             </h1>
+            
         </div>
-    
-        <div class="login_start_element login_start_box" id="Dark-Mode">
-            <h2>
-                <a href="#">Dark Mode</a>
-            </h2>
-        </div>
-    
-        <div class="login_start_element" id="Back">
-            <h2>
-                <a href="javascript:history.back()">Back</a>
-            </h2>
-        </div>
-    
+        <div class = "dark-mode"><button>Dark&nbspMode</button> </div>
+        <div class = "back">Back</div>
+    </header>
+        
+     <main class="patient_details_container">
         <div class="login_start_element" id="subtitle">
-            <h2 style = "text-align: left;">Clinican</h2>
+            <h3 style = "text-align: left;">Clinican</h3>
         </div>
 
         <div class="login_start_element"id="health_history">
-            <h3>
+            <h4>
                 <a href="#">Patient health history</a>
-            </h3>
+            </h4>
         </div>
 
         <div class= "login_start_element"id="note_history">
-            <h3>
+            <h4>
                 <a href="#">Clinical note history</a>
-            </h3>
+            </h4>
 
         </div>
 
@@ -54,19 +47,13 @@
                 </tr>
 
                 <tr>
-                <th>Support message:</th>
-                <td class="login_start_box" style="border-radius:45px;">Happy Birthday Alice!</td>
-                
-                </tr>
-
-                <tr>
                 <th>Clinical Notes:</th>
                 <td class="login_start_box" style="border-radius:45px;">figures looking good</td>
                 <td class="login_start_box" style="border-radius:45px;">  <a href="#" >Edit</a></td>
                 </tr>
  
                 <tr>
-                <th>New support message:</th>
+                <th>Support message:</th>
                 <td class="login_start_box" style="border-radius:45px;">You are doing so good Alice!</td>
                 <td class="login_start_box" style="border-radius:45px;"> <a href="#" >Edit</a></td>
                 </tr>
@@ -120,14 +107,15 @@
         </div>
 
         <div class="login_start_element login_start_box" id="edit">
-            <h3>
-                <a href="#">Edit</a>
-            </h3>
+            <a href="#">Edit</a>
         </div>
 
+     </main>
 
-    </div>
-
+     <footer class="footer-grid">
+         <h5>copy rights reseved by Diabetes@Home</h5>
+     </footer>
+    
 </body>
     
 
