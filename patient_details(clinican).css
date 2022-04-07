@@ -1,0 +1,89 @@
+body { 
+    background-color: #CDDCDB;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab';
+    
+}
+table {
+    border-collapse: separate;
+    border-spacing: 10px 50px;    
+    width:90%;
+    height:100%;
+    padding-left: 3%;
+  }
+  
+th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 130%;
+    width:30%;
+  }
+
+td {
+    text-align: center;
+}
+
+#dangerous{
+    background-color: #F8EAE7;
+    border-radius: 45px;
+
+}
+
+#safe{
+    border-radius:45px; 
+    background-color:#DFF1F0;
+}
+
+.patient_details_container {  
+    display: grid;
+    background-color: #CDDCDB;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 0.2fr 0.5fr 5fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    gap:10px;
+    margin:auto;
+  }
+
+
+
+  #subtitle{
+      grid-column: 1/span 4;
+      grid-row: 2;
+      padding-left: 3%;
+  }
+  #health_history{
+      grid-row: 2;
+      grid-column: 5;
+
+  }
+
+  #note_history{
+      grid-row: 2;
+      grid-column: 6;
+  }
+
+  #notes{
+      grid-row: 3/span 4;
+      grid-column: 1/span 3;
+  }
+  #data{
+      grid-row: 3;
+      grid-column: 4/span 6;
+  }
+
+  #edit{
+      grid-row:4;
+      grid-column: 6;
+      text-align: center;
+      height: 50%;
+      width:50%;
+
+    }
+
+  
+  
+
+
+
+
