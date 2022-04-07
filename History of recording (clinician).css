@@ -1,31 +1,48 @@
 html {font-size: 2vw;}
 
+
 .flex_container{
     background-color:  #CDDCDB;
     display: grid;
     grid-template-areas:
     'top_left top_left top_middle_left top_middle_right top_right top_right_1'
-    'name name blood weight does exercise'
-    'main1 main1 main1 main1 main1 main1'
-    'main2 main2 main2 main2 main2 main2'
-    'main3 main3 main3 main3 main3 main3'
-    'main4 main4 main4 main4 main4 main4';
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main'
+    'main main main main main main';
     /* gap: 1vw; */
-    padding:2px;
+    padding:1vw;
+    padding-left: 1vw;
     /* background-repeat: repeat; */
-    width: 100vw;
-    height: 100vh;
+    width: 96vw;
+    height: 200vh;
 }
 
 
 .Diabetes\@Home{
     grid-area: top_left;
 }
+
 .mode1{
     grid-area: top_right;
 }
 .back{
     grid-area: top_right_1;
+    padding-left: 1vw;
+}
+.main_part{
+  grid-area: main /span main/span main ;
+  
+
 }
 
 .mode_background{
@@ -33,8 +50,24 @@ html {font-size: 2vw;}
     border-radius: 45px; 
     background-color: white ;
     text-align: center;
-    padding: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    
 }
+table, th, td {
+  border: 1px;
+  padding: 1vw;
+}
+
+.grey_block{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px; 
+    background-color: #E5E5E5 ;
+    text-align: center;
+
+    
+}
+
 
 /* .recording_element {
     background-color: #CDDCDB;
