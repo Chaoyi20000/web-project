@@ -62,7 +62,7 @@ a:hover, a:active{
     display: grid;
     background-color: #CDDCDB;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 0.2fr 0.5fr 1fr 0.5fr 0.2fr 0.2fr 0.2fr;
+    grid-template-rows: 0.2fr 0.5fr 1.5fr 0.75fr 0.3fr 0.3fr 0.3fr;
     gap: 10px;
     width: 100vw;
     height: 100vh;
@@ -130,7 +130,7 @@ a:hover, a:active{
   background-color: #CDDCDB;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
   grid-template-rows: 0.2fr 0.5fr 1.5fr 2fr; 
-  gap: 20px 20px; 
+  gap: 10px; 
 }
 .login_start_element {
   background-color: #CDDCDB;
