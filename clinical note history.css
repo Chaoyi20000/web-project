@@ -6,12 +6,12 @@ html {font-size: 2vw;}
     grid-template-areas:
     'top_left top_left top_middle_left top_middle_left1 top_right top_right_1'
     'top_left top_left top_middle_left top_middle_left1 top_right top_right_1'
-    'main main main main main2 main2'
-    'main main main main main1 main1'
-    'main main main main main1 main1'
-    'main main main main main1 main1'
-    'main main main main main1 main1'
-    'main main main main main1 main1';
+    'main3 main3 main3 main3 main2 main2'
+    'main3 main3 main3 main3 main1 main1'
+    'main3 main3 main3 main3 main1 main1'
+    'main3 main3 main3 main3 main1 main1'
+    'main3 main3 main3 main3 main1 main1'
+    'main3 main3 main3 main3 main1 main1';
     grid-gap: 10px;
     /* gap: 1vw; */
     padding:1vw;
@@ -34,30 +34,34 @@ html {font-size: 2vw;}
 
 
 .main_part{
-  grid-area: main ;
+  grid-area: main3 /span main3/span main3 ;
   
 }
 
 .note_content{
     grid-area: main1 /span main1/span main1;
+    position: fixed; 
+    top: 45vh;
+    right: 8vw;
+    font-size: 2vw;
 }
 
 
 
 table, th, td {
   border: 10px;
-  padding: 2vw;
+  padding: 1vw;
+  font-size: 2vw;
 }
 
 .note{
-    padding: 2vw;
+    padding: 1vw;
     text-align: center;
     background: #FFF7F7;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
     height: 50vh;
     width: 40vw;
-    float: up;
 }
 .grey_block{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

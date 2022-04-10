@@ -12,12 +12,6 @@ html {font-size: 2vw;}
     'main main main main main main'
     'main main main main main main'
     'main main main main main main'
-    'main main main main main main'
-    'main main main main main main'
-    'main main main main main main'
-    'main main main main main main'
-    'main main main main main main'
-    'main main main main main main'
     'main main main main main main';
     grid-gap: 10px;
     /* gap: 1vw; */
@@ -62,6 +56,7 @@ html {font-size: 2vw;}
 table, th, td {
   border: 1px;
   padding: 1vw;
+  font-size: 2vw;
 }
 
 .grey_block{
