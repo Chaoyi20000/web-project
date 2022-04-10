@@ -1,0 +1,80 @@
+html {font-size: 2vw;}
+
+.flex_container{
+    background-color:  #CDDCDB;
+    display: grid;
+    grid-template-areas:
+    'top_left top_left top_middle_left top_middle_left1 top_right top_right_1'
+    'main main main main1 main1 main1'
+    'main main main main1 main1 main1'
+    'main main main main1 main1 main1'
+    'main main main main1 main1 main1'
+    'main main main main1 main1 main1'
+    'main main main main1 main1 main1'
+    'main main main main1 main1 main1'
+    'main main main main1 main1 main1'
+    'main main main main1 main1 main1';
+    grid-gap: 10px;
+    /* gap: 1vw; */
+    padding:1vw;
+    padding-left: 1vw;
+    /* background-repeat: repeat; */
+    width: 96vw;
+    height: 200vh;
+}
+
+.Diabetes\@Home{
+    grid-area: top_left;
+}
+.bar{
+  grid-area: top_middle_left1 ;
+
+}
+
+.mode1{
+    grid-area: top_right;
+}
+.back{
+    grid-area: top_right_1;
+    padding-left: 1vw;
+}
+.main_part{
+  grid-area: main ;
+  
+}
+
+.note_content{
+    grid-area: main1;
+}
+
+.mode_background{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px; 
+    background-color: white ;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+ 
+}
+table, th, td {
+  border: 1px;
+  padding: 1vw;
+}
+
+.note{
+    padding: 4vw;
+    text-align: center;
+    background: #FFF7F7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    height: 50vh;
+    float: up;
+}
+.grey_block{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px; 
+    background-color: white ;
+    text-align: center;
+
+    
+}
