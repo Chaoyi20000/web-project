@@ -6,6 +6,15 @@ body {
   font-family: 'Roboto Slab';
 }
 
+a:link, a:visited{
+  text-decoration: none;
+  color: #000;
+}
+a:hover, a:active{
+  font-size: 120%;  
+  color:#000;
+}
+
 #list_horiz{
     display:flex;
     width:50vw;
@@ -99,8 +108,8 @@ body {
  
 }
 
-#patient_portal { 
-  grid-row:7; 
+#other_portal { 
+  grid-row:6; 
   grid-column: 1/span 6;
   margin: auto;
  

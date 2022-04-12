@@ -8,11 +8,11 @@ app.use(express.json());
 // root
 app.get("/", (req, res) => {
   // res.send("you can choose to go to patient page or clinician page");
-  res.sendFile(__dirname + "/static/index.html")
+  res.sendFile(__dirname + "/Static Page/start_page.html")
 });
 
 // middleware
-const clinicianRouter = require("./routes/demoRouter.js");
+const clinicianRouter = require("./routes/Router.js");
 
 app.use("/clinician", clinicianRouter);
 

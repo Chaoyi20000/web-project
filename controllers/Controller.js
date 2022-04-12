@@ -1,4 +1,4 @@
-const data = require("../models/demoPatient.js");
+const data = require("../models/Patient.js");
 
 const getAllPatients = (req, res) => {
   res.send(data);

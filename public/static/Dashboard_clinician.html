@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinician Dashboard</title>
+    <link rel="stylesheet" href="../style/Dashboard_clinician.css">
+</head>
+<body>
+    <header class = "header-grid">
+        <div class = "diabete-home">
+            <p class = "diabete-home-first">
+                <a href="/start_page.html">Diabetes@Home</a>
+            </p>         
+        </div>
+        <div class = "dark-mode"><button>Dark&nbspMode</button> </div>
+        <div class = "back"><a href="javascript:history.back()">Back</a></div>
+    </header>
+    
+    <main>
+        <h2 id="Title">Clinician Dashboard</h2>
+        <h2 id="Title-comments">New comments:</h2>
+        <div class="Patient">
+            <a href="patient_details(clinican).html" class="Avatar login_start_box" style="background-color: #E9F3FF;">
+                <img class="Avatar_img" src="../avatar/images.jpg" alt="user avatar">
+                <p class="main_text">Alice Cambell</p>
+                <p class="update_status">partially updated</p>
+            </a>
+            <div  class="Data-block">
+                <div class="Data login_start_box" style="background-color: #F0F0F0;">
+                    <a href="patient_details(clinican).html"><p>weight (in kg)  : </p></a>
+                </div>
+                <div class="Data login_start_box" style="background-color: #DFF1F0;">
+                    <a href="patient_details(clinican).html"><p>insulin taken (number of doses) : 1</p></a>
+                </div>
+                <div class="Data login_start_box" style="background-color: #ffbaa9;">
+                    <a href="patient_details(clinican).html"><p>exercise (step count) : 0</p></a>
+                </div>
+            </div>
+            <div class="New-comments">
+                <a href="clinician-comment.html"><p>“I didn’t excerised today”</p></a>
+            </div>
+        </div>
+
+        <script type="text/javascript", src="Dashboard_clinician.js"></script>
+
+    </main>
+    
+</body>
+</html>
