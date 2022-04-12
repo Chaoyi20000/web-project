@@ -21,21 +21,28 @@ app.use(express.json());
 app.use(express.static(__dirname + '/'));
 
 
-// root
-// app.get("/", (req, res) => {
-//   // res.send("you can choose to go to patient page or clinician page");
-//   res.sendFile(__dirname + "/static/start_page.html")
-// });
 
-app.get('/', (req,res) => { 
-  res.render('clinician-comment.hbs')
+app.get("/", (req, res) => {
+  // res.send("you can choose to go to patient page or clinician page");
+  res.sendFile(__dirname + "/static/start_page.html")
 });
 
+// app.get('/', (req,res) => { 
+//   res.render('start_page.html')
+// });
+
+app.get("/login_patient", (req,res) => { 
+  res.render('login_portal_patient.hbs')
+});
+
+app.get("/login_clinician", (req,res) => { 
+  res.render('login_portal_clinician.hbs')
+});
 
 // middleware
 const clinicianRouter = require("./routes/Router.js");
 
-app.use("/clinician", clinicianRouter);
+app.use("/login_patient", clinicianRouter);
 
 app.listen(port, () =>
   console.log("> Server is up and running on http://localhost:" + port)
