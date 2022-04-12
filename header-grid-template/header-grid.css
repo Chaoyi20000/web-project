@@ -69,3 +69,6 @@ button{
 footer{
     text-align: center;
 }
+.date{
+    grid-area: 1/4/2/5;
+}

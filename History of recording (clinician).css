@@ -5,13 +5,7 @@ html {font-size: 2vw;}
     background-color:  #CDDCDB;
     display: grid;
     grid-template-areas:
-    'top_left top_left top_middle_left top_middle_right top_right top_right_1'
-    'main main main main main main'
-    'main main main main main main'
-    'main main main main main main'
-    'main main main main main main'
-    'main main main main main main'
-    'main main main main main main'
+    'top_left top_left top_middle_left top_middle_left1 top_right top_right_1'
     'main main main main main main'
     'main main main main main main'
     'main main main main main main'
@@ -19,6 +13,7 @@ html {font-size: 2vw;}
     'main main main main main main'
     'main main main main main main'
     'main main main main main main';
+    grid-gap: 10px;
     /* gap: 1vw; */
     padding:1vw;
     padding-left: 1vw;
@@ -30,6 +25,10 @@ html {font-size: 2vw;}
 
 .Diabetes\@Home{
     grid-area: top_left;
+}
+.bar{
+  grid-area: top_middle_left ;
+
 }
 
 .mode1{
@@ -52,11 +51,12 @@ html {font-size: 2vw;}
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
-    
+ 
 }
 table, th, td {
   border: 1px;
   padding: 1vw;
+  font-size: 2vw;
 }
 
 .grey_block{

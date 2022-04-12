@@ -6,136 +6,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History of recording (clinician)</title>
     <link rel="stylesheet" href="History of recording (clinician).css">
+    <link rel="stylesheet" href="/header-grid-template/header-grid.css">
 </head>
-<body class="flex_container">
-    <div class="Diabetes\@Home">
-        <h2  style="font-family: 'Revalia';font-style: normal;color: #000000;">
-            Diabetes@Home
-        </h2>
-        <h4 style ="font-family: 'Roboto Slab';font-style: normal; color: #000000; text-align:left ;">
-            Health Data Recordings
-        </h4>
-    </div>
-
-    <div class="mode1" >
-        <div class="mode_background">
-            <p style="color: #000000; font-size: larger;">
-                Dark Mode
+<body>
+    <header class = "header-grid">
+        <div class = "diabete-home">
+            <p class = "diabete-home-first">
+                <a href="../Static page/start_page.html">Diabetes@Home</a>
+            </p>
+            <p style="font-size: 3vh;">Health Data Recordings</p>           
+        </div>
+        <div class = "dark-mode"><button>Dark&nbspMode</button> </div>
+        <div class = "back"><a href="javascript:history.back()">Back</a></div>
+        <div class ="date">
+            <select class = "mode_background" style="padding: 2vw; font-size: large;">
+                <option value ="Date" > Date</option>
+                <option value ="3 days">3 days</option>
+                <option value="a week">a week</option>
+                <option value="a month">a month</option>
+            </select>
+        </div>
+    </header>
+    <main class="flex_container">
+        <!-- <div class="Diabetes\@Home">
+            <h2  style="font-family: 'Revalia';font-style: normal;color: #000000;">
+                Diabetes@Home
+            </h2>
+            <p style ="font-family: 'Roboto Slab';font-style: normal; color: #000000; text-align:left ; font-size: larger;">
+                Health Data Recordings
             </p>
         </div>
-    </div>
-    <div class="back">
-        <h4 style="font-family: 'Roboto Slab'; font-style: normal; text-align: right; ">
-            Back
-        </h4>
-    </div>
-    <div class = "main_part">
-        <table style="width:125%">
-            <tr>
-            <th input type="text">Alice Cambell</th>
-            <th>blood glucose level (nmol/L)</th>
-            <th>weight (kg)</th>
-            <th>dose of insulin taken(number of dose)</th>
-            <th>excerise (step count)</th>
-            </tr>
-            <tr>
-            <td class="grey_block">5/11/2021<br>
-            3 : 14 PM</td>
-            <td class="grey_block">
-                130
-            </td>
-            <td class="grey_block">
-                58
-            </td>
-            <td class="grey_block">
-                2
-            </td>
-            <td class="grey_block">
-                9870
-            </td>
-            </tr>
-            <tr>
-                <td class="grey_block">8/9/2021<br>
-                    9 : 14 PM</td>
-                    <td class="grey_block">
-                        135
-                    </td>
-                    <td class="grey_block">
-                        70
-                    </td>
-                    <td class="grey_block">
-                        1
-                    </td>
-                    <td class="grey_block">
-                        8888
-                    </td>
-            </tr>
-            <tr>
-                <td class="grey_block">8/9/2021<br>
-                    9 : 14 PM</td>
-                    <td class="grey_block">
-                        135
-                    </td>
-                    <td class="grey_block">
-                        70
-                    </td>
-                    <td class="grey_block">
-                        1
-                    </td>
-                    <td class="grey_block">
-                        8888
-                    </td>
-            </tr>
-            <tr>
-                <td class="grey_block">8/9/2021<br>
-                    9 : 14 PM</td>
-                    <td class="grey_block">
-                        135
-                    </td>
-                    <td class="grey_block">
-                        70
-                    </td>
-                    <td class="grey_block">
-                        1
-                    </td>
-                    <td class="grey_block">
-                        8888
-                    </td>
-            </tr>
-            <tr>
-                <td class="grey_block">8/9/2021<br>
-                    9 : 14 PM</td>
-                    <td class="grey_block">
-                        135
-                    </td>
-                    <td class="grey_block">
-                        70
-                    </td>
-                    <td class="grey_block">
-                        1
-                    </td>
-                    <td class="grey_block">
-                        8888
-                    </td>
-            </tr>
-            <tr>
-                <td class="grey_block">8/9/2021<br>
-                    9 : 14 PM</td>
-                    <td class="grey_block">
-                        135
-                    </td>
-                    <td class="grey_block">
-                        70
-                    </td>
-                    <td class="grey_block">
-                        1
-                    </td>
-                    <td class="grey_block">
-                        8888
-                    </td>
-            </tr>
-        </table>
-    </div>
+        <div class ="bar">
+            <select class = "mode_background" style="padding: 2vw; font-size: large;">
+                <option value ="Date" > Date</option>
+                <option value ="3 days">3 days</option>
+                <option value="a week">a week</option>
+                <option value="a month">a month</option>
+            </select>
+        </div>
+        <div class="mode1" >
+            <div class="mode_background">
+                <p style="color: #000000; font-size: larger;">
+                    Dark Mode
+                </p>
+            </div>
+        </div>
+        <div class="back">
+            <h4 style="font-family: 'Roboto Slab'; font-style: normal; text-align: right; ">
+                Back
+            </h4>
+        </div> -->
+        <div class = "main_part">
+            <table style="width:100%">
+                <tr>
+                <th input type="text">Alice Cambell</th>
+                <th>blood glucose level (nmol/L)</th>
+                <th>weight (kg)</th>
+                <th>dose of insulin taken(number of dose)</th>
+                <th>excerise (step count)</th>
+                </tr>
+                <tr>
+                <td class="grey_block">5/11/2021<br>
+                3 : 14 PM</td>
+                <td class="grey_block">
+                    130
+                </td>
+                <td class="grey_block">
+                    58
+                </td>
+                <td class="grey_block">
+                    2
+                </td>
+                <td class="grey_block">
+                    9870
+                </td>
+                </tr>
+                <tr>
+                    <td class="grey_block">8/9/2021<br>
+                        9 : 14 PM</td>
+                        <td class="grey_block">
+                            135
+                        </td>
+                        <td class="grey_block">
+                            70
+                        </td>
+                        <td class="grey_block">
+                            1
+                        </td>
+                        <td class="grey_block">
+                            8888
+                        </td>
+                </tr>
+                <tr>
+                    <td class="grey_block">8/9/2021<br>
+                        9 : 14 PM</td>
+                        <td class="grey_block">
+                            135
+                        </td>
+                        <td class="grey_block">
+                            70
+                        </td>
+                        <td class="grey_block">
+                            1
+                        </td>
+                        <td class="grey_block">
+                            8888
+                        </td>
+                </tr>
+                <tr>
+                    <td class="grey_block">8/9/2021<br>
+                        9 : 14 PM</td>
+                        <td class="grey_block">
+                            135
+                        </td>
+                        <td class="grey_block">
+                            70
+                        </td>
+                        <td class="grey_block">
+                            1
+                        </td>
+                        <td class="grey_block">
+                            8888
+                        </td>
+                </tr>
+                <tr>
+                    <td class="grey_block">8/9/2021<br>
+                        9 : 14 PM</td>
+                        <td class="grey_block">
+                            135
+                        </td>
+                        <td class="grey_block">
+                            70
+                        </td>
+                        <td class="grey_block">
+                            1
+                        </td>
+                        <td class="grey_block">
+                            8888
+                        </td>
+                </tr>
+                <tr>
+                    <td class="grey_block">8/9/2021<br>
+                        9 : 14 PM</td>
+                        <td class="grey_block">
+                            135
+                        </td>
+                        <td class="grey_block">
+                            70
+                        </td>
+                        <td class="grey_block">
+                            1
+                        </td>
+                        <td class="grey_block">
+                            8899
+                        </td>
+                </tr>
+            </table>
+        </div>
+    </main>
 
     
 </body>
