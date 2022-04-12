@@ -1,5 +1,5 @@
-@import url("../style/login.css");
-@import url("../style/header-grid.css");
+@import url("login.css");
+@import url("header-grid.css");
 #Title {
     display: flex;
     align-items: center;

@@ -4,6 +4,8 @@ const getAllPatients = (req, res) => {
   res.send(data);
 };
 
+
+
 const getOnePatient = (req, res) => {
   const patient = data.find((one) => one.id == req.params.id);
 

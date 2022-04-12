@@ -1,0 +1,24 @@
+{
+  "name": "web-project",
+  "version": "1.0.0",
+  "description": "2022/3/21:  create static website \"about this webiste\" and \"about diabetes\" , links for other website not solved yet",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chaoyi20000/web-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chaoyi20000/web-project/issues"
+  },
+  "homepage": "https://github.com/Chaoyi20000/web-project#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.5"
+  }
+}
