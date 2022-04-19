@@ -1,5 +1,5 @@
-const Record = require("../models/record.js");
-const Patient = require("../models/patient.js");
+import Record, { findOne } from "../models/record.js";
+import Patient, { find, findOne as _findOne } from "../models/patient.js";
 
 
 
@@ -19,7 +19,7 @@ function formatDate(date) {
 async function initPatient() {
   try {
     // find all document in Patient Collection to findout if it is empty
-    const result = await Patient.find();
+    const result = await find();
     if (result.length == 0) {
       const newPatient = new Patient({
         firstName: "Pat",
@@ -39,7 +39,7 @@ async function initPatient() {
       return patient.id;
     } else {
       // find our target patient Pat
-      const patient = await Patient.findOne({ firstName: "Pat" });
+      const patient = await _findOne({ firstName: "Pat" });
       // console.log("-- id is: ", patient.id);
       return patient.id;
     }
@@ -50,7 +50,7 @@ async function initPatient() {
 
 async function initRecord(patientId) {
   try {
-    const result = await Record.findOne({
+    const result = await findOne({
       patientId: patientId,
       recordDate: formatDate(new Date()),
     });
@@ -101,7 +101,7 @@ const renderRecordData = async (req, res) => {
     const patientId = await initPatient();
     const recordId = await initRecord(patientId);
     // const patient = await Patient.findOne({ _id: patientId }).lean();
-    const record = await Record.findOne({ _id: recordId })
+    const record = await findOne({ _id: recordId })
       .populate({
         path: "patientId",
         options: { lean: true },
@@ -122,7 +122,7 @@ const updateRecord = async (req, res) => {
   try {
     const patientId = await initPatient();
     const recordId = await initRecord(patientId);
-    const record = await Record.findOne({ _id: recordId }).lean();
+    const record = await findOne({ _id: recordId }).lean();
     const key = req.body.key
     record.data[key].value = req.body.value
     record.data[key].comment = req.body.comment
@@ -148,7 +148,7 @@ const verifyLogin = async(req,res)=>{
     if (username && password) {
       // Execute SQL query that'll select the account from the database based on the specified username and password
       console.log("check");
-      const user = await Patient.findOne({email:username}).lean();
+      const user = await _findOne({email:username}).lean();
       console.log("check111");
       if( (user!=null)){
         
@@ -175,7 +175,7 @@ const verifyLogin = async(req,res)=>{
 }
 
 
-module.exports = {
+export default {
   getAllPatients,
   // getOnePatient,
   // addOnePatient,

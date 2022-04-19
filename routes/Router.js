@@ -1,5 +1,5 @@
 const express = require("express");
-const controller = require("../controllers/Controller.js");
+const controller = require("../controllers/Controller.js").default;
 
 const demoRouter = express.Router();
 // demoRouter.get("/", controller.getAllPatients);
