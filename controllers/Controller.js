@@ -1,4 +1,4 @@
-const Record = require("../models/record.js")
+const Record = require("../models/record.js");
 const Patient = require("../models/patient.js");
 
 
