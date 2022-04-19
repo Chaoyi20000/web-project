@@ -1,6 +1,5 @@
-
-    <link rel="stylesheet" href="../public/style/patient-dashboard.css">
-    <link rel="stylesheet" href="../public/style/header-grid.css">
+<link rel="stylesheet" href="../public/style/patient-dashboard.css">
+<link rel="stylesheet" href="../public/style/header-grid.css">
 
 
 
@@ -13,7 +12,7 @@
 
             <div class = "photo"> 
                 <img src="../public/image/avatar/images.jpg" alt="user image">
-                <figcaption>Alice Cambell</figcaption>
+                <figcaption>{{patient.screenName}}</figcaption>
             </div>
 
             <div class = "buttons">
@@ -29,10 +28,10 @@
 
     <nav class = "patient-nav">
         <ul>
-            <li><a href="record_health_data(patient).html">Record Health Data Today</a> </li>
+            <li><a href="/record_health_data">Record Health Data Today</a> </li>
             <li><a href="">Rank </a> </li>
             <li><a href="">Support Message History</a> </li>
-            <li><a href="">History of Recording</a> </li>
+            <li><a href="/history_recording">History of Recording</a> </li>
         </ul>
     </nav>
 </div>

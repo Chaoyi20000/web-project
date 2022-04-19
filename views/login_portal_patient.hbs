@@ -7,35 +7,38 @@
         Patient Portal
     </div>
     
-    <div id="details">
-        <ul id = "list_vert">
-            <li >
-                <p class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left: 3%; ">userid: </p> </li>
-            <li>
-                <p class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left:3%; ">password: </p> </li>
+    <form action="/login_portal_patient" method="post">
+        <div id="details">
+            <ul id = "list_vert">
+                <li >
+                    <input class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left: 3%; " name = "user_id">userid: </p> </li>
+                <li>
+                    <input class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left:3%; " name="password">password: </p> </li>
 
-        </ul>
-    </div>
+            </ul>
+        </div>
 
-    <div id="authentication">
-        <ul id="list_horiz" >
-            <li> 
-                <p class= "login_start_element login_start_box main_text" style="background-color: #F5E8E5; ">
-                    <a href="#"> send authentication code</a>
-                </p>
-            </li>
-            <li ><p class= "login_start_element login_start_box main_text" style="color: #919191; ">
-                ENTER HERE
-            </p> </li>
-            
-        </ul>
-    </div>
+        <div id="authentication">
+            <ul id="list_horiz" >
+                <li> 
+                    <p class= "login_start_element login_start_box main_text" style="background-color: #F5E8E5; ">
+                        <a href="#"> send authentication code</a>
+                    </p>
+                </li>
+                <li ><p class= "login_start_element login_start_box main_text" style="color: #919191; ">
+                    ENTER HERE
+                </p> </li>
+                
+            </ul>
+        </div>
+    
+        <div id="submit">
+            <p class= "login_start_element login_start_box main_text">
+                <button type="sumbit">login
+            </p>
+        </div>
+    </form>
 
-    <div id="submit">
-        <p class= "login_start_element login_start_box main_text">
-            <a href="patient-dashboard.html">login</a>
-        </p>
-    </div>
 
     <div id="others">
         <ul id="list_horiz">
@@ -54,7 +57,7 @@
     </div>
 
     <div class="login_start_element" id="other_portal">
-        <a href="static/login_portal_patient.html" style="color:#505050">not a clinician? go to PATIENT PORTAl</a>
+        <a href="/clinician portal" style="color:#505050">not a patient? go to CLINICIAN PORTAl</a>
     </div>
 
 </div>

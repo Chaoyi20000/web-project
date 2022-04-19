@@ -20,6 +20,10 @@
   "homepage": "https://github.com/Chaoyi20000/web-project#readme",
   "dependencies": {
     "express": "^4.17.3",
-    "express-handlebars": "^6.0.5"
+    "express-handlebars": "^6.0.5",
+    "mongoose": "^6.3.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
   }
 }
