@@ -4,7 +4,8 @@
   "description": "2022/3/21:  create static website \"about this webiste\" and \"about diabetes\" , links for other website not solved yet",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
