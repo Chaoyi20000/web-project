@@ -10,6 +10,8 @@ body {
     font-family: 'Roboto Slab';
 } */
 
+@import url("header-grid.css");
+
 .clinician-comment-wrapper{
     display: grid;
     grid-template-columns: repeat(6, 1fr);

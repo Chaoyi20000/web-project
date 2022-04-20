@@ -1,3 +1,4 @@
+@import url("login.css");
 #info{
     grid-area: 2/2/4/6;
 }

@@ -1,3 +1,5 @@
+@import url("header-grid.css");
+@import url("login.css");
 @import url("patient_details\(clinican\).css");
 #avatar {
   grid-row: 2;
