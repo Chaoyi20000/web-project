@@ -7,13 +7,13 @@
         Patient Portal
     </div>
     
-    <form action="/login_portal_patient" method="post">
+    <form action="/home/login_patient" method="post">
         <div id="details">
             <ul id = "list_vert">
                 <li >
-                    <input class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left: 3%; " name = "user_id">userid: </p> </li>
+                    <input class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left: 3%; " name = "user_id" value="{{user_id}}" type ='text'>userid: </input> </li>
                 <li>
-                    <input class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left:3%; " name="password">password: </p> </li>
+                    <input class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left:3%; " name="password">password: </input> </li>
 
             </ul>
         </div>
@@ -34,7 +34,7 @@
     
         <div id="submit">
             <p class= "login_start_element login_start_box main_text">
-                <button type="sumbit">login
+                <button type="sumbit">login</button>
             </p>
         </div>
     </form>

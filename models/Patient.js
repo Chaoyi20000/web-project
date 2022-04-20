@@ -15,8 +15,8 @@ const patientSchema = new mongoose.Schema({
     eRate:{type:Number,min:0,max:1},
 },
     {timestamps:{createdAt: "createTime",updatedAt:"updateTime"}
-}) ;
-const Patient = mongoose.model('patient', patientSchema) 
-module.exports = Patient 
+});
+const Patient = mongoose.model('Patient', patientSchema); 
+module.exports = Patient; 
 
 

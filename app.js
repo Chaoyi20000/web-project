@@ -6,16 +6,22 @@ const exphbs = require('express-handlebars');
 const app = express();
 // require('dotenv').config()
 const port = process.env.PORT || 5000;
+app.use(express.json());
+app.use(express.urlencoded());
 
-const mongoose = require("mongoose");
-mongoose
-  .connect(process.env.MONGO_URL || "mongodb://localhost",{
-    useNewUrlParser: true, 
-    useUnifiedTopology: true, 
-    dbName:"info30005-g39",
-  }) 
-  .then(()=>console.log("connect to Mongo"))
-  .catch((err)=>console.log(err,"\nfailed to connect to Mongo"));
+require('./models');
+
+
+
+// const mongoose = require("mongoose");
+// mongoose
+//   .connect(process.env.MONGO_URL || "mongodb://localhost",{
+//     useNewUrlParser: true, 
+//     useUnifiedTopology: true, 
+//     dbName:"info30005-g39",
+//   }) 
+//   .then(()=>console.log("connect to Mongo"))
+//   .catch((err)=>console.log(err,"\nfailed to connect to Mongo"));
 
 
 
@@ -28,7 +34,6 @@ app.engine('hbs', exphbs.engine({      // configure Handlebars
 app.set('view engine', 'hbs')  ; // set Handlebars view engine
 
 
-app.use(express.json());
 
 app.use(express.static(__dirname + '/'));
 
@@ -51,9 +56,12 @@ app.get("/login_clinician", (req,res) => {
   res.render('login_portal_clinician.hbs')
 });
 
+// app.get("/home/patient_dashboard", (req,res) => { 
+//   res.render('patient-dashboard.hbs',{patient:patients})
+// });
 // middleware
 const router = require("./routes/Router.js");
-app.use("/login_patient", router);
+app.use("/home", router);
 
 
 // app.post('/login_portal_patient', function(request, response) {

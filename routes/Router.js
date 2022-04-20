@@ -1,18 +1,19 @@
 const express = require("express");
-const controller = require("../controllers/Controller.js").default;
+const controller = require("../controllers/Controller.js");
 
-const demoRouter = express.Router();
-// demoRouter.get("/", controller.getAllPatients);
-demoRouter.get("/recordData", controller.renderRecordData);
-demoRouter.post("/recordData", controller.updateRecord);
-demoRouter.post("/login_portal_patient", controller.verifyLogin);
+const Router = express.Router();
+Router.get("/", controller.getAllPatients);
+Router.get("/recordData", controller.renderRecordData);
+Router.post("/recordData", controller.updateRecord);
 
-/* demoRouter.get("/", controller.getAllPatients);
-demoRouter.get("/:id", controller.getOnePatient);
-demoRouter.post("/addPatient", controller.addOnePatient); */
+Router.post("/login_patient", controller.verifyLogin);
+// Router.get("/patient_dashboard");
+/* Router.get("/", controller.getAllPatients);
+Router.get("/:id", controller.getOnePatient);
+Router.post("/addPatient", controller.addOnePatient); */
 
 
-// demoRouter.get("/login_patient", (req,res) => { 
+// Router.get("/login_patient", (req,res) => { 
 //     res.render('login_portal_patient.hbs')
 //   });
-module.exports = demoRouter;
+module.exports = Router;

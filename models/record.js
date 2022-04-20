@@ -33,8 +33,8 @@ const recordSchema = new mongoose.Schema({
             createdAt:{type:Date,default:null},
         },
     }
-}) 
-const Record = mongoose.model('record', recordSchema) 
-module.exports = Record 
+}); 
+const Record = mongoose.model('Record', recordSchema); 
+module.exports = Record;
 
 

@@ -1,7 +1,5 @@
-import Record, { findOne } from "../models/record.js";
-import Patient, { find, findOne as _findOne } from "../models/patient.js";
-
-
+const Record = require("../models/record.js");
+const Patient = require("../models/patient.js");
 
 function formatDate(date) {
   var d = new Date(date),
@@ -19,7 +17,7 @@ function formatDate(date) {
 async function initPatient() {
   try {
     // find all document in Patient Collection to findout if it is empty
-    const result = await find();
+    const result = await Patient.find();
     if (result.length == 0) {
       const newPatient = new Patient({
         firstName: "Pat",
@@ -39,7 +37,7 @@ async function initPatient() {
       return patient.id;
     } else {
       // find our target patient Pat
-      const patient = await _findOne({ firstName: "Pat" });
+      const patient = await Patient.findOne({ firstName: "Pat" });
       // console.log("-- id is: ", patient.id);
       return patient.id;
     }
@@ -50,7 +48,7 @@ async function initPatient() {
 
 async function initRecord(patientId) {
   try {
-    const result = await findOne({
+    const result = await Record.findOne({
       patientId: patientId,
       recordDate: formatDate(new Date()),
     });
@@ -101,7 +99,7 @@ const renderRecordData = async (req, res) => {
     const patientId = await initPatient();
     const recordId = await initRecord(patientId);
     // const patient = await Patient.findOne({ _id: patientId }).lean();
-    const record = await findOne({ _id: recordId })
+    const record = await Record.findOne({ _id: recordId })
       .populate({
         path: "patientId",
         options: { lean: true },
@@ -122,7 +120,7 @@ const updateRecord = async (req, res) => {
   try {
     const patientId = await initPatient();
     const recordId = await initRecord(patientId);
-    const record = await findOne({ _id: recordId }).lean();
+    const record = await Record.findOne({ _id: recordId }).lean();
     const key = req.body.key
     record.data[key].value = req.body.value
     record.data[key].comment = req.body.comment
@@ -144,22 +142,28 @@ const verifyLogin = async(req,res)=>{
   try{
     let username = req.body.user_id;
     let password = req.body.password;
+    
+    
     // Ensure the input fields exists and are not empty
     if (username && password) {
       // Execute SQL query that'll select the account from the database based on the specified username and password
-      console.log("check");
-      const user = await _findOne({email:username}).lean();
-      console.log("check111");
+     
+      const user = await Patient.findOne({email:username}).lean();
+  
       if( (user!=null)){
         
         if(user.password != password){
           res.send('Incorrect Username and/or Password!');
         }else{
           console.log(user);
-          res.redirect('/patient_dashboard');
+          res.redirect('/patient-dashboard.hbs');
+          
+          // res.render('patient-dashboard.hbs',{patient:user})
+          
         }
       }else{
-        res.send('Incorrect Username and/or Password!');
+        
+        res.send('cannot find the Username and/or Password!');
       }
       res.end();
     
@@ -175,7 +179,7 @@ const verifyLogin = async(req,res)=>{
 }
 
 
-export default {
+module.exports = {
   getAllPatients,
   // getOnePatient,
   // addOnePatient,
