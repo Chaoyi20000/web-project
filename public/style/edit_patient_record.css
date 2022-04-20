@@ -16,6 +16,10 @@ img {
   text-align: center;
 }
 
+#select {
+  height: 25px;
+  width: 25px;
+}
 
 @media screen and (max-width: 640px) {  /* page layout for phones */
   body {

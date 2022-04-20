@@ -10,108 +10,53 @@
 </head>
 
 
-<body>      
+<body>  
     <header class = "header-grid">
         <div class = "diabete-home">
             <p class = "diabete-home-first">
-                <a href="start_page.html">Diabetes@Home</a>
-            </p>        
+                <a href="static/start_page.html">Diabetes@Home</a>
+            </p>
         </div>
         <div class = "dark-mode"><button>Dark&nbspMode</button> </div>
         <div class = "back"><a href="javascript:history.back()">Back</a></div>
     </header>
 
-
-
-    <body>
-        <div class="container">
-          
-            <div class="subtitle">
-                <h3>Edit Health Data</h3>
-          </div>
-
-
-          <div class="list">
-
-            <div class="Hint">
-                <p>Patient:Alice cambell</p>
-            </div>
-            <div class="A">
-                <p>Safety<br>
-                    (Min)</p>
-            </div>
-            <div class="B"> 
-                <p>thresholds<br>
-                (Max)</p>
-            </div>
-
-            <div class="C">
-                <p>Select<br><br><br>
-                </p>
-            </div>
-
-            <div class="t1">
-                <p>blood gloucose level(nmol/L):</p>
-            </div>
-            <div class="t2">
-                <p>weight(kg):</p>
-            </div>
-            <div class="t3">
-                <p>doses of insulin taken:<br>
-                (number of dose)</p>
-            </div>
-            <div class="t4">
-                <p>exercise(step count):</p>
-            </div>
-            <div class="r11">
-                <p class="box">60</p>
-            </div>
-            <div class="r12">
-                <p class="box">75</p>
-            </div>
-            <div class="r21">
-                <p class="box">140</p>
-            </div>
-            <div class="r22">
-                <p class="box">199</p>
-            </div>
-            <div class="r31">
-                <p class="box">1</p>
-            </div>
-            <div class="r32">
-                <p class="box">3</p>
-            </div>
-            <div class="r41">
-                <p class="box">4000</p>
-            </div>
-            <div class="r42">
-                <p class="box">6000</p>
-            </div>
-
-            <div class="s1">
-                <img src="public/image/figma images/star1.png" alt="user image">
-            </div>
-            <div class="s2">
-                <img src="public/image/figma images/star2.png" alt="user image">
-            </div>
-            <div class="s3">
-                <img src="public/image/figma images/star1.png" alt="user image">
-            </div>
-            <div class="s4">
-                 <img src="public/image/figma images/star1.png" alt="user image">
-            </div>
-
-            <div class="D"> <p class="box" id ="save"> save</p></div>
-            
-          </div>
-
-          <div class="photo">
-            <img src="public/image/avatar/images.jpg" alt="user image">
-            <figcaption>Alice Cambell</figcaption>
-          </div>
-        
+    <div class = "patient_details_container">
+        <div id="subtitle">
+            <h3 style = "text-align: left;">Edit Health Data</h3>
         </div>
-      </body>
+
+        <div id = "avatar" >
+            <img src="../public/image/avatar/images.jpg" alt="user image">
+            <figcaption id = "patient_name">Alice Cambell</figcaption>
+        </div>
+        
+        <div class="login_start_element" id = "notes">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Alice Cambell</th>
+                        <th style="text-align: center;">Safety Threshold Min</th>
+                        <th style="text-align: center;">Safety Threshold Max</th>
+                        <th style="text-align: center;">Select</th>
+                    <tr>
+                </thead>
+            
+                <tbody>
+                    <tr>
+                        <td>weights (in kg): </td>
+                        <td class="login_start_box" style="border-radius:45px;">45</td>
+                        
+                        <td class="login_start_box" style="border-radius:45px;">60</td>
+                        <td><input type="checkbox" name="weights" id="select"></input></td>
+                        <td><button>save</button></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>    
 
       
 
