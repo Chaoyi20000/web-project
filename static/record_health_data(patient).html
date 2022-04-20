@@ -9,6 +9,7 @@
     <title>Record Health Data(Patient)</title>
     <link rel="stylesheet" href="../public/style/login.css">
     <link rel="stylesheet" href="../public/style/header-grid.css">
+    <link rel="stylesheet" href="../public/style/patient_details(clinican).css">
     <link rel="stylesheet" href="../public/style/edit_patient_record.css">
 </head>
 
@@ -18,94 +19,51 @@
         <div class = "diabete-home">
             <p class = "diabete-home-first">
                 <a href="static/start_page.html">Diabetes@Home</a>
-            </p>        
+            </p>
         </div>
         <div class = "dark-mode"><button>Dark&nbspMode</button> </div>
         <div class = "back"><a href="javascript:history.back()">Back</a></div>
     </header>
 
-
-
-    <body>
-        <div class="container">
-
-        <div class="list">
-            
-            <div class="B">
-                <p>Comment</p>
-           
-            </div>
-            
-            <div class="t1">
-                <p>weigth(kg):</p>
-            </div>
-            
-            <div class="t2">
-                <p>doses of insulin taken:<br>
-                (number of dose)</p>
-            </div>
-
-            <div class="t3">
-                <p>exercise(step count):</p>
-            </div>
-
-            <div class="r11">
-                <p class="box">...</p>
-            </div>
-
-            <div class="r12">
-                <p class="box">...</p>
-            </div>
-
-            <div class="r21">
-                <p class="box">1</p>
-            </div>
-            <div class="r22">
-                <p class="box">...</p>
-            </div>
-            <div class="r31">
-                <p class="box">0</p>
-            </div>
-            <div class="r32">
-                <p class="box" id ="#no_exercise">i didn't exercise</p>
-            </div>
-
-          
-            <div class="r42">
-                <p >13/03/2022</p>
-            </div>
-
-            <div class="s1">
-                <p class="box" id ="pink_box">submit</p>
-            </div>
-
-            <div class="Hint">
-                Today's recording
-            </p>
-        </div>
-            
-           
+    <div class = "patient_details_container">
+        <div id="subtitle">
+            <h3 style = "text-align: left;">Recording Health Data</h3>
         </div>
 
-        <div class="subtitle">
-            <h3>Recording Health Data</h3>
+        <div id="health_history">
+            <h4>
+                <a href="#">History of Recording</a>
+            </h4>
         </div>
 
-        <div class="recording">
-            <a href="History_of_recording_(clinician).html">History of Recording</a>
-        </div>
-
-        
-
-        <div class="photo">
+        <div id = "avatar" >
             <img src="../public/image/avatar/images.jpg" alt="user image">
-                    <figcaption>Alice Cambell</figcaption>
+            <figcaption id = "patient_name">Alice Cambell</figcaption>
         </div>
-    
-
         
+        <div class="login_start_element" id = "notes">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Today's data</th>
+                        <th style="text-align: center;">Value</th>
+                        <th style="text-align: center;">Comments</th>
+                    <tr>
+                </thead>
+              
+                <tbody>
+                    <tr>
+                        <td>weights (in kg): </td>
+                        <td class="login_start_box" style="border-radius:45px;">45</td>
+                        
+                        <td class="login_start_box" style="border-radius:45px;">60</td>
+                        <td><button>submit</button></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    <body>
+    </div>
 
 
 
