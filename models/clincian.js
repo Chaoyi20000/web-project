@@ -9,7 +9,7 @@ const clinicanSchema = new mongoose.Schema({
     password:{type:String, required:true},	
     yearOfBirth:{type: Number, required: true, min: 1900, max: 2022},
     patient: [{
-        patientId: {type:mongoose.Schema.Types.ObjectId, ref: "Patient", required: true}
+        patientId: {type:mongoose.Schema.Types.ObjectId, ref: "Patient"}
     }], 
     clinicalNote:[{
         noteId: {type:mongoose.Schema.Types.ObjectId, ref: "ClinicalNote"}

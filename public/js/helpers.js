@@ -13,6 +13,21 @@ const helpers = {
     return options.inverse(this);
   },
 
+  ifUnrequired: function (status, options) {
+    if (status == "unrequired") {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  },
+
+  ifAbnormal: function (min, max, value, options) {
+    if (value > min && value < max) {
+      return options.fn(this);
+
+    }
+    return options.inverse(this);
+  }
+
 
 };
 

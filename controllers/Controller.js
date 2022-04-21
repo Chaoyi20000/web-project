@@ -1,5 +1,6 @@
 const Record = require("../models/record.js");
 const Patient = require("../models/patient.js");
+const Clinician = require("../models/clincian.js");
 
 function formatDate(date) {
   var d = new Date(date),
@@ -28,7 +29,7 @@ async function initPatient() {
         yearOfBirth: "1997",
         textBio: "im Pat",
         supportMessage: "hello",
-        clinician: "Chris"
+        clinician:  "chris@gmail.com",
       });
 
       // save new patient Pat to database
@@ -59,6 +60,11 @@ async function initRecord(patientId) {
         recordDate: formatDate(new Date()),
       });
 
+      Patient.findOneAndUpdate(
+        {_id: patientId},
+        {$push: {records: newRecord.id}},
+      );
+      
       const record = await newRecord.save();
       return record.id;
     } else {
@@ -145,18 +151,41 @@ const renderPatientDashboard = async (req, res) => {
     const patientId = await initPatient();
     const patient = await Patient.findOne({_id:patientId}).lean();
 
-    console.log("checking: ", patient.screenName);
     res.render("patient_dashboard.hbs", {patient: patient});
   } catch(err) {
     console.log("error happens in patient dashboard: ", err);
   }
 };
 
+async function findAllPatient(email) {
+  try{
+   
+    const patient = await Patient.find({clinician: email});
+    if (patient.length == 0) {
+      const newPatient = await initPatient();
+      const recordId = await initRecord(newPatient);
+
+      //const allPatient = await Patient.find({clinician: email})
+      const record = await Record.findOne({_id: recordId})
+
+      return record;
+      //return allPatient;
+    }else {
+      const record = await Record.findOne({_id: patient.id})
+      return record;
+      //return patient;
+    }
+  }catch(err) {
+    console.log("error happens in finding all patient for clinican: ", err);
+  }
+};
+
+
 const initClinician = async (req, res) => {
   try{
-    const result = await Clinican.find();
+    const result = await Clinician.find();
     if (result.length == 0) {
-      const newClinician = new Patient({
+      const newClinician = new Clinician({
         firstName: "Chris",
         lastName: "Evans",
         email: "chris@gmail.com",
@@ -164,11 +193,13 @@ const initClinician = async (req, res) => {
         yearOfBirth: "1987",
       });
 
+      newClinician.patient = findAllPatient(newClinician.email);
+
       // save new patient Pat to database
       const clinician = await newClinician.save();
       //console.log("-- id is: ", clinican._id);
 
-      return clinician;
+      return clinician.id;
     } else {
       // find our target patient Pat
       const clinician = await Clinician.findOne({ firstName: "Chris" });
@@ -177,17 +208,22 @@ const initClinician = async (req, res) => {
     }
 
   } catch(err) {
-    console.log("error happens in initalise clinican: ", err);
+    console.log("error happens in initalise clinician: ", err);
   }
 };
 
-const renderClinican = async (req, res) => {
+const renderClinicianDashboard = async (req, res) => {
   try{
-    const clincian = await initClinician();
-   // const clinician = await 
+    const clincianId = await initClinician();
+    
+    const clinician = await Clinician.findOne({_id:clincianId});
+    const patient = clinician.patient;
+    
+    console.log("-- record info when display -- ", patient);
+    res.render("Dashboard_clinician.hbs", {patient: patient});
 
   }catch(err) {
-    console.log("error happens in shoing clinican dashboard: ", err);
+    console.log("error happens in showing clinican dashboard: ", err);
 
   }
 
@@ -237,10 +273,8 @@ const renderClinican = async (req, res) => {
 
 module.exports = {
   getAllPatients,
-  // getOnePatient,
-  // addOnePatient,
   renderRecordData,
   updateRecord,
-  verifyLogin,
   renderPatientDashboard,
+  renderClinicianDashboard,
 };
