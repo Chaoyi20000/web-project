@@ -23,3 +23,6 @@ db.once('open', async () => {
 
 require('./patient.js');
 require('./record.js');
+require('./clincian.js');
+require('./clinicalNote.js');
+require('./supportMessage.js');

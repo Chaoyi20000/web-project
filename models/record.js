@@ -2,35 +2,36 @@ const mongoose = require('mongoose');
 const recordSchema = new mongoose.Schema({ 
 
 
-    patientID:{type: String,required: true, lowercase: true, trim: true}, 
+    patientId: {type: mongoose.Schema.Types.ObjectId, ref: "Patient", required: true},
+    recordDate: {type: String, required: true},
     data:{
         bgl:{	
             fullName:{type:String,default: "blood glocose level", immutable: true},	
             status:{type:String,enum: ["recorded", "unrecorded", "no need"], default: "unrecorded"},
             value:{type: Number, default: 0},	
             comment:{type:String,default:""},
-            createdAt:{type:Date,default:null},
+            createdAt:{type:String,default:null},
         },
         weight:{	
             fullName:{type:String,default: "weight", immutable: true},	
             status:{type:String,enum: ["recorded", "unrecorded", "no need"], default: "unrecorded"},
             value:{type: Number, default: 0},	
             comment:{type:String,default:0},
-            createdAt:{type:Date,default:null},
+            createdAt:{type:String,default:null},
         },
         doit:{	
             fullName:{type:String,default: "doses of insulin taken", immutable: true},	
             status:{type:String,enum: ["recorded", "unrecorded", "no need"], default: "unrecorded"},
             value:{type: Number, default: 0},	
             comment:{type:String,default:0},
-            createdAt:{type:Date,default:null},
+            createdAt:{type:String,default:null},
         },
         exercise:{	
             fullName:{type:String,default: "exercise", immutable: true},	
             status:{type:String,enum: ["recorded", "unrecorded", "no need"], default: "unrecorded"},
             value:{type: Number, default: 0},	
             comment:{type:String,default:0},
-            createdAt:{type:Date,default:null},
+            createdAt:{type:String,default:null},
         },
     }
 }); 

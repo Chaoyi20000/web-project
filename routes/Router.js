@@ -3,10 +3,11 @@ const controller = require("../controllers/Controller.js");
 
 const Router = express.Router();
 Router.get("/", controller.getAllPatients);
-Router.get("/recordData", controller.renderRecordData);
-Router.post("/recordData", controller.updateRecord);
+Router.get("/patient_dashboard", controller.renderPatientDashboard);
+Router.get("/record_health_data", controller.renderRecordData);
+Router.post("/record_health_data", controller.updateRecord);
 
-Router.post("/login_patient", controller.verifyLogin);
+//Router.post("/login_patient", controller.verifyLogin);
 // Router.get("/patient_dashboard");
 /* Router.get("/", controller.getAllPatients);
 Router.get("/:id", controller.getOnePatient);

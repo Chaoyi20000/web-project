@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 
 const app = express();
 // require('dotenv').config()
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded());
 
@@ -48,14 +48,14 @@ app.get("/", (req, res) => {
 //   res.render('start_page.html')
 // });
 
-app.get("/login_patient", (req,res) => { 
-  res.render('login_portal_patient.hbs')
+/* app.get("/login_patient", (req,res) => { 
+  res.render('patient_dashboard.hbs')
 });
 
 app.get("/login_clinician", (req,res) => { 
-  res.render('login_portal_clinician.hbs')
+  res.render('Dashboard_clincian.hbs')
 });
-
+ */
 // app.get("/home/patient_dashboard", (req,res) => { 
 //   res.render('patient-dashboard.hbs',{patient:patients})
 // });
