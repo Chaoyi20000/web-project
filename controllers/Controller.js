@@ -1,6 +1,7 @@
 const Record = require("../models/record.js");
 const Patient = require("../models/patient.js");
 const Clinician = require("../models/clincian.js");
+const { findOneAndUpdate, find } = require("../models/record.js");
 
 function formatDate(date) {
   var d = new Date(date),
@@ -34,7 +35,7 @@ async function initPatient() {
 
       // save new patient Pat to database
       const patient = await newPatient.save();
-      console.log("-- id is: ", patient._id);
+      //console.log("-- id is: ", patient._id);
 
       return patient.id;
     } else {
@@ -60,12 +61,15 @@ async function initRecord(patientId) {
         recordDate: formatDate(new Date()),
       });
 
-      Patient.findOneAndUpdate(
+    
+      const record = await newRecord.save();
+
+      await Patient.findOneAndUpdate(
         {_id: patientId},
-        {$push: {records: newRecord.id}},
+        {$push: {records: record}},
       );
       
-      const record = await newRecord.save();
+      
       return record.id;
     } else {
       return result.id;
@@ -136,7 +140,6 @@ const updateRecord = async (req, res) => {
     record.data[key].createdAt = new Date().toDateString();
     
     await record.save();
-    //findOneAndUpdate({}, {})
     
     console.log(record);
     res.redirect("/home/record_health_data");
@@ -165,14 +168,14 @@ async function findAllPatient(email) {
       const newPatient = await initPatient();
       const recordId = await initRecord(newPatient);
 
-      //const allPatient = await Patient.find({clinician: email})
-      const record = await Record.findOne({_id: recordId})
+      const allPatient = await Patient.find({clinician: email});
+      //console.log("checking if patient are linked to clinican: ", allPatient);
 
-      return record;
+      return allPatient;
       //return allPatient;
     }else {
-      const record = await Record.findOne({_id: patient.id})
-      return record;
+      //const record = await Record.findOne({_id: patient.id})
+      return patient;
       //return patient;
     }
   }catch(err) {
@@ -193,17 +196,25 @@ const initClinician = async (req, res) => {
         yearOfBirth: "1987",
       });
 
-      newClinician.patient = findAllPatient(newClinician.email);
 
-      // save new patient Pat to database
+      // save new Clincian Chris to database
       const clinician = await newClinician.save();
-      //console.log("-- id is: ", clinican._id);
+      console.log("----checking clinican saved", clinician);
+
+      const allPatient = await findAllPatient(clinician.email);
+      //console.log("----all patient chekcing if exist: ", allPatient);
+
+      await Clinician.findOneAndUpdate(
+        {_id: clinician.id}, 
+        {$push: {patient: {$each: allPatient}}},
+        
+      );
+      console.log("-- patietn in chris dashboard is: ", clinician.patient);
 
       return clinician.id;
     } else {
-      // find our target patient Pat
+      // find our target Clinician Chris
       const clinician = await Clinician.findOne({ firstName: "Chris" });
-      // console.log("-- id is: ", patient.id);
       return clinician.id;
     }
 
@@ -216,10 +227,18 @@ const renderClinicianDashboard = async (req, res) => {
   try{
     const clincianId = await initClinician();
     
-    const clinician = await Clinician.findOne({_id:clincianId});
+    const clinician = await Clinician.findOne({_id:clincianId}).populate({
+      path: "patient",
+      populate: {path:"records"},
+      options: { lean: true } 
+    }).lean();
+ 
+    console.log(clinician);
+    /* const patient1 = await Patient.findOne({screenName:"Pat"});
+    console.log(patient1); */
     const patient = clinician.patient;
-    
-    console.log("-- record info when display -- ", patient);
+
+    console.log("-- record info when display -- ",patient[0].records);
     res.render("Dashboard_clinician.hbs", {patient: patient});
 
   }catch(err) {
