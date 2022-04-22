@@ -13,7 +13,20 @@ function formatDate(date) {
   if (day.length < 2) day = "0" + day;
 
   return [year, month, day].join("-");
+};
+
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
 }
+
+
 
 
 async function initPatient() {
@@ -53,12 +66,13 @@ async function initRecord(patientId) {
   try {
     const result = await Record.findOne({
       patientId: patientId,
-      recordDate: formatDate(new Date()),
+      recordDate: new Date().toDateString(),
+      //recordDate: formatDate(new Date()),
     });
     if (!result) {
       const newRecord = new Record({
         patientId: patientId,
-        recordDate: formatDate(new Date()),
+        recordDate: new Date().toDateString(),
       });
 
     
@@ -137,7 +151,8 @@ const updateRecord = async (req, res) => {
     record.data[key].value = req.body.value;
     record.data[key].comment = req.body.comment;
     record.data[key].status = "recorded";
-    record.data[key].createdAt = new Date().toDateString();
+    //setting up time in am or pm
+    record.data[key].createdAt = formatDate(new Date()).concat(" ", formatAMPM(new Date()));
     
     await record.save();
     
@@ -238,7 +253,7 @@ const renderClinicianDashboard = async (req, res) => {
     console.log(patient1); */
     const patient = clinician.patient;
 
-    console.log("-- record info when display -- ",patient[0].records);
+    console.log("-- record info when display -- ",patient);
     res.render("Dashboard_clinician.hbs", {patient: patient});
 
   }catch(err) {

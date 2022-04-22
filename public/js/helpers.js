@@ -26,6 +26,15 @@ const helpers = {
 
     }
     return options.inverse(this);
+  },
+
+  ifRecent: function (date, options) {
+    var today = new Date().toDateString();
+    if (date === today) {
+      return options.fn(this);
+    }
+    console.log("return false in checking recent");
+    return options.inverse(this);
   }
 
 

@@ -4,44 +4,53 @@
 <div>
     <h2 id="Title">Clinician Dashboard</h2>
     <h2 id="Title-comments">New comments:</h2>
-
+     
     {{#each patient}}
     <div class="Patient">
         <a href="patient_details(clinican).html" class="Avatar login_start_box" style="background-color: #E9F3FF;">
-            <img class="Avatar_img" src="./public/image/avatar/images.jpg" alt="user avatar">
-            <p class="main_text">{{patient.firstName}}</p>
+            <img class="Avatar_img" src="../public/image/avatar/images.jpg" alt="user avatar">
+            <p class="main_text">{{this.firstName}} {{this.lastName}}</p>
         </a> 
 
-        {{#each patient.records.data}}
-        <div  class="Data-block">
-            {{#ifRecorded this.status}}
-            {{#ifAbnormal this.min this.max this.value}}
-            <div class="Data login_start_box" style="background-color: #ffbaa9;">
-                <a href="static/patient_details(clinican).html"><p>{{this.fullName}}: {{this.value}}</p></a>
-            </div>
-            
-            {{else}}
-            <div class="Data login_start_box" style="background-color: #DFF1F0;">
-                <a href="static/patient_details(clinican).html"><p>{{this.fullName}}: {{this.value}}</p></a>
-            </div>
-            {{/ifAbnormal}}
-            {{/ifRecorded}}
+        {{#each this.records}}
+        
+            {{#ifRecent this.recordDate}}
+            <p>{{this.recordDate}}</p>
 
-            {{#ifUnrecorded}}
-            <div class="Data login_start_box" style="background-color: #F0F0F0">
-                <a href="static/patient_details(clinican).html"><p>{{this.fullName}}: </p></a>
-            </div>
-            {{/ifUnrecorded}}
-    
-        </div>
-        {{/each}}
+                {{#each this.data}}
+                <div  class="Data-block">
+                    {{#ifRecorded this.status}}
+                        {{#ifAbnormal this.min this.max this.value}}
+                        <div class="Data login_start_box" style="background-color: #ffbaa9;">
+                            <a href="static/patient_details(clinican).html"><p>{{this.fullName}}: {{this.value}}</p></a>
+                        </div>
+                        
+                        {{else}}
+                        <div class="Data login_start_box" style="background-color: #DFF1F0;">
+                            <a href="static/patient_details(clinican).html"><p>{{this.fullName}}: {{this.value}}</p></a>
+                        </div>
+                        {{/ifAbnormal}}
+                    {{/ifRecorded}}
 
-        {{#each patient.records.data}}
-        {{#ifRecorded}}    
-        <div class="New-comments">
-            <a href="static/clinician-comment.html"><p>{{this.comment}}</p></a>
-        </div>
-        {{/ifRecorded}}
+                    {{#ifUnrecorded this.status}}
+                    <div class="Data login_start_box" style="background-color: #F0F0F0">
+                        <a href="static/patient_details(clinican).html"><p>{{this.fullName}}: </p></a>
+                    </div>
+                    {{/ifUnrecorded}}
+
+                </div>
+                {{/each}}
+                
+                
+
+                {{#each this.data}}
+                    {{#ifRecorded this.status}}    
+                    <div class="New-comments">
+                        <a href="static/clinician-comment.html"><p>{{this.comment}}</p></a>
+                    </div>
+                    {{/ifRecorded}}
+                {{/each}}
+            {{/ifRecent}}
         {{/each}}
     </div>
 
