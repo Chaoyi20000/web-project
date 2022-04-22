@@ -21,7 +21,8 @@ const helpers = {
   },
 
   ifAbnormal: function (min, max, value, options) {
-    if (value > min && value < max) {
+    
+    if (value < min || value > max) {
       return options.fn(this);
 
     }

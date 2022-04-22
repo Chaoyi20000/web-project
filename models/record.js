@@ -11,8 +11,8 @@ const recordSchema = new mongoose.Schema({
             value:{type: Number, default: 0},	
             comment:{type:String,default:""},
             createdAt:{type:String,default:null},
-            min: {type:Number, deafult: 100},
-            max: {type:Number, default: 140},
+            valueMin: {type:Number, default: 100},
+            valueMax: {type:Number, default: 140},
             
         },
         weight:{	
@@ -21,8 +21,8 @@ const recordSchema = new mongoose.Schema({
             value:{type: Number, default: 0},	
             comment:{type:String,default:0},
             createdAt:{type:String,default:null},
-            min: {type:Number, deafult: 60},
-            max: {type:Number, default: 75},
+            valueMin: {type:Number, default: 60},
+            valueMax: {type:Number, default: 75},
         },
         doit:{	
             fullName:{type:String,default: "doses of insulin taken", immutable: true},	
@@ -30,8 +30,8 @@ const recordSchema = new mongoose.Schema({
             value:{type: Number, default: 0},	
             comment:{type:String,default:0},
             createdAt:{type:String,default:null},
-            min: {type:Number, deafult: 1},
-            max: {type:Number, default: 2},
+            valueMin: {type:Number, default: 1},
+            valueMax: {type:Number, default: 2},
         },
         exercise:{	
             fullName:{type:String,default: "exercise", immutable: true},	
@@ -39,8 +39,8 @@ const recordSchema = new mongoose.Schema({
             value:{type: Number, default: 0},	
             comment:{type:String,default:0},
             createdAt:{type:String,default:null},
-            min: {type:Number, deafult: 2000},
-            max: {type:Number, default: 20000},
+            valueMin: {type:Number, default: 2000},
+            valueMax: {type:Number, default: 20000},
         },
     }
 }); 
