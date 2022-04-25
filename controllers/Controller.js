@@ -13,9 +13,9 @@ async function initPatient() {
         lastName: "Walter",
         screenName: "Pat",
         email: "pat@gmail.com",
-        password: "12345678",
+        password: "111111",
         yearOfBirth: "1997",
-        textBio: "im Pat",
+        textBio: "i'm Pat",
         supportMessage: "hello",
         clinician:  "chris@gmail.com",
       });
@@ -23,12 +23,13 @@ async function initPatient() {
       // save new patient Pat to database
       const patient = await newPatient.save();
       //console.log("-- id is: ", patient._id);
+      initRecord(patient.id);
 
       return patient.id;
     } else {
       // find our target patient Pat
       const patient = await Patient.findOne({ firstName: "Pat" });
-      // console.log("-- id is: ", patient.id);
+      initRecord(patient.id);
       return patient.id;
     }
   } catch (err) {
@@ -38,11 +39,7 @@ async function initPatient() {
 
 async function initRecord(patientId) {
   try {
-    const result = await Record.findOne({
-      patientId: patientId,
-      recordDate: new Date().toDateString(),
-      //recordDate: formatDate(new Date()),
-    });
+    const result = await Record.findOne({patientId: patientId, recordDate: new Date().toDateString()});
     if (!result) {
       const newRecord = new Record({
         patientId: patientId,
@@ -58,10 +55,8 @@ async function initRecord(patientId) {
       );
       
       
-      return record.id;
-    } else {
-      return result.id;
-    }
+      //return record.id;
+    } 
   } catch (err) {
     console.log("error happens in record initialisation: ", err);
   }
@@ -71,34 +66,12 @@ const getAllPatients = (req, res) => {
   res.render();
 };
 
-// const getOnePatient = (req, res) => {
-//   const patient = data.find((one) => one.id == req.params.id);
-
-//   if (patient) {
-//     res.send(patient);
-//   } else {
-//     res.send("patient not found");
-//   }
-// };
-
-// const addOnePatient = (req, res) => {
-//   // console.log(req.rawHeaders.toString());
-//   const newPatient = req.body;
-//   if (JSON.stringify(newPatient) != "{}") {
-//     // console.log(data.find(d => d.id == newPatient.id));
-//     if (!data.find((d) => d.id == newPatient.id)) {
-//       data.push(newPatient);
-//     }
-//   }
-//   res.send(data);
-// };
 
 const renderRecordData = async (req, res) => {
   try {
     const patientId = await initPatient();
-    const recordId = await initRecord(patientId);
-    // const patient = await Patient.findOne({ _id: patientId }).lean();
-    const record = await Record.findOne({ _id: recordId })
+    //const recordId = await initRecord(patientId);
+    const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString()})
       .populate({
         path: "patientId",
         options: { lean: true },
@@ -118,8 +91,8 @@ const updateRecord = async (req, res) => {
   console.log("-- req form to update record -- ", req.body);
   try {
     const patientId = await initPatient();
-    const recordId = await initRecord(patientId);
-    const record = await Record.findOne({ _id: recordId });
+    //const recordId = await initRecord(patientId);
+    const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString() });
     const key = req.body.key;
   
     record.data[key].value = req.body.value;
@@ -156,7 +129,7 @@ async function findAllPatient(email) {
     const patient = await Patient.find({clinician: email});
     if (patient.length == 0) {
       const newPatient = await initPatient();
-      const recordId = await initRecord(newPatient);
+      //const recordId = await initRecord(newPatient);
 
       const allPatient = await Patient.find({clinician: email});
       //console.log("checking if patient are linked to clinican: ", allPatient);
