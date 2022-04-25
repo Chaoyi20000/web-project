@@ -1,32 +1,6 @@
 const Record = require("../models/record.js");
 const Patient = require("../models/patient.js");
 const Clinician = require("../models/clincian.js");
-const { findOneAndUpdate, find } = require("../models/record.js");
-
-function formatDate(date) {
-  var d = new Date(date),
-    month = "" + (d.getMonth() + 1),
-    day = "" + d.getDate(),
-    year = d.getFullYear();
-
-  if (month.length < 2) month = "0" + month;
-  if (day.length < 2) day = "0" + day;
-
-  return [year, month, day].join("-");
-};
-
-function formatAMPM(date) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
-  return strTime;
-}
-
-
 
 
 async function initPatient() {
@@ -151,8 +125,9 @@ const updateRecord = async (req, res) => {
     record.data[key].value = req.body.value;
     record.data[key].comment = req.body.comment;
     record.data[key].status = "recorded";
-    //setting up time in am or pm
-    record.data[key].createdAt = formatDate(new Date()).concat(" ", formatAMPM(new Date()));
+    //setting up time in Melbourne time zone
+    
+    record.data[key].createdAt = new Date().toLocaleString("en-US", {timeZone: "Australia/Melbourne", year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit'}).replace(/\//g, "-");
     
     await record.save();
     
