@@ -72,3 +72,11 @@ footer{
 .date{
     grid-area: 1/4/2/5;
 }
+
+.footer-home{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
