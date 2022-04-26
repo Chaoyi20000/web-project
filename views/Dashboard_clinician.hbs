@@ -21,19 +21,19 @@
                         {{#ifRecorded this.status}}
                             {{#ifAbnormal this.valueMin this.valueMax this.value}}
                                 <div class="Data login_start_box" style="background-color: #ffbaa9;">
-                                    <a href="static/patient_details(clinican).html"><p>{{this.fullName}}: {{this.value}}</p></a>
+                                    <a href=""><p>{{this.fullName}}: {{this.value}}</p></a>
                                 </div>
                                 
                                 {{else}}
                                 <div class="Data login_start_box" style="background-color: #DFF1F0;">
-                                    <a href="static/patient_details(clinican).html"><p>{{this.fullName}}: {{this.value}}</p></a>
+                                    <a href=""><p>{{this.fullName}}: {{this.value}}</p></a>
                                 </div>
                             {{/ifAbnormal}}
                         {{/ifRecorded}}
 
                         {{#ifUnrecorded this.status}}
                         <div class="Data login_start_box" style="background-color: #F0F0F0">
-                            <a href="static/patient_details(clinican).html"><p>{{this.fullName}}: </p></a>
+                            <a href=""><p>{{this.fullName}}: </p></a>
                         </div>
                         {{/ifUnrecorded}}
                     {{/each}}
@@ -46,7 +46,7 @@
                 <div class="New-comments">
                     {{#each this.data}}
                         {{#ifRecorded this.status}} 
-                        <a href="static/clinician-comment.html"><p>{{this.comment}}</p></a>
+                        <a href=""><p>{{this.comment}}</p></a>
                          {{/ifRecorded}}
                     {{/each}}
                 </div>
