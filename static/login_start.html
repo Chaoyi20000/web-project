@@ -5,33 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/style/login.css">
+    <link rel="stylesheet" href="../public/style/header-grid.css">
     <title>Login Start</title>
 </head>
 
 <!-- content of webpage begins here -->
-<body class="container">
-        <p class = "diabete-home-first">
-            <a href="static/start_page.html">Diabetes@Home</a>
-        </p>
+<body >
+    <header class = "header-grid">
+        <div class = "diabete-home">
+            <p class = "diabete-home-first">
+                <a href="static/start_page.html">Diabetes@Home</a>
+            </p>     
+        </div>
         <div class = "dark-mode"><button>Dark&nbspMode</button> </div>
         <div class = "back"><a href="javascript:history.back()">Back</a></div>
+    </header>
 
-        <div class="login_start_element main_text" id="Subtitle">
+    <div class = "container">
+        <div  id="Subtitle">
             <h1>Login</h1>
             <h2>You are a:</h2>
         </div>
-
-        <div class="login_start_element login_start_box main_text" id="Patient">
-            <h1>
+        <div>
+            
+        </div>
+        <div  id="Patient">
+            <h2>
                 <a href="/home/patient_dashboard">Patient</a>
-            </h1>
+            </h2>
         </div>
         
-        <div class="login_start_element login_start_box main_text" id="Clinician">
-            <h1 >
+        <div  id="Clinician">
+            <h2 >
                 <a href="/home/clinician_dashboard">Clinician</a>
-            </h1>
+            </h2>
         </div>
+    </div>
+
 </body>
 
 </html>

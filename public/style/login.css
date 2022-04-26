@@ -53,8 +53,6 @@ a:hover, a:active{
 }
 .main_text{
   border-radius: 45px; 
-  font-family: 'Roboto Slab';
-  font-style: normal;
   font-weight: 600;
   text-align: center;
   align-items: center;  
@@ -175,13 +173,25 @@ a:hover, a:active{
 }
 #Patient {
   grid-area: 4 / 2 / 5 / 3;
-  padding: 50px 0;
 }
 #Clinician {
-  grid-area: 4 / 4 / 5 / 5;
-  padding:50px 0;
+  grid-area: 4 / 5/ 5 / 6;
+
 }
 #Subtitle {
+  grid-area: 3 / 1 / 4 / 7;
+  /* background-color:antiquewhite; */
+  margin-bottom: 5vw;
+}
+
+.container div{
   text-align: center;
-  grid-area: 3 / 2 / 4 / 5;
+}
+
+#Patient, #Clinician{
+  background-color:#F0F0F0;
+  align-self: center; 
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #F0F0F0;
+  border-radius: 30px;
 }
