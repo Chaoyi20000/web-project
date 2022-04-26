@@ -1,20 +1,22 @@
 
-
+*{
+    padding: 0;
+    margin: 0;
+}
 html {font-size: 2vw;}
 .flex_container{
-    background-color: #FFFFFF;
     display: grid;
     grid-template-areas:
     'top top top top top_right'
-    'main1 main main2 right right'
-    'bottom bottom bottom bottom bottom_right';
+    'main1 main main2 right right';
     /* gap: 1vw; */
-    padding:2px;
+    padding:5px;
     background-image: url("../image/background.jpg");
     background-repeat: no-repeat; 
     background-size: cover;
     width: 100vw;
-    height: 120vh;
+    height: 100vh;
+
     /* background-repeat: repeat; */
 }
 /* body{
@@ -63,6 +65,7 @@ html {font-size: 2vw;}
     background-color: #CDDCDB ;
     text-align: center;
     padding: 2vw;
+    margin-bottom: 2vw;
 
 }
 .text_3_box{
@@ -72,9 +75,7 @@ html {font-size: 2vw;}
     text-align: center;
     padding: 2vw;
 }
-.sign{
-    grid-area: bottom_right
-}
+
 
 @media screen and (max-width: 640px) {  /* page layout for phones */
     .flex_container{
