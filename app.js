@@ -7,7 +7,7 @@ const app = express();
 // require('dotenv').config()
 const port = process.env.PORT || 3003;
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 require('./models');
 
