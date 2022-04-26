@@ -144,7 +144,7 @@ a:hover, a:active{
   display: grid; 
   background-color: #CDDCDB;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
-  grid-template-rows: 0.2fr 0.5fr 1.5fr 2fr; 
+  grid-template-rows: 0.2fr 0.5fr 1.5fr; 
   gap: 10px; 
 }
 .login_start_element {
@@ -174,13 +174,14 @@ a:hover, a:active{
   /* background-color: aqua; */
 }
 #Patient {
-  grid-area: 4 / 2 / 5 / 4;
-  padding: 70px 0;
+  grid-area: 4 / 2 / 5 / 3;
+  padding: 50px 0;
 }
 #Clinician {
-  grid-area: 4 / 4 / 5 / 6;
-  padding:70px 0;
+  grid-area: 4 / 4 / 5 / 5;
+  padding:50px 0;
 }
 #Subtitle {
-  grid-area: 3 / 2 / 4 / 6;
+  text-align: center;
+  grid-area: 3 / 2 / 4 / 5;
 }
