@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
+*{
+    box-sizing: border-box;
+}
+
 body { 
     background-color: #CDDCDB;
     font-size: 3vh;
-    box-sizing: border-box;
     font-family: 'Roboto Slab';
+    margin: 0;
+    padding: 0;    
 }
 
 .header-grid{
