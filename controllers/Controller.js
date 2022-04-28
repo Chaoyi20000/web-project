@@ -36,6 +36,7 @@ async function initPatient() {
   }
 }
 
+// initial record of pation by input patientID
 async function initRecord(patientId) {
   try {
     const result = await Record.findOne({patientId: patientId, recordDate: new Date().toDateString()});
@@ -45,7 +46,7 @@ async function initRecord(patientId) {
         recordDate: new Date().toDateString(),
       });
 
-    
+      // save data to database
       const record = await newRecord.save();
 
       await Patient.findOneAndUpdate(
@@ -60,11 +61,13 @@ async function initRecord(patientId) {
   }
 }
 
+// function to get all patients
 const getAllPatients = (req, res) => {
   res.render();
 };
 
 
+// render the data from DataBase
 const renderRecordData = async (req, res) => {
   try {
     const patientId = await initPatient();
@@ -82,6 +85,8 @@ const renderRecordData = async (req, res) => {
   }
 };
 
+
+// update record to database
 const updateRecord = async (req, res) => {
   console.log("-- req form to update record -- ", req.body);
   try {
@@ -94,11 +99,12 @@ const updateRecord = async (req, res) => {
     record.data[key].status = "recorded";
     //setting up time in Melbourne time zone
     
-    record.data[key].createdAt = new Date().toLocaleString("en-US", {timeZone: "Australia/Melbourne", year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit'}).replace(/\//g, "-");
+    record.data[key].createdAt = new Date().toLocaleString("en-US", 
+    {timeZone: "Australia/Melbourne", year: 'numeric', month: 'numeric', 
+    day: 'numeric', hour: '2-digit', minute:'2-digit'}).replace(/\//g, "-");
     
     await record.save();
     
-    console.log(record);
     res.redirect("/home/record_health_data");
   } catch (err) {
     console.log("error happens in update record: ", err);
@@ -117,6 +123,7 @@ const renderPatientDashboard = async (req, res) => {
   }
 };
 
+//find patient by input of email
 async function findAllPatient(email) {
   try{
    
@@ -124,6 +131,7 @@ async function findAllPatient(email) {
     if (patient.length == 0) {
       const newPatient = await initPatient();
 
+      // find patient in the database
       const allPatient = await Patient.find({clinician: email});
 
       return allPatient;
@@ -136,6 +144,7 @@ async function findAllPatient(email) {
 };
 
 
+// initial Clinician database
 const initClinician = async (req, res) => {
   try{
     const result = await Clinician.find();
@@ -198,8 +207,6 @@ const renderClinicianDashboard = async (req, res) => {
   }
 
 };
-
-
 
 
 module.exports = {

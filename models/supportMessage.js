@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+// Store datatype to schema
 const messageSchema = new mongoose.Schema({ 
     patientId: {type: mongoose.Schema.Types.ObjectId, ref: "Patient", required: true},
     messageDate: {type: String},
