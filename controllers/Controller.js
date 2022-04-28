@@ -77,7 +77,7 @@ const renderRecordData = async (req, res) => {
         options: { lean: true },
       })
       .lean();
-    console.log(record);
+    //console.log(record);
 
     // console.log("-- record info when display -- ", record);
     res.render("record_health_data(patient).hbs", { record: record });
