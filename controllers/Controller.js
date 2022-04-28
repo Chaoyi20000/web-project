@@ -1,5 +1,5 @@
 const Record = require("../models/record.js");
-const Patient = require("../models/patient.js");
+const Patient = require("../models/Patient.js");
 const Clinician = require("../models/clincian.js");
 
 
@@ -77,7 +77,7 @@ const renderRecordData = async (req, res) => {
         options: { lean: true },
       })
       .lean();
-    console.log(record);
+    //console.log(record);
 
     // console.log("-- record info when display -- ", record);
     res.render("record_health_data(patient).hbs", { record: record });

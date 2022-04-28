@@ -21,8 +21,8 @@ db.once('open', async () => {
     console.log(`Mongo connection started on ${db.host}:${db.port}`) 
 }) 
 
-require('./patient.js');
-require('./record.js');
-require('./clincian.js');
-require('./clinicalNote.js');
-require('./supportMessage.js');
+require('./Patient.js');
+require('../models/record.js');
+require('../models/clincian.js');
+require('../models/clinicalNote.js');
+require('../models/supportMessage.js');

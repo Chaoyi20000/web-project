@@ -75,23 +75,28 @@ html {font-size: 2vw;}
     text-align: center;
     padding: 2vw;
 }
+.text4{
+    padding: 2vw;
+}
 
 
 @media screen and (max-width: 640px) {  /* page layout for phones */
     .flex_container{
         display: grid;
         /* flex-direction: column; */
-        font-size: 190%;
+        font-size: 90%;
         grid-template-areas: 
         'top  top_right'
         'main main'
+        'main main'
         'right right '
-        'bottom bottom_right';
-        padding:2px;
-        background-image: url("/image/background.jpg");
+        'right right ';
+        background-image: url("../image/background.jpg");
         background-repeat: no-repeat; 
         background-size: cover;
         /* width: 100vw;
         height: 100vh; */
     }
+
+
 }
