@@ -22,7 +22,6 @@ async function initPatient() {
 
       // save new patient Pat to database
       const patient = await newPatient.save();
-      //console.log("-- id is: ", patient._id);
       initRecord(patient.id);
 
       return patient.id;
@@ -55,7 +54,6 @@ async function initRecord(patientId) {
       );
       
       
-      //return record.id;
     } 
   } catch (err) {
     console.log("error happens in record initialisation: ", err);
@@ -70,16 +68,13 @@ const getAllPatients = (req, res) => {
 const renderRecordData = async (req, res) => {
   try {
     const patientId = await initPatient();
-    //const recordId = await initRecord(patientId);
     const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString()})
       .populate({
         path: "patientId",
         options: { lean: true },
       })
       .lean();
-    //console.log(record);
 
-    // console.log("-- record info when display -- ", record);
     res.render("record_health_data(patient).hbs", { record: record });
   } catch (err) {
     res.status(400);
@@ -91,7 +86,6 @@ const updateRecord = async (req, res) => {
   console.log("-- req form to update record -- ", req.body);
   try {
     const patientId = await initPatient();
-    //const recordId = await initRecord(patientId);
     const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString() });
     const key = req.body.key;
   
@@ -129,17 +123,12 @@ async function findAllPatient(email) {
     const patient = await Patient.find({clinician: email});
     if (patient.length == 0) {
       const newPatient = await initPatient();
-      //const recordId = await initRecord(newPatient);
 
       const allPatient = await Patient.find({clinician: email});
-      //console.log("checking if patient are linked to clinican: ", allPatient);
 
       return allPatient;
-      //return allPatient;
     }else {
-      //const record = await Record.findOne({_id: patient.id})
       return patient;
-      //return patient;
     }
   }catch(err) {
     console.log("error happens in finding all patient for clinican: ", err);
@@ -165,7 +154,6 @@ const initClinician = async (req, res) => {
       console.log("----checking clinican saved", clinician);
 
       const allPatient = await findAllPatient(clinician.email);
-      //console.log("----all patient chekcing if exist: ", allPatient);
 
       await Clinician.findOneAndUpdate(
         {_id: clinician.id}, 
@@ -212,46 +200,7 @@ const renderClinicianDashboard = async (req, res) => {
 };
 
 
-/* const verifyLogin = async(req,res)=>{
-  try{
-    let username = req.body.user_id;
-    let password = req.body.password;
-    
-    
-    // Ensure the input fields exists and are not empty
-    if (username && password) {
-      // Execute SQL query that'll select the account from the database based on the specified username and password
-     
-      const user = await Patient.findOne({email:username}).lean();
-  
-      if( (user!=null)){
-        
-        if(user.password != password){
-          res.send('Incorrect Username and/or Password!');
-        }else{
-          console.log(user);
-          res.redirect('/patient-dashboard.hbs');
-          
-          // res.render('patient-dashboard.hbs',{patient:user})
-          
-        }
-      }else{
-        
-        res.send('cannot find the Username and/or Password!');
-      }
-      res.end();
-    
-    } else {
-      res.send('Please enter Username and Password!');
-      res.end();
-    }
 
-  }catch(err){
-    console.log("error happens in login : ", err);
-  }
-  
-}
- */
 
 module.exports = {
   getAllPatients,

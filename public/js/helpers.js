@@ -34,7 +34,6 @@ const helpers = {
     if (date === today) {
       return options.fn(this);
     }
-    console.log("return false in checking recent");
     return options.inverse(this);
   }
 
