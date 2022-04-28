@@ -49,7 +49,6 @@ header{
     display: grid;
     grid-template-areas: 'left left left right';
     gap: 1vw;
-    /* background-color: red; */
     padding: 10px;
 }
 
@@ -63,7 +62,6 @@ header{
 
 .flex_box{
     display: flex;
-    /* background-color: aqua; */
     justify-content: flex-end;
 
 }
@@ -71,7 +69,6 @@ header{
 .flex_box > div{
     margin: 1vw;
     padding: 0.5vw;
-    /* background-color: aliceblue; */
     align-self:center;
 }
 
@@ -96,10 +93,6 @@ header{
     margin-top: 2vw;            
     padding: 1vw;
     line-height: 1vw;        
-}
-
-#links a{         
-    color: black;
 }
 
 #website-image{

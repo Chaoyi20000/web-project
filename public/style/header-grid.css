@@ -17,15 +17,11 @@ body {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto;
-/* 
-    background-color: aqua; */
 }
 
 .diabete-home{
     grid-area: 1/1/2/3;
     margin-left: 2vw;
-
-    /* background-color: aliceblue; */
 }
 
 .diabete-home-first{
@@ -40,7 +36,6 @@ body {
     grid-area: 1/5/2/6;
     text-align: right;    
     padding-top: 0.5vw;
-    /* background-color: aliceblue;    */
 }
 
 .dark-mode button{

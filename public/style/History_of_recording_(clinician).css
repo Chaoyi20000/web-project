@@ -15,10 +15,8 @@ html {font-size: 2vw;}
     'main main main main main main'
     'main main main main main main';
     grid-gap: 10px;
-    /* gap: 1vw; */
     padding:1vw;
     padding-left: 1vw;
-    /* background-repeat: repeat; */
     width: 96vw;
     height: 200vh;
 }
@@ -68,29 +66,3 @@ table, th, td {
 
     
 }
-
-
-/* .recording_element {
-    background-color: #CDDCDB;
-    text-align: center;
-    border-radius: 25px;
-  }
-  .recording_box {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #F0F0F0;
-  }
-
-
-  #Diabetes\\\@Home {
-    grid-area: top_left;
-  }
-  #Back {
-    grid-area: top_right1;
-  }
-  #Dark-Mode {
-    grid-area: top_right;
-    margin: auto;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 3px;
-  } */

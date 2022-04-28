@@ -1,87 +1,14 @@
-/* @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-
-
-
-body { 
-    background-color: #CDDCDB;
-    font-size: 3vh;
-    box-sizing: border-box;
-    font-family: 'Roboto Slab';
-}
-
-.header-grid{
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: auto;
-    /* background-color: aqua; 
-}
-
-.diabete-home{
-    grid-area: 1/1/2/3;
-    margin-left: 2vw;
-
-    /* background-color: aliceblue; 
-}
-
-.diabete-home-first{
-    font-family: 'Courier New',cursive;
-    font-size: 3vw;
-    font-weight: bold;   
-    margin-top: 1vw;   
-    margin-bottom: 1vw;
-}
-
-.dark-mode{
-    grid-area: 1/5/2/6;
-    text-align: right;    
-    /* background-color: aliceblue;    
-}
-
-.dark-mode button{
-    background-color: #FFFFFF;
-    border-radius: 25px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 1vw;
-    font-family: 'Courier New',cursive;
-    align-self:auto;
-
-}
-
-.back{
-    grid-area: 1/6/2/7;
-    text-align: center;
-} */
-
-/* a{
-    text-decoration: none;
-    color: black;
-} */
-
-/* button{
-    border: none;
-    padding: 1vw;
-    margin-bottom: 2vw;
-    background-color: #F8F0F0;
-    border-radius: 30px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
-} */
-
-
-
 @import url("header-grid.css");
 .main-grid{
     display: grid;
     grid-template-columns: 2fr 3fr;
     grid-template-rows: auto;
-    /* background-color: bisque; */
     padding-top: 4vw
 
 }
 
 .patient-nav{
     grid-area: 1/1/2/2;
-    /* background-color: aliceblue; */
 }
 
 nav ul{
@@ -100,7 +27,6 @@ nav ul li {
 
 .patient-info{
     grid-area: 1/2/2/3;
-    /* background-color:aquamarine; */
 }
 
 .patient-info p{
@@ -115,7 +41,6 @@ text-align: center;
 .photo{
     grid-area: photo;
     text-align: center;
-    /* background-color:beige; */
 }
 
 .photo img{
@@ -128,7 +53,6 @@ text-align: center;
 
 .buttons{
     grid-area: buttons;
-    /* background-color: antiquewhite; */
 }
 
 .buttons img{

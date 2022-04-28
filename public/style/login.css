@@ -1,6 +1,5 @@
 @import url("header-grid.css");
 @import url("patient_details\(clinican\).css");
-/*login portal css*/
 
 body { 
   background-color: #CDDCDB;
@@ -136,8 +135,6 @@ a:hover, a:active{
 
 }
 
-
-/* Login_start.html */
 .container {
   display: grid; 
   background-color: #CDDCDB;
@@ -145,6 +142,10 @@ a:hover, a:active{
   grid-template-rows: 0.2fr 0.5fr 1.5fr; 
   gap: 10px; 
 }
+.container div{
+  text-align: center;
+}
+
 .login_start_element {
   background-color: #CDDCDB;
   text-align: center;
@@ -155,22 +156,7 @@ a:hover, a:active{
   background-color: #F0F0F0;
   box-sizing: 2em;
 }
-#Diabetes\\\@Home {
-  grid-area: 1 / 1 / 2 / 3;
-  /* background-color: aqua; */
-}
-#Back {
-  grid-area: 1 / 6 / 2 / 7;
-  /* background-color: aqua; */
-}
-#Dark-Mode {
-  grid-area: 1 / 5 / 2 / 6;
-  margin: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 3px;
-  /* background-color: aqua; */
-}
+
 #Patient {
   grid-area: 4 / 2 / 5 / 3;
 }
@@ -178,20 +164,16 @@ a:hover, a:active{
   grid-area: 4 / 5/ 5 / 6;
 
 }
-#Subtitle {
-  grid-area: 3 / 1 / 4 / 7;
-  /* background-color:antiquewhite; */
-  margin-bottom: 5vw;
-}
-
-.container div{
-  text-align: center;
-}
-
 #Patient, #Clinician{
   background-color:#F0F0F0;
   align-self: center; 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: #F0F0F0;
   border-radius: 30px;
+}
+
+
+#Subtitle {
+  grid-area: 3 / 1 / 4 / 7;
+  margin-bottom: 5vw;
 }

@@ -1,56 +1,51 @@
 
 *{
+    /* To remove gaps between background image and the 2 sides of screen */
     padding: 0;
     margin: 0;
 }
+
 html {font-size: 2vw;}
+
 .flex_container{
     display: grid;
     grid-template-areas:
     'top top top top top_right'
     'main1 main main2 right right';
-    /* gap: 1vw; */
+    
     padding:5px;
     background-image: url("../image/background.jpg");
     background-repeat: no-repeat; 
     background-size: cover;
     width: 100vw;
     height: 100vh;
-
-    /* background-repeat: repeat; */
 }
-/* body{
-    background-image: url("/image/background.jpg");
-    background-color: rebeccapurple;
-    background-repeat: no-repeat; 
-    background-size: cover; 
-} */
-
 .flex_container > div {
-    /* text-align: justify; */
     padding: 4vw;
     line-height: 3vw;
 }
+
 .logo{
     grid-area: top;
 }
 .mode{
     grid-area: top_right;
 }
-.title1{
-    grid-area: main
+#title1{
+    grid-area: main;
 }
-.about_diabetes{
+.about{
     grid-area: right;
 }
-.text0{
+.message{
     padding: 2vw;
+    font-family: 'Courier New', cursive;
 }
-.text1{
-    padding: 2vw;
-}
-.text_2{
+.links{
     padding-top: 10vw;
+    font-family: 'Courier New',cursive;
+    font-style: normal;
+    align-items: center;
 }
 .text_background{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -59,7 +54,7 @@ html {font-size: 2vw;}
     text-align: center;
     padding: 2vw;
 }
-.text_2_box{
+#about_diabetes{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 45px; 
     background-color: #CDDCDB ;
@@ -68,22 +63,22 @@ html {font-size: 2vw;}
     margin-bottom: 2vw;
 
 }
-.text_3_box{
+#about_websites{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 45px; 
     background-color: #CDDCDB ;
     text-align: center;
     padding: 2vw;
 }
-.text4{
+#sign_in{
     padding: 2vw;
+    text-align: right;
 }
 
 
 @media screen and (max-width: 640px) {  /* page layout for phones */
     .flex_container{
         display: grid;
-        /* flex-direction: column; */
         font-size: 90%;
         grid-template-areas: 
         'top  top_right'
@@ -94,8 +89,6 @@ html {font-size: 2vw;}
         background-image: url("../image/background.jpg");
         background-repeat: no-repeat; 
         background-size: cover;
-        /* width: 100vw;
-        height: 100vh; */
     }
 
 

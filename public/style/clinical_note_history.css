@@ -14,10 +14,8 @@ html {font-size: 2vw;}
     'main3 main3 main3 main3 main1 main1'
     'main3 main3 main3 main3 main1 main1';
     grid-gap: 10px;
-    /* gap: 1vw; */
     padding:1vw;
     padding-left: 1vw;
-    /* background-repeat: repeat; */
     width: 96vw;
     height: 200vh;
 }
