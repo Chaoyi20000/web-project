@@ -1,10 +1,8 @@
 const express = require("express");
 var path = require('path');
 const exphbs = require('express-handlebars');
-// const patient = require("models/patient.js");
 
 const app = express();
-// require('dotenv').config()
 const port = process.env.PORT || 3003;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -13,84 +11,47 @@ require('./models');
 
 
 
-// const mongoose = require("mongoose");
-// mongoose
-//   .connect(process.env.MONGO_URL || "mongodb://localhost",{
-//     useNewUrlParser: true, 
-//     useUnifiedTopology: true, 
-//     dbName:"info30005-g39",
-//   }) 
-//   .then(()=>console.log("connect to Mongo"))
-//   .catch((err)=>console.log(err,"\nfailed to connect to Mongo"));
-
-
-
-app.engine('hbs', exphbs.engine({      // configure Handlebars 
+// configure Handlebars 
+app.engine('hbs', exphbs.engine({      
   defaultlayout: 'main',
   extname: 'hbs' ,
   helpers: require("./public/js/helpers.js").helpers,
 })) ;
- 
-app.set('view engine', 'hbs')  ; // set Handlebars view engine
+// set Handlebars view engine
+app.set('view engine', 'hbs')  ; 
 
 
 
 app.use(express.static(__dirname + '/'));
 
 
-
+// home page 
 app.get("/", (req, res) => {
-  // res.send("you can choose to go to patient page or clinician page");
   res.sendFile(__dirname + "/static/start_page.html")
 });
 
-// app.get('/', (req,res) => { 
-//   res.render('start_page.html')
-// });
-
-/* app.get("/login_patient", (req,res) => { 
-  res.render('patient_dashboard.hbs')
+//about diabets page
+app.get("/about_diabetes", (req, res) => {
+  res.sendFile(__dirname + "/static/diabetes_grid.html")
 });
 
-app.get("/login_clinician", (req,res) => { 
-  res.render('Dashboard_clincian.hbs')
+//about team page
+app.get("/about_team", (req, res) => {
+  res.sendFile(__dirname + "/static/team_grid.html")
 });
- */
-// app.get("/home/patient_dashboard", (req,res) => { 
-//   res.render('patient-dashboard.hbs',{patient:patients})
-// });
+
+//about login page 
+app.get("/login_page", (req, res) => {
+  res.sendFile(__dirname + "/static/login_start.html")
+});
+
 // middleware
 const router = require("./routes/Router.js");
 app.use("/home", router);
 
 
-// app.post('/login_portal_patient', function(request, response) {
-// 	// Capture the input fields
-// 	let username = request.body.user_id;
-// 	let password = request.body.password;
-// 	// Ensure the input fields exists and are not empty
-// 	if (username && password) {
-// 		// Execute SQL query that'll select the account from the database based on the specified username and password
 
-//     const user = patient.findOne({email:username})
-//     if( (user!=null)){
-//       if(user.password != password){
-//         response.send('Incorrect Username and/or Password!');
-//       }else{
-//         response.redirect('/patient_dashboard');
-//       }
-//     }else{
-//       response.send('Incorrect Username and/or Password!');
-//     }
-//     response.end();
-  
-// 	} else {
-// 		response.send('Please enter Username and Password!');
-// 		response.end();
-// 	}
-// });
-
-
+// running app
 app.listen(port, () =>
   console.log("> Server is up and running on http://localhost:" + port)
 );
