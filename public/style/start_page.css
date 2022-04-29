@@ -4,38 +4,62 @@
     padding: 0;
     margin: 0;
 }
-
 html {font-size: 2vw;}
 
-.flex_container{
-    display: grid;
-    grid-template-areas:
-    'top top top top top_right'
-    'main1 main main2 right right';
-    
-    padding:5px;
+.main_body{
     background-image: url("../image/background.jpg");
     background-repeat: no-repeat; 
     background-size: cover;
     width: 100vw;
     height: 100vh;
 }
+
+
+ /* header part */
+
+.header-grid1{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-rows: 30vh;
+}
+
+.dark-mode1{
+    grid-area: 1/5/2/6;
+    text-align: right;    
+    padding-top: 0.5vw;
+}
+
+.diabete-home1{
+    grid-area: 1/1/2/2;
+    margin-left: 2vw;
+}
+
+
+/* main part */
+
+.flex_container{
+    display: grid;
+    grid-template-areas:
+    'top top top top top_right'
+    'top top top top top_right'
+    'top top top top top_right'
+    'main1 main main2 right right'
+    'main1 main main2 right right';
+    
+    padding:5px;
+}
 .flex_container > div {
     padding: 4vw;
     line-height: 3vw;
 }
 
-.logo{
-    grid-area: top;
-}
-.mode{
-    grid-area: top_right;
-}
+
 #title1{
     grid-area: main;
 }
 .about{
-    grid-area: right;
+    grid-area: right ;
 }
 .message{
     padding: 2vw;
@@ -75,21 +99,19 @@ html {font-size: 2vw;}
     text-align: right;
 }
 
-
+/* phone size part */
 @media screen and (max-width: 640px) {  /* page layout for phones */
     .flex_container{
         display: grid;
         font-size: 90%;
         grid-template-areas: 
-        'top  top_right'
+        'main main'
+        'main main'
+        'main main'
+        'main main'
         'main main'
         'main main'
         'right right '
         'right right ';
-        background-image: url("../image/background.jpg");
-        background-repeat: no-repeat; 
-        background-size: cover;
     }
-
-
 }
