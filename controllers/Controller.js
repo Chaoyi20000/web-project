@@ -3,10 +3,11 @@ const Patient = require("../models/Patient.js");
 const Clinician = require("../models/clincian.js");
 
 
-async function initPatient() {
+async function searchAndCreatePatient() {
   try {
     // find all document in Patient Collection to findout if it is empty
     const result = await Patient.find();
+    // initiate patient pat if no records are found 
     if (result.length == 0) {
       const newPatient = new Patient({
         firstName: "Pat",
@@ -22,13 +23,14 @@ async function initPatient() {
 
       // save new patient Pat to database
       const patient = await newPatient.save();
-      initRecord(patient.id);
+      searchAndCreateRecord(patient.id);
 
       return patient.id;
     } else {
       // find our target patient Pat
       const patient = await Patient.findOne({ firstName: "Pat" });
-      initRecord(patient.id);
+      //link records to target patient 
+      searchAndCreateRecord(patient.id);
       return patient.id;
     }
   } catch (err) {
@@ -36,10 +38,12 @@ async function initPatient() {
   }
 }
 
-// initial record of pation by input patientID
-async function initRecord(patientId) {
+// initial record of patient by patientId
+async function searchAndCreateRecord(patientId) {
   try {
+    // find newest records for today 
     const result = await Record.findOne({patientId: patientId, recordDate: new Date().toDateString()});
+    // create new record if no today's record
     if (!result) {
       const newRecord = new Record({
         patientId: patientId,
@@ -48,7 +52,7 @@ async function initRecord(patientId) {
 
       // save data to database
       const record = await newRecord.save();
-
+      // added to linked patient's collection
       await Patient.findOneAndUpdate(
         {_id: patientId},
         {$push: {records: record}},
@@ -67,17 +71,19 @@ const getAllPatients = (req, res) => {
 };
 
 
-// render the data from DataBase
+// render the record data from DataBase
 const renderRecordData = async (req, res) => {
   try {
-    const patientId = await initPatient();
+    // generalise patient 
+    const patientId = await searchAndCreatePatient();
+    // find today's record by using today's date
     const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString()})
       .populate({
         path: "patientId",
         options: { lean: true },
       })
       .lean();
-
+    // parse the data records for handlebars to display in format
     res.render("record_health_data(patient).hbs", { record: record });
   } catch (err) {
     res.status(400);
@@ -87,13 +93,13 @@ const renderRecordData = async (req, res) => {
 
 
 // update record to database
-const updateRecord = async (req, res) => {
-  console.log("-- req form to update record -- ", req.body);
+const updateRecordData = async (req, res) => {
   try {
-    const patientId = await initPatient();
+    // find the today's data with target patient 
+    const patientId = await searchAndCreatePatient();
     const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString() });
     const key = req.body.key;
-  
+    // update input data accordingly 
     record.data[key].value = req.body.value;
     record.data[key].comment = req.body.comment;
     record.data[key].status = "recorded";
@@ -104,7 +110,7 @@ const updateRecord = async (req, res) => {
     day: 'numeric', hour: '2-digit', minute:'2-digit'}).replace(/\//g, "-");
     
     await record.save();
-    
+    // refresh page
     res.redirect("/home/record_health_data");
   } catch (err) {
     console.log("error happens in update record: ", err);
@@ -114,7 +120,7 @@ const updateRecord = async (req, res) => {
 //show patient dashboard
 const renderPatientDashboard = async (req, res) => {
   try{
-    const patientId = await initPatient();
+    const patientId = await searchAndCreatePatient();
     const patient = await Patient.findOne({_id:patientId}).lean();
 
     res.render("patient_dashboard.hbs", {patient: patient});
@@ -126,10 +132,11 @@ const renderPatientDashboard = async (req, res) => {
 //find patient by input of email
 async function findAllPatient(email) {
   try{
-   
+    // find all patient with the same target clinician
     const patient = await Patient.find({clinician: email});
+    // no patient then initalise patient pat
     if (patient.length == 0) {
-      const newPatient = await initPatient();
+      const newPatient = await searchAndCreatePatient();
 
       // find patient in the database
       const allPatient = await Patient.find({clinician: email});
@@ -147,7 +154,9 @@ async function findAllPatient(email) {
 // initial Clinician database
 const initClinician = async (req, res) => {
   try{
+    // generalise our target clinician 
     const result = await Clinician.find();
+    // if no clinician found then initalise our target clinician chris
     if (result.length == 0) {
       const newClinician = new Clinician({
         firstName: "Chris",
@@ -160,8 +169,7 @@ const initClinician = async (req, res) => {
 
       // save new Clincian Chris to database
       const clinician = await newClinician.save();
-      console.log("----checking clinican saved", clinician);
-
+      // add patients to clinican's collection
       const allPatient = await findAllPatient(clinician.email);
 
       await Clinician.findOneAndUpdate(
@@ -169,7 +177,6 @@ const initClinician = async (req, res) => {
         {$push: {patient: {$each: allPatient}}},
         
       );
-      console.log("-- patietn in chris dashboard is: ", clinician.patient);
 
       return clinician.id;
     } else {
@@ -185,20 +192,18 @@ const initClinician = async (req, res) => {
 
 const renderClinicianDashboard = async (req, res) => {
   try{
+    // generalise clinician
     const clincianId = await initClinician();
-    
+    // find target clinician and prepare all linked paitent record
     const clinician = await Clinician.findOne({_id:clincianId}).populate({
       path: "patient",
       populate: {path:"records"},
       options: { lean: true } 
     }).lean();
  
-    console.log(clinician);
-    /* const patient1 = await Patient.findOne({screenName:"Pat"});
-    console.log(patient1); */
+    // parsse to handlebars for display patient records 
     const patient = clinician.patient;
 
-    console.log("-- record info when display -- ",patient);
     res.render("Dashboard_clinician.hbs", {patient: patient});
 
   }catch(err) {
@@ -212,7 +217,7 @@ const renderClinicianDashboard = async (req, res) => {
 module.exports = {
   getAllPatients,
   renderRecordData,
-  updateRecord,
+  updateRecordData,
   renderPatientDashboard,
   renderClinicianDashboard,
 };

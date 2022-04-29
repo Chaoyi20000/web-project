@@ -7,7 +7,7 @@ Router.get("/", controller.getAllPatients);
 //patient part
 Router.get("/patient_dashboard", controller.renderPatientDashboard);
 Router.get("/record_health_data", controller.renderRecordData);
-Router.post("/record_health_data", controller.updateRecord);
+Router.post("/record_health_data", controller.updateRecordData);
 
 //clinican part
 Router.get("/clinician_dashboard", controller.renderClinicianDashboard);
