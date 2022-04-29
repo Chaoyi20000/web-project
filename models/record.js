@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+// Store datatype to schema
 const recordSchema = new mongoose.Schema({ 
 
 

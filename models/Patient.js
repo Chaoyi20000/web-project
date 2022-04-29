@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+// Store datatype to schema
 const patientSchema = new mongoose.Schema({ 
 
     firstName:{type: String,required: true, lowercase: true, trim: true}, 
