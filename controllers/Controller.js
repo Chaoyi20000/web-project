@@ -257,12 +257,13 @@ const addNewPatient = async(req, res)=>{
 const renderCommentHistory = async(req, res)=>{
   try{
     const patientId = req.params.id;
-    const patient = await Patient.findOne({_id:patientId, })
+    const patient = await Patient.findOne({_id:patientId })
     .populate({
       path: "records",
       options: { lean: true },
     })
     .lean();
+
     res.render("clinician-comment.hbs", {patient:patient});
     
   }catch(err){
