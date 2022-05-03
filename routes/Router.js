@@ -12,5 +12,10 @@ Router.post("/record_health_data", controller.updateRecordData);
 //clinican part
 Router.get("/clinician_dashboard", controller.renderClinicianDashboard);
 
+Router.get("/all_comment/:id", controller.renderCommentHistory);
+
+Router.get("/register", controller.registerPatient);
+Router.post("/register", controller.addNewPatient);
+
 
 module.exports = Router;
