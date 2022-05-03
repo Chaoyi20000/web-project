@@ -5,11 +5,15 @@
     <h2 id="Title-comments">New comments:</h2>
      
     {{#each patient}}
+
     <div class="Patient">
-        <a  class="Avatar login_start_box" style="background-color: #E9F3FF;">
+        
+        <a href="/home/all_comment/{{this._id}}" class= "Avatar login_start_box" style="background-color: #E9F3FF;">
             <img class="Avatar_img" src="../public/image/avatar/images.jpg" alt="user avatar">
-            <p class="main_text">{{this.firstName}} {{this.lastName}}</p>
+           
+            <input  class="main_text" value ="{{this.firstName}} {{this.lastName}}"></input>
         </a> 
+        
 
         {{#each this.records}}
         
@@ -43,10 +47,12 @@
 
                   
                 <div class="New-comments">
+                    
                     {{#each this.data}}
                         {{#ifRecorded this.status}} 
-                        <a href=""><p>{{this.comment}}</p></a>
-                         {{/ifRecorded}}
+                        
+                        <a href ="/all_comment/{{this.id}}"><p>{{this.comment}}</p></a>
+                        {{/ifRecorded}}
                     {{/each}}
                 </div>
                     
@@ -55,6 +61,6 @@
     </div>
 
     {{/each}}
-
+    <a href="/home/register"> regitser</p>
 </div>
     

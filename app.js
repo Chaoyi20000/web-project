@@ -45,6 +45,7 @@ app.get("/login_page", (req, res) => {
   res.sendFile(__dirname + "/static/login_start.html")
 });
 
+
 // middleware
 const router = require("./routes/Router.js");
 app.use("/home", router);

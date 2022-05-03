@@ -1,32 +1,65 @@
 <link rel="stylesheet" href="../public/style/clinician-comment.css">
 
+
 <div class = "clinician-comment-wrapper">
 
     <aside id = "user-img">
-        <img src="public/image/avatar/images.jpg" alt="user image">
-        <figcaption>Alice Cambell</figcaption>
+        <img src="../public/image/avatar/images.jpg" alt="user image">
+        <figcaption>{{patient.firstName}} {{patient.lastName}}</figcaption>
     </aside>
 
     <aside id = "user-info">
+       
         <ul>
-            <li>weight (in kg)  : </li>
-            <li>exercise (step count) : 0</li>
-            <li>doses of insulin taken : 1</li>
+            {{#each patient.records}}
+                {{#ifRecent this.recordDate}}
+                    {{#each this.data}}
+                        {{#ifRecorded this.status}}
+                            {{#ifAbnormal this.valueMin this.valueMax this.value}}
+                                <li style="background-color: #ffbaa9;">{{this.fullName}}: {{this.value}}</li>
+                            {{else}}
+                                <li >{{this.fullName}}: {{this.value}}</li>
+
+                            {{/ifAbnormal}}
+                        {{/ifRecorded}}
+
+                        {{#ifUnrecorded this.status}}
+                            <li style="background-color: #F0F0F0;">{{this.fullName}}: </li>
+
+                        {{/ifUnrecorded}}
+                    {{/each}}
+                {{/ifRecent}}
+                
+            {{/each}}
         </ul>
 
     </aside>
     <div class="comment-section">
+
         <h3>All Comments:</h3>
         <ul>
-            <li>“I tested my blood pressure.” time data</li>
-            <li>“I went for a walk today!”time data</li>
-            <li>“I feel better now.”time data</li>
-
-            <li>“I have blurry visions these days.”time data</li>
-            <li>...............................time data</li>              
-            <li>...............................time data</li>
-            <li>...............................time data</li>
-            <li>...............................time data</li>
+            {{#each patient.records}}
+                {{#ifRecent this.recordDate}}
+                    {{#each this.data}}
+                        {{#ifRecorded this.status}}
+                            <li>{{this.comment}} Time: {{this.createdAt}}</li>
+                        {{/ifRecorded}}
+                    {{/each}}
+                {{/ifRecent}}
+            {{/each}}
+            
+            <li>...............................comment history...............................</li> 
+            {{#each patient.records}}  
+                {{#ifRecent this.recordDate}} 
+                {{else}}
+                    {{#each this.data}}   
+                        {{#ifRecorded this.status}}       
+                            <li>{{this.comment}} Time: {{this.createdAt}}</li>
+                        {{/ifRecorded}}
+                    {{/each}}
+                {{/ifRecent}}
+            {{/each}}
+            
             
         </ul>
     </div>

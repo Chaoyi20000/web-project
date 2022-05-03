@@ -11,12 +11,8 @@ const clinicanSchema = new mongoose.Schema({
     password:{type:String, required:true},	
     yearOfBirth:{type: Number, required: true, min: 1900, max: 2022},
     patient: [{type:mongoose.Schema.Types.ObjectId, ref: "Patient"}], 
-    clinicalNote:[{
-        noteId: {type:mongoose.Schema.Types.ObjectId, ref: "ClinicalNote"}
-    }],
-    suportMessage: [{
-        messageId: {type:mongoose.Schema.Types.ObjectId, ref:"SupportMessage"}
-    }],
+    clinicalNote:[{type:mongoose.Schema.Types.ObjectId, ref: "ClinicalNote"}],
+    suportMessage: [{type:mongoose.Schema.Types.ObjectId, ref:"SupportMessage"}],
     
 },
     {timestamps:{createdAt: "createTime",updatedAt:"updateTime"}

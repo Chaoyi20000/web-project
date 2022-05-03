@@ -143,6 +143,10 @@ async function findAllPatient(email) {
 
       return allPatient;
     }else {
+      //create record template for today's recor
+      for(let i=0; i<patient.length; i++){
+        await searchAndCreateRecord(patient[i].id);
+      }
       return patient;
     }
   }catch(err) {
@@ -182,6 +186,7 @@ const initClinician = async (req, res) => {
     } else {
       // find our target Clinician Chris
       const clinician = await Clinician.findOne({ firstName: "Chris" });
+      const allPatient = await findAllPatient(clinician.email);
       return clinician.id;
     }
 
@@ -214,10 +219,64 @@ const renderClinicianDashboard = async (req, res) => {
 };
 
 
+const registerPatient = async(req, res)=>{
+  try{
+    res.render("register_detail.hbs");
+
+  }catch(err){
+    console.log("error happens in render registering patient: ", err);
+  }
+}
+
+const addNewPatient = async(req, res)=>{
+  try{
+    const newPatient = new Patient({
+      firstName: req.body.fname,
+      lastName: req.body.lname,
+      screenName: req.body.scrname,
+      email: req.body.email,
+      password: req.body.pwd,
+      yearOfBirth: req.body.birthyear,
+      textBio: req.body.biotext,
+      clinician: req.body.clinician,
+    });
+
+    const patient = await newPatient.save()
+    await Clinician.findOneAndUpdate(
+      {email: patient.clinician},
+      {$push: {patient: patient.id}},
+    );
+    await searchAndCreateRecord(patient.id)
+    res.redirect("/home/clinician_dashboard");
+
+  }catch(err){
+    console.log("error happens in register patient: ", err);
+  }
+};
+
+const renderCommentHistory = async(req, res)=>{
+  try{
+    const patientId = req.params.id;
+    const patient = await Patient.findOne({_id:patientId, })
+    .populate({
+      path: "records",
+      options: { lean: true },
+    })
+    .lean();
+    res.render("clinician-comment.hbs", {patient:patient});
+    
+  }catch(err){
+    console.log("error happens in render record history: ", err);
+  }
+};
+
 module.exports = {
   getAllPatients,
   renderRecordData,
   updateRecordData,
   renderPatientDashboard,
   renderClinicianDashboard,
+  registerPatient,
+  addNewPatient,
+  renderCommentHistory,
 };
