@@ -7,12 +7,14 @@ const port = process.env.PORT || 3003;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 require('./models');
+
 
 // authentication and passport set up
 const passport = require('passport');
-const flash = require("express-flash");
-const session = require("express-session");
+const flash = require('express-flash')  // for showing login error messages
+const session = require('express-session')  // for managing user sessions
 require('./passport.js')(passport);
 
 app.use(flash());

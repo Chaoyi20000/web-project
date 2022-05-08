@@ -6,9 +6,10 @@ const Controller = require("./Controller.js");
 
 const SALT_FACTOR = 10;
 
+// logout part in patient_dashboard
 const logout = (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect("/login_page");
   };
   
   const renderLoginPatient = (req, res) => {
@@ -64,25 +65,25 @@ const logout = (req, res) => {
       const patient = await Patient.findOne({_id: req.user._id});
 
       if (!(await bcrypt.compare(req.body.old, patient.password))) {
-        return res.render("patient_dashboard.hbs", {
+        return res.render("changeNewPassword.hbs", {
           message: "Wrong password! please try again",
         });
       }
       
       if (!(req.body.new == req.body.confirm)) {
-        return res.render("patient_dashboard.hbs", {
+        return res.render("changeNewPassword.hbs", {
           message: "New password is different to new confirm password, try again",
         });
       }
 
       if (req.body.old == req.body.new) {
-        return res.render("patient_dashboard.hbs", {
+        return res.render("changeNewPassword.hbs", {
           message: "New password can not be the same as old password!",
         });
       }
       patient.password = await bcrypt.hash(req.body.confirm, SALT_FACTOR);
       await patient.save();
-      res.render("patient_dashboard.hbs", {
+      res.render("changeNewPassword.hbs", {
         message: "Password update Successful!" });
 
     } catch (err) {
@@ -90,6 +91,11 @@ const logout = (req, res) => {
       res.send("error occurs in update password");
     }
   };
+
+  const rendernewPassword = (req, res) => {
+    res.render("changeNewPassword.hbs");
+  };
+  
 
 
   module.exports = {
@@ -99,4 +105,5 @@ const logout = (req, res) => {
     addNewPatient,
     registerPatient, 
     changePassword,
+    rendernewPassword,
   }

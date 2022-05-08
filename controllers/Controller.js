@@ -19,7 +19,7 @@ async function searchAndCreatePatient(patientId) {
         password: await bcrypt.hash("12345678", SALT_FACTOR), 
         yearOfBirth: "1997",
         textBio: "i'm Pat",
-        supportMessage: "hello",
+        supportfeedback: "hello",
         clinician:  "chris@gmail.com",
       });
 
@@ -263,6 +263,8 @@ const renderClinicianDashboard = async (req, res) => {
 
 
 
+
+
 module.exports = {
   renderRecordData,
   updateRecordData,
@@ -270,6 +272,5 @@ module.exports = {
   searchAndCreateRecord,
   renderPatientDashboard,
   renderClinicianDashboard,
-
   
 };

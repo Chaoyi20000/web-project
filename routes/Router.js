@@ -15,6 +15,8 @@ const Router = express.Router();
 Router.get("/patient_dashboard", loginChecker.loggedIn, controller.renderPatientDashboard);
 Router.get("/record_health_data", loginChecker.loggedIn,controller.renderRecordData);
 Router.post("/record_health_data", loginChecker.loggedIn, controller.updateRecordData);
+Router.get("/changePassword", loginChecker.loggedIn, loginController.rendernewPassword);
+Router.post("/changePassword", loginChecker.loggedIn, loginController.changePassword);
 
 //clinican part
 Router.get("/clinician_dashboard", loginChecker.loggedIn, controller.renderClinicianDashboard);
