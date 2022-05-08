@@ -9,6 +9,29 @@ app.use(express.urlencoded({ extended: true }));
 
 require('./models');
 
+// authentication and passport set up
+const passport = require('passport');
+const flash = require("express-flash");
+const session = require("express-session");
+require('./passport.js')(passport);
+
+app.use(flash());
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'keyboard cat',
+    name: 'info3005-project',
+    resave: false,
+    proxy: process.env.NODE_ENV === 'production',
+    saveUninitialized: false,
+    cookie: {
+      sameSite: 'strict',
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 3000000
+    },
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 
 // configure Handlebars 
@@ -48,6 +71,7 @@ app.get("/login_page", (req, res) => {
 
 // middleware
 const router = require("./routes/Router.js");
+const { env } = require("process");
 app.use("/home", router);
 
 

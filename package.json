@@ -18,9 +18,14 @@
   },
   "homepage": "https://github.com/Chaoyi20000/web-project#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.0",
+    "express-flash": "^0.0.2",
     "express-handlebars": "^6.0.5",
-    "mongoose": "^6.3.1"
+    "express-session": "^1.17.2",
+    "mongoose": "^6.3.1",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.0"

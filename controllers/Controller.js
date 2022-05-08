@@ -1,9 +1,11 @@
 const Record = require("../models/record.js");
 const Patient = require("../models/Patient.js");
 const Clinician = require("../models/clincian.js");
+const bcrypt = require("bcryptjs");
 
+const SALT_FACTOR = 10;
 
-async function searchAndCreatePatient() {
+async function searchAndCreatePatient(patientId) {
   try {
     // find all document in Patient Collection to findout if it is empty
     const result = await Patient.find();
@@ -14,7 +16,7 @@ async function searchAndCreatePatient() {
         lastName: "Walter",
         screenName: "Pat",
         email: "pat@gmail.com",
-        password: "111111",
+        password: await bcrypt.hash("12345678", SALT_FACTOR), 
         yearOfBirth: "1997",
         textBio: "i'm Pat",
         supportMessage: "hello",
@@ -26,13 +28,13 @@ async function searchAndCreatePatient() {
       searchAndCreateRecord(patient.id);
 
       return patient.id;
-    } else {
+    } /* else {
       // find our target patient Pat
-      const patient = await Patient.findOne({ firstName: "Pat" });
+      //const patient = await Patient.findOne({ firstName: "Pat" });
       //link records to target patient 
-      searchAndCreateRecord(patient.id);
+      searchAndCreateRecord(patientId);
       return patient.id;
-    }
+    } */
   } catch (err) {
     console.log("error happens in patient initialisation: ", err);
   }
@@ -65,26 +67,35 @@ async function searchAndCreateRecord(patientId) {
   }
 }
 
-// function to get all patients
-const getAllPatients = (req, res) => {
-  res.render();
-};
-
 
 // render the record data from DataBase
 const renderRecordData = async (req, res) => {
   try {
-    // generalise patient 
-    const patientId = await searchAndCreatePatient();
-    // find today's record by using today's date
-    const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString()})
+    if (req.user) {
+      const patientId = req.user.id;
+      await searchAndCreateRecord(patientId);
+      const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString()})
       .populate({
         path: "patientId",
         options: { lean: true },
       })
       .lean();
-    // parse the data records for handlebars to display in format
-    res.render("record_health_data(patient).hbs", { record: record });
+      // parse the data records for handlebars to display in format
+      res.render("record_health_data(patient).hbs", { record: record });
+    } else {
+        // generalise patient 
+        const patientId = await searchAndCreatePatient();
+        // find today's record by using today's date
+        const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString()})
+          .populate({
+            path: "patientId",
+            options: { lean: true },
+          })
+          .lean();
+        // parse the data records for handlebars to display in format
+        res.render("record_health_data(patient).hbs", { record: record });
+    }
+    
   } catch (err) {
     res.status(400);
     res.send("error happens when render record data");
@@ -120,10 +131,18 @@ const updateRecordData = async (req, res) => {
 //show patient dashboard
 const renderPatientDashboard = async (req, res) => {
   try{
-    const patientId = await searchAndCreatePatient();
-    const patient = await Patient.findOne({_id:patientId}).lean();
+    if (req.user) {
+      const patientId = req.user.id;
+      searchAndCreateRecord(patientId);
+      const patient = await Patient.findOne({_id:patientId}).lean();
+      res.render("patient_dashboard.hbs", {patient: patient});
+    } else {
+      const patientId = await searchAndCreatePatient();
+      const patient = await Patient.findOne({_id:patientId}).lean();
 
-    res.render("patient_dashboard.hbs", {patient: patient});
+      res.render("patient_dashboard.hbs", {patient: patient});
+    }
+   
   } catch(err) {
     console.log("error happens in patient dashboard: ", err);
   }
@@ -166,15 +185,25 @@ const initClinician = async (req, res) => {
         firstName: "Chris",
         lastName: "Evans",
         email: "chris@gmail.com",
-        password: "12345678",
+        password: await bcrypt.hash("12345678", SALT_FACTOR), 
         yearOfBirth: "1987",
+      });
+
+      const secondClinician = new Clinician({
+        firstName: "Sam",
+        lastName: "Mills",
+        email: "sam@gmail.com",
+        password: await bcrypt.hash("12345678", SALT_FACTOR), 
+        yearOfBirth: "1977",
       });
 
 
       // save new Clincian Chris to database
       const clinician = await newClinician.save();
+      const second = await secondClinician.save();
       // add patients to clinican's collection
       const allPatient = await findAllPatient(clinician.email);
+      const secAllPatient = await findAllPatient(second.email);
 
       await Clinician.findOneAndUpdate(
         {_id: clinician.id}, 
@@ -182,14 +211,22 @@ const initClinician = async (req, res) => {
         
       );
 
+      await Clinician.findOneAndUpdate(
+        {_id: second.id},
+        {$push: {patient: {$each: secAllPatient}}},
+      )
+
       return clinician.id;
-    } else {
+    } /* else {
       // find our target Clinician Chris
-      const clinician = await Clinician.findOne({ firstName: "Chris" });
-      const allPatient = await findAllPatient(clinician.email);
+      //const clinician = await Clinician.findOne({ firstName: "Chris" });
+      const clinicianId = req.user.email;
+      const clinician = await Clinician.findOne({email:clinicianId});
+
+      await findAllPatient(clinician.email);
       return clinician.id;
     }
-
+ */
   } catch(err) {
     console.log("error happens in initalise clinician: ", err);
   }
@@ -197,19 +234,35 @@ const initClinician = async (req, res) => {
 
 const renderClinicianDashboard = async (req, res) => {
   try{
-    // generalise clinician
-    const clincianId = await initClinician();
-    // find target clinician and prepare all linked paitent record
-    const clinician = await Clinician.findOne({_id:clincianId}).populate({
-      path: "patient",
-      populate: {path:"records"},
-      options: { lean: true } 
-    }).lean();
- 
-    // parsse to handlebars for display patient records 
-    const patient = clinician.patient;
+    if (req.user){
+      const cEmail = req.user.email;
+      await findAllPatient(cEmail);
+      // find target clinician and prepare all linked paitent record
+      const clinician = await Clinician.findOne({_id:req.user.id}).populate({
+        path: "patient",
+        populate: {path:"records"},
+        options: { lean: true } 
+      }).lean();
+       // parsse to handlebars for display patient records 
+      const patient = clinician.patient;
 
-    res.render("Dashboard_clinician.hbs", {patient: patient});
+      res.render("Dashboard_clinician.hbs", {patient: patient});
+
+    } else {
+      // generalise clinician
+      const clincianId = await initClinician();
+      // find target clinician and prepare all linked paitent record
+      const clinician = await Clinician.findOne({_id:clincianId}).populate({
+        path: "patient",
+        populate: {path:"records"},
+        options: { lean: true } 
+      }).lean();
+  
+      // parsse to handlebars for display patient records 
+      const patient = clinician.patient;
+
+      res.render("Dashboard_clinician.hbs", {patient: patient});
+      }
 
   }catch(err) {
     console.log("error happens in showing clinican dashboard: ", err);
@@ -230,25 +283,27 @@ const registerPatient = async(req, res)=>{
 
 const addNewPatient = async(req, res)=>{
   try{
-    const newPatient = new Patient({
-      firstName: req.body.fname,
-      lastName: req.body.lname,
-      screenName: req.body.scrname,
-      email: req.body.email,
-      password: req.body.pwd,
-      yearOfBirth: req.body.birthyear,
-      textBio: req.body.biotext,
-      clinician: req.body.clinician,
-    });
-
-    const patient = await newPatient.save()
-    await Clinician.findOneAndUpdate(
-      {email: patient.clinician},
-      {$push: {patient: patient.id}},
-    );
-    await searchAndCreateRecord(patient.id)
-    res.redirect("/home/clinician_dashboard");
-
+    if (req.body.pwd == req.body.confirm) {
+      const newPatient = new Patient({
+        firstName: req.body.fname,
+        lastName: req.body.lname,
+        screenName: req.body.scrname,
+        email: req.body.email,
+        password: await bcrypt.hash(req.body.confirm, SALT_FACTOR), 
+        yearOfBirth: req.body.birthyear,
+        textBio: req.body.biotext,
+        clinician: req.body.clinician,
+      });
+  
+      const patient = await newPatient.save()
+      await Clinician.findOneAndUpdate(
+        {email: patient.clinician},
+        {$push: {patient: patient.id}},
+      );
+      await searchAndCreateRecord(patient.id)
+      res.redirect("/home/clinician_dashboard");
+    }
+    
   }catch(err){
     console.log("error happens in register patient: ", err);
   }
@@ -271,13 +326,19 @@ const renderCommentHistory = async(req, res)=>{
   }
 };
 
+
+
 module.exports = {
-  getAllPatients,
   renderRecordData,
   updateRecordData,
+  initClinician,
+  searchAndCreatePatient,
   renderPatientDashboard,
   renderClinicianDashboard,
+
   registerPatient,
   addNewPatient,
   renderCommentHistory,
+
+  
 };

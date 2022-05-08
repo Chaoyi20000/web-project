@@ -14,6 +14,13 @@ const patientSchema = new mongoose.Schema({
     records:[{type:mongoose.Schema.Types.ObjectId, ref: "Record", required: true}],
     eRate:{type:Number,min:0,max:1},
     clinician: {type:String, required: true},
+    role: { type: String, default: "patient" },
+    requireData: {
+        bgl: { type: Boolean, required: true, default: true},
+        doit: { type: Boolean, required: true, default: true},
+        exercise: { type: Boolean, required: true, default: true},  
+        weight: { type: Boolean, required: true, default: true},
+    },
 },
     {timestamps:{createdAt: "createTime",updatedAt:"updateTime"}
 });

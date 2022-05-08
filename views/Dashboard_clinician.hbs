@@ -1,9 +1,13 @@
 <link rel="stylesheet" href="../public/style/Dashboard_clinician.css">
 
+<form method="POST" action="/home/logout">
+<button>Logout</button>
+</form>
 <div>
     <h2 id="Title">Clinician Dashboard</h2>
     <h2 id="Title-comments">New comments:</h2>
-     
+    
+        
     {{#each patient}}
 
     <div class="Patient">
@@ -61,6 +65,6 @@
     </div>
 
     {{/each}}
-    <a href="/home/register"> regitser</p>
+    <a href="/home/register"> regitser</a>
 </div>
     

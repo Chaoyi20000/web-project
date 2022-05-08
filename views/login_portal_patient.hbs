@@ -1,22 +1,32 @@
 <link rel="stylesheet" href="../public/style/login.css">
 
+<form action="/home/login_patient" method="POST">
 <div class="login_portal">
     <div class="login_start_element main_text" id="login">
         Patient Portal
     </div>
     
-    <form action="/home/login_patient" method="POST">
-        <div id="details">
-            <ul id = "list_vert">
+        <div class = "main_text" id="details">
+            <ul id ="list_vert">
                 <li >
-                    <input class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left: 3%; " name = "user_id" value="{{user_id}}" type ='text'>userid: </input> </li>
+                    <label for="username">userid:</label>
+                 </li>
                 <li>
-                    <input class= "login_start_element login_start_box" style="text-align: left; border-radius: 45px; padding-left:3%; " name="password">password: </input> </li>
+                     <input class= "login_start_element login_start_box " 
+                     name = "username" required> </input>
+                </li>
+                <li>
+                    <label for="password">password:</label>
+                </li>
+                <li>
+                    <input class= "login_start_element login_start_box" 
+                    type = "password" name="password" required> </input>
 
+                </li>
             </ul>
         </div>
 
-        <div id="authentication">
+        {{!-- <div id="authentication">
             <ul id="list_horiz" >
                 <li> 
                     <p class= "login_start_element login_start_box main_text" style="background-color: #F5E8E5; ">
@@ -28,33 +38,25 @@
                 </p> </li>
                 
             </ul>
+        </div> --}}
+        {{#if reminder }}
+        <div id="others">
+            <div class= "login_start_element" >
+                   {{reminder}}
+            </div>
         </div>
+        {{/if}}
     
-        <div id="submit">
-            <p class= "login_start_element login_start_box main_text">
-                <button type="sumbit">login</button>
-            </p>
+        <div class = "main_text" id="submit">
+            
+            <button type="sumbit">login</button>
+            
         </div>
-    </form>
-
-    <div id="others">
-        <ul id="list_horiz">
-            <li >
-                <div class= "login_start_element main_text" style="display:flex;">
-                    Remember me
-                    <div class="circle" >
-                        <a href="#"> </a>
-                    </div>
-                </div>
-            </li>
-            <li class= "login_start_element main_text" >
-                Forgot password?
-            </li>
-        </ul>
-    </div>
+   
 
     <div class="login_start_element" id="other_portal">
-        <a href="/clinician portal" style="color:#505050">not a patient? go to CLINICIAN PORTAl</a>
+        <a href="/home/login_clinician" style="color:#505050">not a patient? go to CLINICIAN PORTAl</a>
     </div>
 
 </div>
+</form>
