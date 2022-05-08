@@ -111,23 +111,38 @@ const addSuppMsgAndCliNote = async(req, res) => {
         }
         //only support message exist
         else if (message){
+            // finds most recent exsiting clinical notes 
+            const allNotes = await ClinicalNote.find({patientId: patientId}).sort({createdAt:-1}).lean();
+            const notes = allNotes[0];
             // add to database 
-
             const newMessageId = await addSupportMessage(message, patient, clinician);
 
             const newMessage = await SupportMessage.findById(newMessageId).lean();
-            return res.render("patient_details(clinican).hbs", {patient:patientDoc, message:newMessage, record: record});
+            if (notes) {
+                return res.render("patient_details(clinican).hbs", {patient:patientDoc, message:newMessage, notes: notes,record: record});
 
+            } else {
+                return res.render("patient_details(clinican).hbs", {patient:patientDoc, message:newMessage, record: record});
+
+            }
          
         } 
         //only clinical notes exist
         else if (note) {
+            // find most recent exisiting support message 
+            const allMsg = await SupportMessage.find({patientId: patientId}).sort({createdAt:-1}).lean();
+            const msg = allMsg[0];
             // add to database 
 
             const newNoteId = await addClinicalNote(note, patient, clinician);
+            const newNote = await ClinicalNote.findById(newNoteId).lean();  
+            if (msg){
+                return res.render("patient_details(clinican).hbs", {patient:patientDoc, message:msg, notes: newNote,record: record});
 
-            const newNote = await ClinicalNote.findById(newNoteId).lean();        
-            return res.render("patient_details(clinican).hbs", {patient:patientDoc, notes: newNote, record: record});
+            } else{
+                return res.render("patient_details(clinican).hbs", {patient:patientDoc, notes: newNote, record: record});
+
+            }
 
         }        
 
