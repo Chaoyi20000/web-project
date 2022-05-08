@@ -7,13 +7,13 @@
 
     <div class="login_start_element"id="health_history">
         <h4>
-            <a href="#">Patient health history</a>
+            <a href="/home/health_history/{{patient.id}}">Patient health history</a>
         </h4>
     </div>
 
     <div class= "login_start_element"id="note_history">
         <h4>
-            <a href="#">Clinical note history</a>
+            <a href="/home/note_history/{{patient.id}}">Clinical note history</a>
         </h4>
 
     </div>
@@ -21,21 +21,41 @@
     <div class = "login_start_element" id="notes">
         <table>
             <tr >
-            <th>Patient name:</th>
-            <td class="login_start_box" style="border-radius:45px;">Alice Cambell </td>
+                <th>Patient name:</th>
+                <td class="login_start_box" style="border-radius:45px;">{{patient.firstName}} {{patient.lastName}}</td>
             </tr>
 
             <tr>
-            <th>Clinical Notes:</th>
-            <td class="login_start_box" style="border-radius:45px;">figures looking good</td>
-            <td class="login_start_box" style="border-radius:45px; width:5vw;">  <a href="#" >edit</a></td>
+                <th>LatestClinical Notes:</th>
+                <td class="login_start_box" style="border-radius:45px;">{{notes.note}}</td>
+            
             </tr>
 
             <tr>
-            <th>Support message:</th>
-            <td class="login_start_box" style="border-radius:45px;">You are doing so good Alice!</td>
-            <td class="login_start_box" style="border-radius:45px; width: 5vw;"> <input type="submit" value="submit">edit</input></td>
+                <th>Latest Support message:</th>
+                <td class="login_start_box" style="border-radius:45px;">{{message.message}}</td>
             </tr>
+
+            <form action="/home/patient_details/{{patient.id}}" method="POST">
+            <tr>
+                <th>Add clinical notes:</th>
+                <input type ="hidden" name="id" value="{{patient.id}}">
+                <td class="login_start_box" style="border-radius:45px;"><input name="note"></td>
+                <td class="login_start_box" style="border-radius:45px; width:5vw;">  <button type="submit">save</button></td>
+            </tr>
+            </form>
+
+            <form action="/home/patient_details/{{patient.id}}" method="POST">
+
+            <tr>
+                <th>Update support message:</th>
+                <input type ="hidden" name="id" value="{{patient.id}}">
+                <td class="login_start_box" style="border-radius:45px;"><input name="supportMsg"></td>
+                <td class="login_start_box" style="border-radius:45px; width:5vw;">  <button type="submit">save</button></td>
+            </tr>
+            </form>
+
+
 
         </table>
     </div>
@@ -53,40 +73,39 @@
             </thead>
             
             <tbody>
+                {{#each record.data}}
                 
                 <tr>
-                    <td class="login_start_box" id = "dangerous" >weights (in kg): </td>
-                    <td class="login_start_box" style="border-radius:45px;">45</td>
-                    
-                    <td class="login_start_box" style="border-radius:45px;">60</td>
-                    <td class="login_start_box" style="border-radius:45px;">75</td>
-                    
-                </tr>
+                    {{#ifRecorded this.status}}
+                        {{#ifAbnormal this.valueMin this.valueMax this.value}}
+                            <td class="login_start_box" id = "dangerous" >{{this.fullName}}: </td>
+                            <td class="login_start_box" style="border-radius:45px;">{{this.value}}</td>
             
-                <tr>
-                    <td class="login_start_box safe" id ="safe"  >doses of insulin taken (number of doses) : </td>
-                    <td class="login_start_box" style="border-radius:45px;">1</td>
-                    
-                    <td class="login_start_box" style="border-radius:45px;">1</td>
-                    <td class="login_start_box" style="border-radius:45px;">3</td>
-                    
-                </tr>
+                        {{else}}
+                            <td class="login_start_box safe" id ="safe" >{{this.fullName}}: </td>
+                            <td class="login_start_box" style="border-radius:45px;">{{this.value}}</td>
+                        {{/ifAbnormal}}
+                            
+                        
+                    {{/ifRecorded}}
 
-                <tr>
-                    <td class="login_start_box safe" id = "safe">exercise (step count):</td>
-                    <td class="login_start_box" style="border-radius:45px;">5000</td>
-                    
-                    <td class="login_start_box" style="border-radius:45px;">4000</td>
-                    <td class="login_start_box" style="border-radius:45px;">6000</td>
-                    
+                    {{#ifUnrecorded this.status}}
+                        <td class="login_start_box" id = "safe" style="background-color:#F0F0F0" >{{this.fullName}}: </td>
+                    {{/ifUnrecorded}}
+                        
+                    <td class="login_start_box" style="border-radius:45px;">{{this.valueMin}}</td>
+                    <td class="login_start_box" style="border-radius:45px;">{{this.valueMax}}</td>
                 </tr>
+                {{/each}}
+            
+                
             </tbody>
 
         </table>
     </div>
 
     <div class="login_start_element login_start_box" id="edit">
-        <button   onclick= "window.location.href = 'edit_patient_record'" name="edit">edit</button>
+        <a  href = '/home/edit_details/{{patient.id}}'>edit</a>
     </div>
 
 </div>

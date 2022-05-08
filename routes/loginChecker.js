@@ -18,7 +18,7 @@ function notLoggedInClin(req, res, next) {
       return next();
     }
     // if not logged in, redirect to login form
-    res.redirect('/login_start');
+    res.redirect('/login_page');
   }
 
   module.exports = {

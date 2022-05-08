@@ -11,6 +11,7 @@ const patientSchema = new mongoose.Schema({
     yearOfBirth:{type: Number, required: true, min: 1900, max: 2022},
     textBio:{type: String, required: true},
     supportMessage:{type:String},
+    
     records:[{type:mongoose.Schema.Types.ObjectId, ref: "Record", required: true}],
     eRate:{type:Number,min:0,max:1},
     clinician: {type:String, required: true},

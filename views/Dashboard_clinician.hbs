@@ -6,7 +6,7 @@
 <div>
     <h2 id="Title">Clinician Dashboard</h2>
     <h2 id="Title-comments">New comments:</h2>
-    
+    <a style = "text-align: right" href="/home/register"> regitser</a>
         
     {{#each patient}}
 
@@ -15,7 +15,7 @@
         <a href="/home/all_comment/{{this._id}}" class= "Avatar login_start_box" style="background-color: #E9F3FF;">
             <img class="Avatar_img" src="../public/image/avatar/images.jpg" alt="user avatar">
            
-            <p  class="main_text">{{this.firstName}} {{this.lastName}}</p>
+            <p class="login_start_element">{{this.firstName}} {{this.lastName}}</p>
         </a> 
         
 
@@ -28,19 +28,19 @@
                         {{#ifRecorded this.status}}
                             {{#ifAbnormal this.valueMin this.valueMax this.value}}
                                 <div class="Data login_start_box" style="background-color: #ffbaa9;">
-                                    <a href=""><p>{{this.fullName}}: {{this.value}}</p></a>
+                                    <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: {{this.value}}</p></a>
                                 </div>
                                 
                                 {{else}}
                                 <div class="Data login_start_box" style="background-color: #DFF1F0;">
-                                    <a href=""><p>{{this.fullName}}: {{this.value}}</p></a>
+                                    <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: {{this.value}}</p></a>
                                 </div>
                             {{/ifAbnormal}}
                         {{/ifRecorded}}
 
                         {{#ifUnrecorded this.status}}
                         <div class="Data login_start_box" style="background-color: #F0F0F0">
-                            <a href=""><p>{{this.fullName}}: </p></a>
+                            <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: </p></a>
                         </div>
                         {{/ifUnrecorded}}
                     {{/each}}
@@ -55,7 +55,7 @@
                     {{#each this.data}}
                         {{#ifRecorded this.status}} 
                         
-                        <a href ="/all_comment/{{this.id}}"><p>{{this.comment}}</p></a>
+                        <a href ="/home/all_comment/{{../patientId}}"><p>{{this.comment}}</p></a>
                         {{/ifRecorded}}
                     {{/each}}
                 </div>
@@ -65,6 +65,6 @@
     </div>
 
     {{/each}}
-    <a href="/home/register"> regitser</a>
+    
 </div>
     

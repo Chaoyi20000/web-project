@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 // Store datatype to schema
 const messageSchema = new mongoose.Schema({ 
     patientId: {type: mongoose.Schema.Types.ObjectId, ref: "Patient", required: true},
-    createdAt: {type: Date},
+    clinicianId: {type: mongoose.Schema.Types.ObjectId, ref: "Clinician", required: true},
+    createdAt: {type: Date, required: true},
     message:{type: String},
 }); 
 

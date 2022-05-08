@@ -28,13 +28,7 @@ async function searchAndCreatePatient(patientId) {
       searchAndCreateRecord(patient.id);
 
       return patient.id;
-    } /* else {
-      // find our target patient Pat
-      //const patient = await Patient.findOne({ firstName: "Pat" });
-      //link records to target patient 
-      searchAndCreateRecord(patientId);
-      return patient.id;
-    } */
+    } 
   } catch (err) {
     console.log("error happens in patient initialisation: ", err);
   }
@@ -106,23 +100,25 @@ const renderRecordData = async (req, res) => {
 // update record to database
 const updateRecordData = async (req, res) => {
   try {
-    // find the today's data with target patient 
-    const patientId = await searchAndCreatePatient();
-    const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString() });
-    const key = req.body.key;
-    // update input data accordingly 
-    record.data[key].value = req.body.value;
-    record.data[key].comment = req.body.comment;
-    record.data[key].status = "recorded";
-    //setting up time in Melbourne time zone
-    
-    record.data[key].createdAt = new Date().toLocaleString("en-US", 
-    {timeZone: "Australia/Melbourne", year: 'numeric', month: 'numeric', 
-    day: 'numeric', hour: '2-digit', minute:'2-digit'}).replace(/\//g, "-");
-    
-    await record.save();
-    // refresh page
-    res.redirect("/home/record_health_data");
+    if (req.user) {
+      const patientId=req.user.id;
+      const record = await Record.findOne({ patientId: patientId, recordDate: new Date().toDateString() });
+      const key = req.body.key;
+       // update input data accordingly 
+      record.data[key].value = req.body.value;
+      record.data[key].comment = req.body.comment;
+      record.data[key].status = "recorded";
+      //setting up time in Melbourne time zone
+      
+      record.data[key].createdAt = new Date().toLocaleString("en-US", 
+      {timeZone: "Australia/Melbourne", year: 'numeric', month: 'numeric', 
+      day: 'numeric', hour: '2-digit', minute:'2-digit'}).replace(/\//g, "-");
+      
+      await record.save();
+      // refresh page
+      res.redirect("/home/record_health_data");
+
+    }
   } catch (err) {
     console.log("error happens in update record: ", err);
   }
@@ -217,16 +213,7 @@ const initClinician = async (req, res) => {
       )
 
       return clinician.id;
-    } /* else {
-      // find our target Clinician Chris
-      //const clinician = await Clinician.findOne({ firstName: "Chris" });
-      const clinicianId = req.user.email;
-      const clinician = await Clinician.findOne({email:clinicianId});
-
-      await findAllPatient(clinician.email);
-      return clinician.id;
-    }
- */
+    } 
   } catch(err) {
     console.log("error happens in initalise clinician: ", err);
   }
@@ -272,59 +259,7 @@ const renderClinicianDashboard = async (req, res) => {
 };
 
 
-const registerPatient = async(req, res)=>{
-  try{
-    res.render("register_detail.hbs");
 
-  }catch(err){
-    console.log("error happens in render registering patient: ", err);
-  }
-}
-
-const addNewPatient = async(req, res)=>{
-  try{
-    if (req.body.pwd == req.body.confirm) {
-      const newPatient = new Patient({
-        firstName: req.body.fname,
-        lastName: req.body.lname,
-        screenName: req.body.scrname,
-        email: req.body.email,
-        password: await bcrypt.hash(req.body.confirm, SALT_FACTOR), 
-        yearOfBirth: req.body.birthyear,
-        textBio: req.body.biotext,
-        clinician: req.body.clinician,
-      });
-  
-      const patient = await newPatient.save()
-      await Clinician.findOneAndUpdate(
-        {email: patient.clinician},
-        {$push: {patient: patient.id}},
-      );
-      await searchAndCreateRecord(patient.id)
-      res.redirect("/home/clinician_dashboard");
-    }
-    
-  }catch(err){
-    console.log("error happens in register patient: ", err);
-  }
-};
-
-const renderCommentHistory = async(req, res)=>{
-  try{
-    const patientId = req.params.id;
-    const patient = await Patient.findOne({_id:patientId })
-    .populate({
-      path: "records",
-      options: { lean: true },
-    })
-    .lean();
-
-    res.render("clinician-comment.hbs", {patient:patient});
-    
-  }catch(err){
-    console.log("error happens in render record history: ", err);
-  }
-};
 
 
 
@@ -332,13 +267,9 @@ module.exports = {
   renderRecordData,
   updateRecordData,
   initClinician,
-  searchAndCreatePatient,
+  searchAndCreateRecord,
   renderPatientDashboard,
   renderClinicianDashboard,
-
-  registerPatient,
-  addNewPatient,
-  renderCommentHistory,
 
   
 };

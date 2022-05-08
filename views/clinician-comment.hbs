@@ -5,7 +5,9 @@
 
     <aside id = "user-img">
         <img src="/public/image/avatar/images.jpg" alt="user image">
-        <figcaption>{{patient.firstName}} {{patient.lastName}}</figcaption>
+        <figcaption>
+            <a href="/home/patient_details">{{patient.firstName}} {{patient.lastName}}</a>
+            </figcaption>
     </aside>
 
     <aside id = "user-info">
@@ -63,14 +65,43 @@
             
         </ul>
     </div>
-    <aside class = "support-message">
-        <form action="">
+    <aside class = "support">
+        <table>
+            <tr>
+                <th>
+                    Patient details:
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/home/patient_details/{{patient._id}}">See patient details</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/home/health_history/{{patient._id}}">Patient health history</a>
+
+                </td>
+
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="/home/note_history/{{patient._id}}">Clinical note history</a>
+                </td>
+            </tr>
+           
+
+
+        </table>
+       
+        {{!-- <form action="">
             <label for="support-mes"></label>
             <textarea name="support-mes" id="support-mes" cols="30" rows="10">
                 Support&nbspMessage:
             </textarea>
             <input type="submit" value="Submit">
-        </form>
+        </form> --}}
     </aside>
         
 </div>
