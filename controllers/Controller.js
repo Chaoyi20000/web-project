@@ -19,7 +19,6 @@ async function searchAndCreatePatient(patientId) {
         password: await bcrypt.hash("12345678", SALT_FACTOR), 
         yearOfBirth: "1997",
         textBio: "i'm Pat",
-        supportfeedback: "hello",
         clinician:  "chris@gmail.com",
       });
 
@@ -45,9 +44,26 @@ async function searchAndCreateRecord(patientId) {
         patientId: patientId,
         recordDate: new Date().toDateString(),
       });
+      //update changes in need of record this data 
+      const required = await Patient.findById(patientId).requireData;
+      if (required["bgl"]==false) {
+        newRecord.data["bgl"].status = "unrequired";
+      }
+      if (required["doit"]==false) {
+        newRecord.data["doit"].status = "unrequired";
+      }
+      if (required["weight"]==false) {
+        newRecord.data["weight"].status = "unrequired";
+      }
+      if (required["exercise"]==false) {
+        newRecord.data["exercise"].status = "unrequired";
+      }
 
+      
+      
       // save data to database
       const record = await newRecord.save();
+      
       // added to linked patient's collection
       await Patient.findOneAndUpdate(
         {_id: patientId},

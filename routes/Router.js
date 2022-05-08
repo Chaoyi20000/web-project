@@ -1,6 +1,6 @@
 const express = require("express");
 const controller = require("../controllers/Controller.js");
-const loginController = require("../controllers/authenController.js");
+const authenController = require("../controllers/authenController.js");
 const passport = require("passport");
 const loginChecker = require("./loginChecker.js");
 const historyController = require("../controllers/historyController.js");
@@ -15,16 +15,18 @@ const Router = express.Router();
 Router.get("/patient_dashboard", loginChecker.loggedIn, controller.renderPatientDashboard);
 Router.get("/record_health_data", loginChecker.loggedIn,controller.renderRecordData);
 Router.post("/record_health_data", loginChecker.loggedIn, controller.updateRecordData);
-Router.get("/changePassword", loginChecker.loggedIn, loginController.rendernewPassword);
-Router.post("/changePassword", loginChecker.loggedIn, loginController.changePassword);
+
+//patient change password 
+Router.get("/changePassword", loginChecker.loggedIn, authenController.rendernewPassword);
+Router.post("/changePassword", loginChecker.loggedIn, authenController.changePassword);
 
 //clinican part
 Router.get("/clinician_dashboard", loginChecker.loggedIn, controller.renderClinicianDashboard);
 
 Router.get("/all_comment/:id", loginChecker.loggedIn, historyController.renderCommentHistory);
 //adding new patient to database
-Router.get("/register", loginChecker.loggedIn, loginController.registerPatient);
-Router.post("/register", loginChecker.loggedIn, loginController.addNewPatient);
+Router.get("/register", loginChecker.loggedIn, authenController.registerPatient);
+Router.post("/register", loginChecker.loggedIn, authenController.addNewPatient);
 
 Router.get("/patient_details/:id", loginChecker.loggedIn, historyController.renderPatientDetail);
 Router.post("/patient_details/:id", loginChecker.loggedIn, historyController.addSuppMsgAndCliNote);
@@ -39,10 +41,9 @@ Router.get("/note_history/:id", loginChecker.loggedIn, )
 
 
 
-
 //login part
-Router.get("/login_patient", loginChecker.notLoggedInPat, loginController.renderLoginPatient);
-Router.get("/login_clinician", loginChecker.notLoggedInClin, loginController.renderLoginClinician);
+Router.get("/login_patient", loginChecker.notLoggedInPat, authenController.renderLoginPatient);
+Router.get("/login_clinician", loginChecker.notLoggedInClin, authenController.renderLoginClinician);
 
 //patient login and verify with database
 Router.post("/login_patient",
@@ -64,6 +65,6 @@ Router.post("/login_clinician",
   })
 );
 //log out 
-Router.post("/logout", loginChecker.loggedIn, loginController.logout);
+Router.post("/logout", loginChecker.loggedIn, authenController.logout);
 
 module.exports = Router;

@@ -6,7 +6,15 @@
     grid-template-rows:  2fr 2fr;
     gap: 3vw;
 }
-
+a:link, a:visited{
+    text-decoration: none;
+    color: #000;
+  }
+  a:hover, a:active{
+    font-size: 120%;  
+    color:#000;
+  }
+  
 #user-img{
     grid-row: 1;
     grid-column: 1/span 2;

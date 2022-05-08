@@ -40,7 +40,7 @@
                         {{#ifUnrecorded this.status}}
                         {{!-- input data if not already in database --}}
                         <td class="login_start_box" style="border-radius:45px;">
-                            <input type="text" name="value" required>
+                            <input type="number" name="value" required>
                         </td>
                         {{else}}
                         <td class="login_start_box" style="border-radius:45px;">{{this.value}}</td>
