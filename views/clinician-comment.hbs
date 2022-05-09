@@ -44,7 +44,7 @@
                 {{#ifRecent this.recordDate}}
                     {{#each this.data}}
                         {{#ifRecorded this.status}}
-                            <li>{{this.comment}} Time: {{this.createdAt}}</li>
+                            <li><a href="/home/patient_details/{{@root.patient._id}}">{{this.comment}}    Time: {{this.createdAt}}</a></li>
                         {{/ifRecorded}}
                     {{/each}}
                 {{/ifRecent}}
@@ -56,7 +56,7 @@
                 {{else}}
                     {{#each this.data}}   
                         {{#ifRecorded this.status}}       
-                            <li>{{this.comment}} Time: {{this.createdAt}}</li>
+                            <li><a href="/home/patient_details/{{@root.patient._id}}">{{this.comment}}    Time: {{this.createdAt}}</a></li>
                         {{/ifRecorded}}
                     {{/each}}
                 {{/ifRecent}}

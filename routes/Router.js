@@ -4,7 +4,6 @@ const authenController = require("../controllers/authenController.js");
 const passport = require("passport");
 const loginChecker = require("./loginChecker.js");
 const historyController = require("../controllers/historyController.js");
-const { Route } = require("express");
 require('../passport.js')(passport);
 
 
