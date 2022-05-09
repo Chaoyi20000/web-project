@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../public/style/edit_patient_record.css">
+<link rel="stylesheet" href="/public/style/edit_patient_record.css">
 
 <div class = "patient_details_container">
         <div id="subtitle">
@@ -6,7 +6,7 @@
         </div>
 
         <div id = "avatar" >
-            <img src="../public/image/avatar/images.jpg" alt="user image">
+            <img src="/public/image/avatar/images.jpg" alt="user image">
             <figcaption id = "patient_name">{{patient.firstName}} {{patient.lastName}}</figcaption>
         </div>
         
@@ -22,27 +22,41 @@
                 </thead>
             
                 <tbody>
-                    <form action="/home/edit_details" method="POST">
+                   
+                    {{#each record.data}}  
+                    <form action="/home/edit_details/{{../patient._id}}" method="POST">
                         <tr>
-                            {{#each patient.records}}
-                                {{#ifRecent this.recordDate}}
-                                    {{#each this.data}}
-                                        <td>{{this.fullName}}: </td>
-                                        <td class="login_start_box" style="border-radius:45px;">this.valueMin</td>
+                            <input type="hidden" name="key" value="{{@key}}"> 
                             
-                                        <td class="login_start_box" style="border-radius:45px;">this.valueMax</td>
-                                        {{#ifUnrequired this.status}}
-                                            <td><input type="checkbox" name="{{@key}}" id="select"></input></td>
-                                        {{else}}
-                                    {{!--  have to do some javascript to remain checked --}}
-                                    {{/each}}
-                                {{/ifRecent}}
-                            {{/each}}
-                            <td><button type="submit">save</button></td>
+                            <td>{{this.fullName}}: </td>
+                            
+                            <td class="login_start_box" style="border-radius:45px;">
+                                <input type="number", name="valueMin", placeholder="{{this.valueMin}}">
+                            </td>
+                
+                            <td class="login_start_box" style="border-radius:45px;">
+                                <input type="number", name="valueMax", placeholder="{{this.valueMax}}">
+                            </td>
+                            {{#ifUnrequired this.status}}
+                            <td >
+                                <input type="checkbox" name="select"></input>
+                            </td>
+                            {{else}}
+                            <td >
+                                <input type="checkbox" name="select" checked></input>
+                            </td>
+                            {{/ifUnrequired}}
+                            
+                            <td>
+                                <button type="submit">save</button>
+                            </td>
                             
                         </tr>
-
                     </form>
+                    {{/each}}
+                        
+
+                    
                 </tbody>
             </table>
         </div>

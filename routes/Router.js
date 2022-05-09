@@ -28,12 +28,15 @@ Router.get("/all_comment/:id", loginChecker.loggedIn, historyController.renderCo
 Router.get("/register", loginChecker.loggedIn, authenController.registerPatient);
 Router.post("/register", loginChecker.loggedIn, authenController.addNewPatient);
 
+//patient details (support message and clinical notes)
 Router.get("/patient_details/:id", loginChecker.loggedIn, historyController.renderPatientDetail);
 Router.post("/patient_details/:id", loginChecker.loggedIn, historyController.addSuppMsgAndCliNote);
 
+// edit patient details (thresholds and select require data)
+Router.get("/edit_details/:id", loginChecker.loggedIn, controller.renderEditDetails);
+Router.post("/edit_details/:id", loginChecker.loggedIn, controller.updateEditDetails);
 
 
-Router.get("/edit_details/:id", loginChecker.loggedIn, )
 Router.get("/health_history/:id", loginChecker.loggedIn, )
 Router.get("/note_history/:id", loginChecker.loggedIn, )
 

@@ -77,27 +77,29 @@
                 {{#each record.data}}
                 
                 <tr>
-                    {{#ifRecorded this.status}}
-                        {{#ifAbnormal this.valueMin this.valueMax this.value}}
-                            <td class="login_start_box" id = "dangerous" >{{this.fullName}}: </td>
-                            <td class="login_start_box" style="border-radius:45px;">{{this.value}}</td>
-            
-                        {{else}}
-                            <td class="login_start_box safe" id ="safe" >{{this.fullName}}: </td>
-                            <td class="login_start_box" style="border-radius:45px;">{{this.value}}</td>
-                        {{/ifAbnormal}}
+                    {{#ifRequired this.status}}
+                        {{#ifRecorded this.status}}
+                            {{#ifAbnormal this.valueMin this.valueMax this.value}}
+                                <td class="login_start_box" id = "dangerous" >{{this.fullName}}: </td>
+                                <td class="login_start_box" style="border-radius:45px;">{{this.value}}</td>
+                
+                            {{else}}
+                                <td class="login_start_box safe" id ="safe" >{{this.fullName}}: </td>
+                                <td class="login_start_box" style="border-radius:45px;">{{this.value}}</td>
+                            {{/ifAbnormal}}
+                                
                             
-                        
-                    {{/ifRecorded}}
+                        {{/ifRecorded}}
 
-                    {{#ifUnrecorded this.status}}
-                        <td class="login_start_box" id = "safe" style="background-color:#F0F0F0" >{{this.fullName}}: </td>
-                        <td class="login_start_box" id = "safe" style="background-color:#F0F0F0" > </td>
+                        {{#ifUnrecorded this.status}}
+                            <td class="login_start_box" id = "safe" style="background-color:#F0F0F0" >{{this.fullName}}: </td>
+                            <td class="login_start_box" id = "safe" style="background-color:#F0F0F0" > </td>
 
-                    {{/ifUnrecorded}}
-                        
-                    <td class="login_start_box" style="border-radius:45px;">{{this.valueMin}}</td>
-                    <td class="login_start_box" style="border-radius:45px;">{{this.valueMax}}</td>
+                        {{/ifUnrecorded}}
+                            
+                        <td class="login_start_box" style="border-radius:45px;">{{this.valueMin}}</td>
+                        <td class="login_start_box" style="border-radius:45px;">{{this.valueMax}}</td>
+                    {{/ifRequired}}
                 </tr>
                 {{/each}}
             

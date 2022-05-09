@@ -44,8 +44,11 @@ async function searchAndCreateRecord(patientId) {
         patientId: patientId,
         recordDate: new Date().toDateString(),
       });
+
+      await newRecord.save();
       //update changes in need of record this data 
-      const required = await Patient.findById(patientId).requireData;
+      const patient = await Patient.findById(patientId);
+      const required = patient.requireData;
       if (required["bgl"]==false) {
         newRecord.data["bgl"].status = "unrequired";
       }
@@ -243,7 +246,7 @@ const renderClinicianDashboard = async (req, res) => {
       // find target clinician and prepare all linked paitent record
       const clinician = await Clinician.findOne({_id:req.user.id}).populate({
         path: "patient",
-        populate: {path:"records"},
+        populate: {path:"records" },
         options: { lean: true } 
       }).lean();
        // parsse to handlebars for display patient records 
@@ -276,17 +279,81 @@ const renderClinicianDashboard = async (req, res) => {
 
 
 
+const renderEditDetails = async (req, res) => {
+  try {
+    const patientId = req.params.id;
+    const patient = await Patient.findById(patientId).lean();
+    await searchAndCreateRecord(patientId);
+    const record = await Record.findOne({patientId: patientId, recordDate: new Date().toDateString()}).lean();
+    res.render("edit_patient_record.hbs", {patient:patient, record:record});
 
 
+  }catch(err) {
+    console.log("error occus in rendering edit patient: ", err);
+  }
+}
+
+
+
+const updateEditDetails = async (req, res) => {
+  try {
+    //find all relevant data from database for update data
+    const patientId = req.params.id;
+    const patient = await Patient.findById(patientId);
+    const record = await Record.findOne({patientId: patientId, recordDate: new Date().toDateString()});
+
+    //assign input sent from clinician
+    const key = req.body.key;
+    const selected = req.body.select;
+    const valueMin = req.body.valueMin;
+    const valueMax = req.body.valueMax;
+    // if clinican selected as require data 
+    if (selected==='on') {
+      patient.requireData[key] = true;
+      if (record.data[key].status === "unrequired") {
+        record.data[key].status = "unrecorded";
+      } 
+    // clinicna has not select this require data
+    }else {
+      patient.requireData[key] = false;
+      if (record.data[key].status != "unrequired") {
+        record.data[key].status = "unrequired";
+        record.data[key].value = 0;
+      } 
+
+    }
+    // changing threshold if the clinican has input new threshold values
+    if (valueMin) {
+      record.data[key].valueMin = valueMin;
+    }
+    if (valueMax) {
+      record.data[key].valueMax = valueMax;
+    }
+    // save to database
+    await record.save();
+    await patient.save();
+
+  
+    const newRecord  = await Record.findOne({patientId: patientId, recordDate: new Date().toDateString()}).lean();
+    const newPatient = await Patient.findById(patientId).lean();
+
+    res.render("edit_patient_record.hbs", {patient:newPatient, record:newRecord });
+
+
+  }catch(err) {
+    console.log("error occus in updating edit patient: ", err);
+  }
+}
 
 
 
 module.exports = {
   renderRecordData,
   updateRecordData,
-  initClinician,
   searchAndCreateRecord,
   renderPatientDashboard,
   renderClinicianDashboard,
+  renderEditDetails,
+  updateEditDetails,
   
 };

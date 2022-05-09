@@ -42,6 +42,13 @@ const helpers = {
       return options.fn(this);
     }
     return options.inverse(this);
+  },
+
+  ifRequired: function (status, options) {
+    if (status != "unrequired") {
+      return options.fn(this);
+    }
+    return options.inverse(this);
   }
 
 

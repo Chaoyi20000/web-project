@@ -33,6 +33,11 @@ const logout = (req, res) => {
 
   const addNewPatient = async(req, res)=>{
     try{
+      if (await Patient.findOne({email:req.body.email}) ){
+        const message = "email already been registered!"
+        return res.render("register_detail.hbs", {message:message});
+
+      }
       if (req.body.pwd == req.body.confirm) {
         const newPatient = new Patient({
           firstName: req.body.fname,
@@ -52,6 +57,9 @@ const logout = (req, res) => {
         );
         await Controller.searchAndCreateRecord(patient.id)
         res.redirect("/home/clinician_dashboard");
+      } else{
+        const message = "confirm password is different to password!"
+        return res.render("register_detail.hbs", {message:message});
       }
       
     }catch(err){
