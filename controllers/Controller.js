@@ -311,14 +311,19 @@ const updateEditDetails = async (req, res) => {
     if (selected==='on') {
       patient.requireData[key] = true;
       if (record.data[key].status === "unrequired") {
-        record.data[key].status = "unrecorded";
+        if(record.data[key].value != -1) {
+          record.data[key].status = "recorded"
+        } else {
+          record.data[key].status = "unrecorded";
+
+        }
       } 
     // clinicna has not select this require data
     }else {
       patient.requireData[key] = false;
       if (record.data[key].status != "unrequired") {
         record.data[key].status = "unrequired";
-        record.data[key].value = 0;
+        
       } 
 
     }

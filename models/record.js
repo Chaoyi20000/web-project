@@ -10,7 +10,7 @@ const recordSchema = new mongoose.Schema({
         bgl:{	
             fullName:{type:String,default: "blood glocose level", immutable: true},	
             status:{type:String,enum: ["recorded", "unrecorded", "unrequired"], default: "unrecorded"},
-            value:{type: Number, default: 0},	
+            value:{type: Number, default: -1},	
             comment:{type:String,default:""},
             createdAt:{type:String,default:null},
             valueMin: {type:Number, default: 100},
@@ -20,8 +20,8 @@ const recordSchema = new mongoose.Schema({
         weight:{	
             fullName:{type:String,default: "weight", immutable: true},	
             status:{type:String,enum: ["recorded", "unrecorded", "unrequired"], default: "unrecorded"},
-            value:{type: Number, default: 0},	
-            comment:{type:String,default:0},
+            value:{type: Number, default: -1},	
+            comment:{type:String,default:""},
             createdAt:{type:String,default:null},
             valueMin: {type:Number, default: 60},
             valueMax: {type:Number, default: 75},
@@ -29,8 +29,8 @@ const recordSchema = new mongoose.Schema({
         doit:{	
             fullName:{type:String,default: "doses of insulin taken", immutable: true},	
             status:{type:String,enum: ["recorded", "unrecorded", "unrequired"], default: "unrecorded"},
-            value:{type: Number, default: 0},	
-            comment:{type:String,default:0},
+            value:{type: Number, default: -1},	
+            comment:{type:String,default:""},
             createdAt:{type:String,default:null},
             valueMin: {type:Number, default: 1},
             valueMax: {type:Number, default: 2},
@@ -38,8 +38,8 @@ const recordSchema = new mongoose.Schema({
         exercise:{	
             fullName:{type:String,default: "exercise", immutable: true},	
             status:{type:String,enum: ["recorded", "unrecorded", "unrequired"], default: "unrecorded"},
-            value:{type: Number, default: 0},	
-            comment:{type:String,default:0},
+            value:{type: Number, default: -1},	
+            comment:{type:String,default:""},
             createdAt:{type:String,default:null},
             valueMin: {type:Number, default: 2000},
             valueMax: {type:Number, default: 20000},
