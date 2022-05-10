@@ -54,7 +54,7 @@ td input{
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
     grid-template-rows: auto;
     width: 100vw;
-    height:70vh;
+    height:80vh;
     margin:auto;
   }
 

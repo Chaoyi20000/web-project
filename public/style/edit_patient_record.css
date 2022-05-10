@@ -24,6 +24,8 @@ img {
 }
 
 
+
+
 @media screen and (max-width: 812px) {  /* page layout for phones */
   body {
     display: flex;
