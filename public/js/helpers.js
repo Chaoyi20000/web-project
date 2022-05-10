@@ -1,3 +1,5 @@
+const { create } = require("../../models/record");
+
 const helpers = {
 
 
@@ -58,10 +60,14 @@ const helpers = {
     return options.inverse(this);
   },
 
-  findTime: function(createdAt, options) {
-    var time = createdAt.split(",");
-    return options.fn(time[1]);
-  },
+  findTime: function(createdAt) {
+    if (createdAt){
+      const time = createdAt.split(",");
+      return time[1];
+    }
+    return createdAt;
+  
+  }
 
  
 

@@ -28,7 +28,7 @@
             <option value="6 months">6 months</option>
             <option value="all">all</option>
         </select>
-        <input type="submit" value="submit">
+        <input type="submit" value="submit"></input>
     </div>
 </div>
 </form>
@@ -49,7 +49,9 @@
                 <td>{{this.recordDate}}</td>
                 {{#each this.data}}
                     {{#ifRecorded this.status}}
-                    <td class="grey_block">{{this.createdAt}}: {{this.value}} </td>
+                        <td class="grey_block">
+                        {{findTime this.createdAt}}: {{this.value}} 
+                        </td>
 
                     {{else}}
                     <td class="grey_block">

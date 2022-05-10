@@ -57,7 +57,10 @@
                     {{#each this.data}}
                         {{#ifRecorded this.status}} 
                         
-                        <a href ="/home/all_comment/{{../patientId}}"><p>{{this.comment}}</p></a>
+                        <a  href ="/home/all_comment/{{../patientId}}">
+                        <p  class="login_start_element login_start_box Data" >{{this.comment}}</p>
+                        </a>
+                        
                         {{/ifRecorded}}
                     {{/each}}
                 </div>
