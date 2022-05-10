@@ -38,6 +38,11 @@ const logout = (req, res) => {
         return res.render("register_detail.hbs", {message:message});
 
       }
+      if (! await Clinician.findOne({email:req.body.clinician}) ){
+        const message = "wrong clinician email!"
+        return res.render("register_detail.hbs", {message:message});
+
+      }
       if (req.body.pwd == req.body.confirm) {
         const newPatient = new Patient({
           firstName: req.body.fname,
