@@ -18,6 +18,21 @@ td input{
     background-color: transparent;
 }
 
+.flex_container1{
+    background-color:  #CDDCDB;
+    display: grid;
+    grid-template-areas:
+    'main3 main3 main3 main3 main1 main1'
+    'main3 main3 main3 main3 main1 main1'
+    'main3 main3 main3 main3 main1 main1'
+    'main3 main3 main3 main3 main1 main1';
+    grid-gap: 10px;
+    padding:1vw;
+    padding-left: 1vw;
+    width: 96vw;
+    height: 150vh;
+}
+
 .flex_container{
     background-color:  #CDDCDB;
     display: grid;
