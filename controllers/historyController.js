@@ -85,7 +85,6 @@ async function addClinicalNote(note, patient, clinician) {
  
 
 
-
 const addSuppMsgAndCliNote = async(req, res) => {
     try{
         // inatlise all data available in database
@@ -141,20 +140,15 @@ const addSuppMsgAndCliNote = async(req, res) => {
 
             } else{
                 return res.render("patient_details(clinican).hbs", {patient:patientDoc, notes: newNote, record: record});
-
             }
-
         }        
-
-        
+    
     }catch(err){
         console.log("error occurs in add support message or clinical notes: ", err);
 
 
     }
 };
-
-
 
 
 
@@ -188,9 +182,172 @@ const renderPatientDetail = async(req, res) => {
 
     }
 };
+
+
+//display all health records
+const renderDataHistory = async(req, res) =>{
+    try{
+        //assign values needed 
+        const userId = req.user.id;
+        const patient = await Patient.findById(userId).populate({
+            path: "records",
+            options: { lean: true },
+          }).lean();
+        const clinician = await Clinician.findById(userId).lean();
+        const reqPatient = req.params.id;
+        // patient view
+        if (patient) {
+            const records = patient.records;
+            return res.render("History_of_recording.hbs", {patient:patient, user:patient, records:records});
+        //clinician view
+        }else if (clinician && reqPatient){
+            const targetPat = await Patient.findById(reqPatient).populate({
+                path: "records",
+                options: { lean: true },
+            }).lean();
+            const records=targetPat.records;
+            return res.render("History_of_recording.hbs", {patient:targetPat, user:clinician, records:records});
+        }
+
+    }catch(err){
+        console.log("error happens in render health data history: ", err);
+
+    }
+};
+
+// filter records in time range
+async function findTimeRange(range, patientId){
+    try{
+        const reqRecords = [];
+        const today = new Date();
+        // records in last three days (including today)
+        if (range == "3 days"){
+            // find the start date 
+            const fromDate = new Date(today.setDate(today.getDate()-3));
+
+            const records = await Record.find({patientId: patientId}).lean();
+            // iterate all possible records and filter out records not in range
+            for (let i=0; i<records.length;i++){
+                const recordDate = new Date(records[i].recordDate);
+                if (recordDate > fromDate) {
+                    reqRecords.push(records[i]);
+                }
+            }
+            return reqRecords;
+        // records in last week (including today)
+        }else if (range == "a week") {
+            const fromDate = new Date(today.setDate(today.getDate()-7));
+
+            const records = await Record.find({patientId: patientId}).lean();
+            for (let i=0; i<records.length;i++){
+                const recordDate = new Date(records[i].recordDate);
+                if (recordDate > fromDate) {
+                    reqRecords.push(records[i]);
+                }
+            }
+            return reqRecords;
+        // records in last month (including today)
+
+        }else if (range == "a month") {
+            const fromDate = new Date(today.setMonth(today.getMonth()-1));
+
+            const records = await Record.find({patientId: patientId}).lean();
+            for (let i=0; i<records.length;i++){
+                const recordDate = new Date(records[i].recordDate);
+                if (recordDate > fromDate) {
+                    reqRecords.push(records[i]);
+                }
+            }
+            return reqRecords;
+        // records in last three months (including today)
+
+        }else if (range == "3 months") {
+            const fromDate = new Date(today.setMonth(today.getMonth()-3));
+
+            const records = await Record.find({patientId: patientId}).lean();
+            for (let i=0; i<records.length;i++){
+                const recordDate = new Date(records[i].recordDate);
+                if (recordDate > fromDate) {
+                    reqRecords.push(records[i]);
+                }
+            }
+            return reqRecords;
+        // records in last six months (including today)
+
+        }else if (range == "6 months") {
+            const fromDate = new Date(today.setMonth(today.getMonth()-6));
+
+            const records = await Record.find({patientId: patientId}).lean();
+            for (let i=0; i<records.length;i++){
+                const recordDate = new Date(records[i].recordDate);
+                if (recordDate > fromDate) {
+                    reqRecords.push(records[i]);
+                }
+            }
+            return reqRecords;
+        //all records 
+        }else {
+            const all = await Record.find({patientId: patientId}).lean();
+            return all;
+        }
+    }catch(err){
+        console.log("error happens in finding time range: ", err);
+
+    }
+};
+
+// select data in this time range 
+const dataHistoryInRange = async(req, res) =>{
+    try{
+        // assgin data required to check 
+        const userId = req.user.id;
+        const patient = await Patient.findById(userId).populate({
+            path: "records",
+            options: { lean: true },
+          }).lean();
+        const clinician = await Clinician.findById(userId).lean();
+        const reqPatient = req.params.id;
+        const range = req.body.timeRange;
+          // patient view
+        if (patient) {
+            if (range) {
+                const reqRecords = await findTimeRange(range, userId); 
+                return res.render("History_of_recording.hbs", {patient:patient, user:patient, records:reqRecords});
+            }
+        //clinician view
+        }else if (clinician && reqPatient){
+            const targetPat = await Patient.findById(reqPatient).populate({
+                path: "records",
+                options: { lean: true },
+            }).lean();
+            if (range) {
+                const reqRecords = await findTimeRange(range, reqPatient); 
+                console.log("checing return: ", reqRecords);
+                return res.render("History_of_recording.hbs", {patient:targetPat, user:patient, records:reqRecords});
+            }
+        }
+    }catch(err){
+        console.log("error happens in render health data history: ", err);
+
+    }
+};
+
+const renderClinicalNoteHistory = async(req, res) =>{
+    try{
+
+    }catch(err){
+        console.log("error happens in render clinical note history: ", err);
+
+    }
+}
+
+
   module.exports= {
       renderCommentHistory,
       renderPatientDetail,
       addSuppMsgAndCliNote,
+      renderDataHistory,
+      dataHistoryInRange,
+      renderClinicalNoteHistory,
     
   };

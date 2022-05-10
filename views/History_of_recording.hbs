@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/public/style/History_of_recording.css">
+
+{{#ifPatient user.role}}
+    {{> p-top-nav}}
+{{else}}
+    {{> c-top-nav}}
+
+{{/ifPatient}}
+
+{{#ifPatient user.role}}
+<form action="/home/health_history" method="POST">
+{{else}}
+<form action="/home/health_history/{{patient._id}}" method="POST">
+{{/ifPatient}}
+
+<div "header-grid">
+    <div class ="date">
+        <label for="timeRange">Choose time range: </label>
+        <select name ="timeRange"class = "mode_background" style="padding: 2vw; font-size: large;">
+            {{!-- <input type="radio" name="timeRange" id="3days">
+            <label for="3days">3 days</label> --}}
+
+            <option value ="Date" > Date</option>
+            <option value ="3 days">3 days</option>
+            <option value="a week">a week</option>
+            <option value="a month">a month</option>
+            <option value="3 months">3 months</option>
+            <option value="6 months">6 months</option>
+            <option value="all">all</option>
+        </select>
+        <input type="submit" value="submit">
+    </div>
+</div>
+</form>
+
+
+<div class = "main_part">
+    <table style="width:100%">
+        <tr>
+            <th input type="text">{{patient.firstName}} {{patient.lastName}}</th>
+    
+            <th>blood glucose level (nmol/L)</th>
+            <th>weight (kg)</th>
+            <th>dose of insulin taken(number of dose)</th>
+            <th>excerise (step count)</th>
+        </tr>
+            {{#each records}}
+            <tr>
+                <td>{{this.recordDate}}</td>
+                {{#each this.data}}
+                    {{#ifRecorded this.status}}
+                    <td class="grey_block">{{this.createdAt}}: {{this.value}} </td>
+
+                    {{else}}
+                    <td class="grey_block">
+                        not recorded
+                    </td>
+                {{/ifRecorded}}
+                {{/each}}
+            {{/each}}
+
+                
+
+             </tr>
+           
+    </table>
+</div>
+
+

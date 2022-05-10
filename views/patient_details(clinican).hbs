@@ -1,13 +1,15 @@
 <link rel="stylesheet" href="/public/style/patient_details(clinican).css">
 
+{{> c-top-nav}}
+
 <div class="patient_details_container">
     <div class="login_start_element" id="subtitle">
         <h4 style = "text-align: left;">
-            <a href="/home/clinician_dashboard">Back to Dashboard</a></h4>
+            <a href="/home/clinician_dashboard">Patient details</a></h4>
         
     </div>
 
-    <div class="login_start_element"id="health_history">
+    {{!-- <div class="login_start_element"id="health_history">
         <h4>
             <a href="/home/health_history/{{patient._id}}">Patient health history</a>
         </h4>
@@ -18,7 +20,7 @@
             <a href="/home/note_history/{{patient._id}}">Clinical note history</a>
         </h4>
 
-    </div>
+    </div> --}}
 
     <div class = "login_start_element" id="notes">
         <table>

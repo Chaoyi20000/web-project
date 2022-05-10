@@ -50,6 +50,19 @@ const helpers = {
     }
     return options.inverse(this);
   },
+
+  ifPatient: function (role, options) {
+    if (role == "patient"){
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  },
+
+  findTime: function(createdAt, options) {
+    var time = createdAt.split(",");
+    return options.fn(time[1]);
+  },
+
  
 
 };
