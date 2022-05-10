@@ -73,7 +73,7 @@ td input{
     grid-area: main1 /span main1/span main1;
     position: fixed; 
     top: 45vh;
-    right: 8vw;
+    right: 3vw;
     font-size: 2vw;
 }
 
