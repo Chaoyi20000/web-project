@@ -30,6 +30,15 @@ html {font-size: 2vw;}
     padding-top: 0.5vw;
 }
 
+.dark-mode1 button{
+    border: none;
+    padding: 1vw;
+    margin-bottom: 2vw;
+    background-color: #F8F0F0; 
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+}
+
 .diabete-home1{
     grid-area: 1/1/2/2;
     margin-left: 2vw;
