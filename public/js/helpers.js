@@ -67,6 +67,10 @@ const helpers = {
     }
     return createdAt;
   
+  },
+
+  rankPosition: function(index){
+    return index+1;
   }
 
  

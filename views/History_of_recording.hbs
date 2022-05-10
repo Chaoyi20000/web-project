@@ -17,8 +17,6 @@
     <div class ="date">
         <label for="timeRange">Choose time range: </label>
         <select name ="timeRange"class = "mode_background" style="padding: 2vw; font-size: large;">
-            {{!-- <input type="radio" name="timeRange" id="3days">
-            <label for="3days">3 days</label> --}}
 
             <option value ="Date" > Date</option>
             <option value ="3 days">3 days</option>
@@ -59,12 +57,10 @@
                     </td>
                 {{/ifRecorded}}
                 {{/each}}
-            {{/each}}
-
                 
 
-             </tr>
-           
+            </tr>
+           {{/each}}
     </table>
 </div>
 
