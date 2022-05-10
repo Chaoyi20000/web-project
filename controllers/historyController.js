@@ -104,7 +104,6 @@ const addSuppMsgAndCliNote = async(req, res) => {
 
             const newMessage = await SupportMessage.findById(newMessageId).lean();
             const newNote = await ClinicalNote.findById(newNoteId).lean();
-            console.log(newMessage);
             return res.render("patient_details(clinican).hbs", {patient:patientDoc, message:newMessage, notes: newNote, record: record});
 
         }
@@ -216,7 +215,7 @@ const renderDataHistory = async(req, res) =>{
 };
 
 // filter records in time range
-async function findTimeRange(range, patientId){
+async function findRecordsInTimeRange(range, patientId){
     try{
         const reqRecords = [];
         const today = new Date();
@@ -291,7 +290,7 @@ async function findTimeRange(range, patientId){
             return all;
         }
     }catch(err){
-        console.log("error happens in finding time range: ", err);
+        console.log("error happens in finding records in time range: ", err);
 
     }
 };
@@ -311,7 +310,7 @@ const dataHistoryInRange = async(req, res) =>{
           // patient view
         if (patient) {
             if (range) {
-                const reqRecords = await findTimeRange(range, userId); 
+                const reqRecords = await findRecordsInTimeRange(range, userId); 
                 return res.render("History_of_recording.hbs", {patient:patient, user:patient, records:reqRecords});
             }
         //clinician view
@@ -321,8 +320,8 @@ const dataHistoryInRange = async(req, res) =>{
                 options: { lean: true },
             }).lean();
             if (range) {
-                const reqRecords = await findTimeRange(range, reqPatient); 
-                console.log("checing return: ", reqRecords);
+                const reqRecords = await findRecordsInTimeRange(range, reqPatient); 
+
                 return res.render("History_of_recording.hbs", {patient:targetPat, user:patient, records:reqRecords});
             }
         }
@@ -332,15 +331,135 @@ const dataHistoryInRange = async(req, res) =>{
     }
 };
 
+//display clinical note history 
 const renderClinicalNoteHistory = async(req, res) =>{
     try{
+        const patientId = req.params.id;
+        const patient = await Patient.findById(patientId).lean();
+        const notes = await ClinicalNote.find({patientId:patientId}).lean();
+
+        res.render("clinical-note-history.hbs", {patient:patient, notes:notes});
 
     }catch(err){
         console.log("error happens in render clinical note history: ", err);
 
     }
-}
+};
 
+
+// filter clinical notes in time range
+async function findNotesInTimeRange(range, patientId){
+    try{
+        const reqNotes = [];
+        const today = new Date();
+        // notes in last three days (including today)
+        if (range == "3 days"){
+            // find the start date 
+            const fromDate = new Date(today.setDate(today.getDate()-3));
+
+            const notes = await ClinicalNote.find({patientId: patientId}).lean();
+            // iterate all possible notes and filter out records not in range
+            for (let i=0; i<notes.length;i++){
+                const noteDate = new Date(notes[i].noteDate);
+                if (noteDate > fromDate) {
+                    reqNotes.push(notes[i]);
+                }
+            }
+            return reqNotes;
+        // records in last week (including today)
+        }else if (range == "a week") {
+            const fromDate = new Date(today.setDate(today.getDate()-7));
+
+            const notes = await ClinicalNote.find({patientId: patientId}).lean();
+            // iterate all possible notes and filter out records not in range
+            for (let i=0; i<notes.length;i++){
+                const noteDate = new Date(notes[i].noteDate);
+                if (noteDate > fromDate) {
+                    reqNotes.push(notes[i]);
+                }
+            }
+            return reqNotes;
+        // records in last month (including today)
+
+        }else if (range == "a month") {
+            const fromDate = new Date(today.setMonth(today.getMonth()-1));
+
+            const notes = await ClinicalNote.find({patientId: patientId}).lean();
+            // iterate all possible notes and filter out records not in range
+            for (let i=0; i<notes.length;i++){
+                const noteDate = new Date(notes[i].noteDate);
+                if (noteDate > fromDate) {
+                    reqNotes.push(notes[i]);
+                }
+            }
+            return reqNotes;
+        // records in last three months (including today)
+
+        }else if (range == "3 months") {
+            const fromDate = new Date(today.setMonth(today.getMonth()-3));
+
+            const notes = await ClinicalNote.find({patientId: patientId}).lean();
+            // iterate all possible notes and filter out records not in range
+            for (let i=0; i<notes.length;i++){
+                const noteDate = new Date(notes[i].noteDate);
+                if (noteDate > fromDate) {
+                    reqNotes.push(notes[i]);
+                }
+            }
+            return reqNotes;
+        // records in last six months (including today)
+
+        }else if (range == "6 months") {
+            const fromDate = new Date(today.setMonth(today.getMonth()-6));
+
+            const notes = await ClinicalNote.find({patientId: patientId}).lean();
+            // iterate all possible notes and filter out records not in range
+            for (let i=0; i<notes.length;i++){
+                const noteDate = new Date(notes[i].noteDate);
+                if (noteDate > fromDate) {
+                    reqNotes.push(notes[i]);
+                }
+            }
+            return reqNotes;
+        //all notes 
+        }else {
+            const all = await ClinicalNote.find({patientId: patientId}).lean();
+            return all;
+        }
+    }catch(err){
+        console.log("error happens in finding note in time range: ", err);
+
+    }
+};
+
+// clinician selected specific time range or exact time
+const noteHistoryInRange = async(req, res) =>{
+    try{
+        // assign values for search
+        const patientId = req.params.id;
+        const patient = await Patient.findById(patientId).lean();
+        const notes = await ClinicalNote.find({patientId:patientId}).lean();
+        const range = req.body.timeRange;
+        const targetId = req.body.target;
+        // time range selected
+        if(range) {
+            const reqNotes = await findNotesInTimeRange(range, patientId);
+            return res.render("clinical-note-history.hbs", {patient:patient, notes:reqNotes});
+        }
+        //particular time selected
+        if (targetId) {
+            const target = await ClinicalNote.findById(targetId).lean();
+            return res.render("clinical-note-history.hbs", {patient:patient, notes:notes, target:target});
+
+        }
+        return res.render("clinical-note-history.hbs", {patient:patient, notes:notes});
+
+
+    }catch(err){
+        console.log("error happens in render clinical note history in time range: ", err);
+
+    }
+};
 
   module.exports= {
       renderCommentHistory,
@@ -349,5 +468,6 @@ const renderClinicalNoteHistory = async(req, res) =>{
       renderDataHistory,
       dataHistoryInRange,
       renderClinicalNoteHistory,
+      noteHistoryInRange,
     
   };

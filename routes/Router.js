@@ -7,7 +7,6 @@ const historyController = require("../controllers/historyController.js");
 require('../passport.js')(passport);
 
 
-
 const Router = express.Router();
 
 //patient part
@@ -21,6 +20,9 @@ Router.post("/health_history", loginChecker.loggedIn, historyController.dataHist
 //patient change password 
 Router.get("/changePassword", loginChecker.loggedIn, authenController.rendernewPassword);
 Router.post("/changePassword", loginChecker.loggedIn, authenController.changePassword);
+
+
+
 
 //clinican part
 Router.get("/clinician_dashboard", loginChecker.loggedIn, controller.renderClinicianDashboard);
@@ -42,8 +44,10 @@ Router.post("/edit_details/:id", loginChecker.loggedIn, controller.updateEditDet
 Router.get("/health_history/:id", loginChecker.loggedIn, historyController.renderDataHistory);
 Router.post("/health_history/:id", loginChecker.loggedIn, historyController.dataHistoryInRange);
 
+// clinical note history
+Router.get("/note_history/:id", loginChecker.loggedIn, historyController.renderClinicalNoteHistory);
+Router.post("/note_history/:id", loginChecker.loggedIn, historyController.noteHistoryInRange);
 
-Router.get("/note_history/:id", loginChecker.loggedIn, )
 
 
 
