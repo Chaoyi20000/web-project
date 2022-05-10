@@ -32,7 +32,26 @@ body {
     margin-bottom: 1vw;
 }
 
-.dark-mode{
+.buttons{
+    grid-area: 1/5/2/7;
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: right;
+    
+}
+
+.buttons button{
+    margin-right: 1vw;
+    margin-top: 0.5vw;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 1vw;
+    font-family: 'Courier New',cursive;
+}
+
+/* .dark-mode{
     grid-area: 1/5/2/6;
     text-align: right;    
     padding-top: 0.5vw;
@@ -45,39 +64,41 @@ body {
     padding: 1vw;
     font-family: 'Courier New',cursive;
 
-}
+}*/
 
-.back{
-    grid-area: 1/6/2/7;
-    text-align: center;
-    padding-top: 1vw;
-}
 
 a{
     text-decoration: none;
     color: black;
 }
 
-button{
+/* button{
     border: none;
     padding: 1vw;
     margin-bottom: 2vw;
-    background-color: #F8F0F0;
+    background-color: #F8F0F0; 
     border-radius: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
-}
+} */
 
 footer{
     text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;  
+    background-color: #CDDCDB;  
+    z-index: 1;
 }
 .date{
     grid-area: 1/4/2/5;
 }
 
-.footer-home{
+/* .footer-home{
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
-}
+} */

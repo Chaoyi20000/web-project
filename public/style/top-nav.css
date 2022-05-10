@@ -1,16 +1,16 @@
-.top-nav{
+.top-nav, .about-nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
 } 
 
-.nav-links ul{
+.nav-links ul, .about-nav-links ul{
     margin: 0;
     padding: 0;
     display: flex;
 } 
 
-.nav-links li{
+.nav-links li, .about-nav-links li{
     list-style: none;
 } 
 
@@ -18,7 +18,11 @@
     background-color:antiquewhite;
 } 
 
-.nav-links  ul a{
+.about-nav-links li:hover{
+    background-color:antiquewhite;
+} 
+
+.nav-links  ul a, .about-nav-links a{
     text-decoration: none;
     color: black;
     padding: 1rem;
@@ -48,30 +52,34 @@
         display: flex;
     }
 
-    .nav-links{
+    .nav-links, .about-nav-links{
         display: none;
         width: 100%;
     }
 
-    .patient-top-nav{
+    .top-nav, .about-nav{
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .nav-links ul{
+    .nav-links ul, .about-nav-links ul{
         width: 100%;
         flex-direction: column;
     }
 
-    .nav-links li{
+    .nav-links li, .about-nav-links li{
         text-align: center;
     }
 
-    .nav-links li a{
+    .nav-links li a, .about-nav-links li a{
         padding: 1vw 1vw;
     }
 
     .nav-links.active{
+        display: flex;
+    }
+
+    .about-nav-links.active{
         display: flex;
     }
 }

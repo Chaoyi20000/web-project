@@ -1,12 +1,14 @@
 <link rel="stylesheet" href="../public/style/Dashboard_clinician.css">
 
-<form method="POST" action="/home/logout">
+{{> about-top-nav}}
+
+{{!-- <form method="POST" action="/home/logout">
 <button>Logout</button>
-</form>
+</form> --}}
 <div>
     <h2 id="Title">Clinician Dashboard</h2>
     <h2 id="Title-comments">New comments:</h2>
-    <a style = "text-align: right" href="/home/register"> regitser</a>
+    {{!-- <a  href="/home/register"> regitser</a> --}}
         
     {{#each patient}}
 
@@ -67,4 +69,7 @@
     {{/each}}
     
 </div>
-    
+
+    <button class = "register-button">
+       <a href="/home/register">Register <br> New&nbspPatient</a> 
+    </button>    
