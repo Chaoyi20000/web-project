@@ -17,8 +17,9 @@
                 <a href="/home/changePassword">
                 <button>change password</button>  
                 </a>
-                
-                <img src="../public/image/medal 1.png" alt="this is badge">                 
+                {{#ifBadge patient.eRate}}
+                    <img src="../public/image/medal 1.png" alt="this is badge">
+                {{/ifBadge}}                 
             </div>
         </div>     
 
@@ -29,7 +30,7 @@
             <li><a href="/about_diabetes">About Diabetes </a> </li>
             <li><a href="/about_team">About This Website </a> </li>
             <li><a href="/home/record_health_data">Record Health Data Today</a> </li>
-            <li><a href="">Rank </a> </li>
+            <li><a href="/home/leaderboard">Leaderboard </a> </li>
             <li><a href="/home/health_history">History of Recording</a> </li>
         </ul>
     </nav>

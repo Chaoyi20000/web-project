@@ -11,8 +11,10 @@ const Router = express.Router();
 
 //patient part
 Router.get("/patient_dashboard", loginChecker.loggedIn, controller.renderPatientDashboard);
+//display and update record today's data
 Router.get("/record_health_data", loginChecker.loggedIn,controller.renderRecordData);
 Router.post("/record_health_data", loginChecker.loggedIn, controller.updateRecordData);
+
 //patient data history (patient view)
 Router.get("/health_history", loginChecker.loggedIn, historyController.renderDataHistory);
 Router.post("/health_history", loginChecker.loggedIn, historyController.dataHistoryInRange);
@@ -21,7 +23,10 @@ Router.post("/health_history", loginChecker.loggedIn, historyController.dataHist
 Router.get("/changePassword", loginChecker.loggedIn, authenController.rendernewPassword);
 Router.post("/changePassword", loginChecker.loggedIn, authenController.changePassword);
 
+//displaying leaderboard
+Router.get("/leaderboard", loginChecker.loggedIn,controller.renderLeaderBoard);
 
+//------------------------------------------------------------------------------------------------
 
 
 //clinican part
@@ -49,6 +54,7 @@ Router.get("/note_history/:id", loginChecker.loggedIn, historyController.renderC
 Router.post("/note_history/:id", loginChecker.loggedIn, historyController.noteHistoryInRange);
 
 
+//------------------------------------------------------------------------------------------------
 
 
 

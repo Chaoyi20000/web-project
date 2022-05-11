@@ -217,73 +217,37 @@ const renderDataHistory = async(req, res) =>{
 // filter records in time range
 async function findRecordsInTimeRange(range, patientId){
     try{
-        const reqRecords = [];
+        //const reqRecords = [];
         const today = new Date();
         // records in last three days (including today)
         if (range == "3 days"){
             // find the start date 
             const fromDate = new Date(today.setDate(today.getDate()-3));
 
-            const records = await Record.find({patientId: patientId}).lean();
-            // iterate all possible records and filter out records not in range
-            for (let i=0; i<records.length;i++){
-                const recordDate = new Date(records[i].recordDate);
-                if (recordDate > fromDate) {
-                    reqRecords.push(records[i]);
-                }
-            }
-            return reqRecords;
+            return filterInTimeRange(patientId, fromDate, false);
         // records in last week (including today)
         }else if (range == "a week") {
             const fromDate = new Date(today.setDate(today.getDate()-7));
 
-            const records = await Record.find({patientId: patientId}).lean();
-            for (let i=0; i<records.length;i++){
-                const recordDate = new Date(records[i].recordDate);
-                if (recordDate > fromDate) {
-                    reqRecords.push(records[i]);
-                }
-            }
-            return reqRecords;
+            return filterInTimeRange(patientId, fromDate, false);
         // records in last month (including today)
 
         }else if (range == "a month") {
             const fromDate = new Date(today.setMonth(today.getMonth()-1));
 
-            const records = await Record.find({patientId: patientId}).lean();
-            for (let i=0; i<records.length;i++){
-                const recordDate = new Date(records[i].recordDate);
-                if (recordDate > fromDate) {
-                    reqRecords.push(records[i]);
-                }
-            }
-            return reqRecords;
+            return filterInTimeRange(patientId, fromDate, false);
         // records in last three months (including today)
 
         }else if (range == "3 months") {
             const fromDate = new Date(today.setMonth(today.getMonth()-3));
 
-            const records = await Record.find({patientId: patientId}).lean();
-            for (let i=0; i<records.length;i++){
-                const recordDate = new Date(records[i].recordDate);
-                if (recordDate > fromDate) {
-                    reqRecords.push(records[i]);
-                }
-            }
-            return reqRecords;
+            return filterInTimeRange(patientId, fromDate, false);
         // records in last six months (including today)
 
         }else if (range == "6 months") {
             const fromDate = new Date(today.setMonth(today.getMonth()-6));
 
-            const records = await Record.find({patientId: patientId}).lean();
-            for (let i=0; i<records.length;i++){
-                const recordDate = new Date(records[i].recordDate);
-                if (recordDate > fromDate) {
-                    reqRecords.push(records[i]);
-                }
-            }
-            return reqRecords;
+            return filterInTimeRange(patientId, fromDate, false);
         //all records 
         }else {
             const all = await Record.find({patientId: patientId}).lean();
@@ -350,14 +314,15 @@ const renderClinicalNoteHistory = async(req, res) =>{
 // filter clinical notes in time range
 async function findNotesInTimeRange(range, patientId){
     try{
-        const reqNotes = [];
+        //const reqNotes = [];
         const today = new Date();
         // notes in last three days (including today)
         if (range == "3 days"){
             // find the start date 
             const fromDate = new Date(today.setDate(today.getDate()-3));
+            return filterInTimeRange(patientId, fromDate, true);
 
-            const notes = await ClinicalNote.find({patientId: patientId}).lean();
+           /*  const notes = await ClinicalNote.find({patientId: patientId}).lean();
             // iterate all possible notes and filter out records not in range
             for (let i=0; i<notes.length;i++){
                 const noteDate = new Date(notes[i].noteDate);
@@ -365,62 +330,30 @@ async function findNotesInTimeRange(range, patientId){
                     reqNotes.push(notes[i]);
                 }
             }
-            return reqNotes;
+            return reqNotes; */
         // records in last week (including today)
         }else if (range == "a week") {
             const fromDate = new Date(today.setDate(today.getDate()-7));
 
-            const notes = await ClinicalNote.find({patientId: patientId}).lean();
-            // iterate all possible notes and filter out records not in range
-            for (let i=0; i<notes.length;i++){
-                const noteDate = new Date(notes[i].noteDate);
-                if (noteDate > fromDate) {
-                    reqNotes.push(notes[i]);
-                }
-            }
-            return reqNotes;
+            return filterInTimeRange(patientId, fromDate, true);
         // records in last month (including today)
 
         }else if (range == "a month") {
             const fromDate = new Date(today.setMonth(today.getMonth()-1));
 
-            const notes = await ClinicalNote.find({patientId: patientId}).lean();
-            // iterate all possible notes and filter out records not in range
-            for (let i=0; i<notes.length;i++){
-                const noteDate = new Date(notes[i].noteDate);
-                if (noteDate > fromDate) {
-                    reqNotes.push(notes[i]);
-                }
-            }
-            return reqNotes;
+            return filterInTimeRange(patientId, fromDate, true);
         // records in last three months (including today)
 
         }else if (range == "3 months") {
             const fromDate = new Date(today.setMonth(today.getMonth()-3));
 
-            const notes = await ClinicalNote.find({patientId: patientId}).lean();
-            // iterate all possible notes and filter out records not in range
-            for (let i=0; i<notes.length;i++){
-                const noteDate = new Date(notes[i].noteDate);
-                if (noteDate > fromDate) {
-                    reqNotes.push(notes[i]);
-                }
-            }
-            return reqNotes;
+            return filterInTimeRange(patientId, fromDate, true);
         // records in last six months (including today)
 
         }else if (range == "6 months") {
             const fromDate = new Date(today.setMonth(today.getMonth()-6));
 
-            const notes = await ClinicalNote.find({patientId: patientId}).lean();
-            // iterate all possible notes and filter out records not in range
-            for (let i=0; i<notes.length;i++){
-                const noteDate = new Date(notes[i].noteDate);
-                if (noteDate > fromDate) {
-                    reqNotes.push(notes[i]);
-                }
-            }
-            return reqNotes;
+            return filterInTimeRange(patientId, fromDate, true);
         //all notes 
         }else {
             const all = await ClinicalNote.find({patientId: patientId}).lean();
@@ -457,6 +390,36 @@ const noteHistoryInRange = async(req, res) =>{
 
     }catch(err){
         console.log("error happens in render clinical note history in time range: ", err);
+
+    }
+};
+
+async function filterInTimeRange(patientId, fromDate, noteNotRecord) {
+    try{
+        const array = [];
+        if (noteNotRecord==true) {
+            const notes = await ClinicalNote.find({patientId: patientId}).lean();
+            // iterate all possible notes and filter out records not in range
+            for (let i=0; i<notes.length;i++){
+                const noteDate = new Date(notes[i].noteDate);
+                if (noteDate > fromDate) {
+                    array.push(notes[i]);
+                }
+            }
+            return array;
+        }else{
+            const records = await Record.find({patientId: patientId}).lean();
+            for (let i=0; i<records.length;i++){
+                const recordDate = new Date(records[i].recordDate);
+                if (recordDate > fromDate) {
+                    array.push(records[i]);
+                }
+            }
+            return array;
+        }
+
+    }catch(err) {
+        console.log("error happens in filter data in time range: ", err);
 
     }
 };

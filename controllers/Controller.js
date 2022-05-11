@@ -73,6 +73,7 @@ async function searchAndCreateRecord(patientId) {
         {$push: {records: record}},
       );
       
+      await calculateERate(patientId);
       
     } 
   } catch (err) {
@@ -149,12 +150,14 @@ const renderPatientDashboard = async (req, res) => {
     if (req.user) {
       const patientId = req.user.id;
       searchAndCreateRecord(patientId);
+
       const patient = await Patient.findOne({_id:patientId}).lean();
+      
       res.render("patient_dashboard.hbs", {patient: patient});
     } else {
       const patientId = await searchAndCreatePatient();
       const patient = await Patient.findOne({_id:patientId}).lean();
-
+      
       res.render("patient_dashboard.hbs", {patient: patient});
     }
    
@@ -323,9 +326,7 @@ const updateEditDetails = async (req, res) => {
       patient.requireData[key] = false;
       if (record.data[key].status != "unrequired") {
         record.data[key].status = "unrequired";
-        
       } 
-
     }
     // changing threshold if the clinican has input new threshold values
     if (valueMin) {
@@ -338,19 +339,66 @@ const updateEditDetails = async (req, res) => {
     await record.save();
     await patient.save();
 
-  
     const newRecord  = await Record.findOne({patientId: patientId, recordDate: new Date().toDateString()}).lean();
     const newPatient = await Patient.findById(patientId).lean();
-
     res.render("edit_patient_record.hbs", {patient:newPatient, record:newRecord });
 
-
   }catch(err) {
-    console.log("error occus in updating edit patient: ", err);
+    console.log("error occurs in updating edit patient: ", err);
+  }
+};
+
+function checkIfRecorded(record) {
+  for (key in record.data) {
+    if (record.data[key].status == "recorded") {
+      return true;
+    }
+  }
+  return false;
+};
+
+async function calculateERate(patientId) {
+  try{
+    //find out all the records that actually have data recorded by patient
+  const records = await Record.find({ patientId: patientId }).lean()
+  const recorded = records.filter((record) => checkIfRecorded(record));
+  
+  const patient = await Patient.findById(patientId);
+  const startTime = new Date(patient.createTime).getTime();
+  const todayTime= new Date().getTime();
+  // One day Time in ms (milliseconds)
+  const oneDay =1000 * 24 * 60 * 60
+  const difference = Math.round((todayTime - startTime) / oneDay) + 1;
+  
+  patient.eRate = (recorded.length / difference).toFixed(3);
+  await patient.save();
+
+  }catch(err){
+    console.log("error occurs in caculating engagement rate: ", err);
+  }
+  
+};
+
+
+const renderLeaderBoard = async (req, res)=>{
+  try{
+    const allPatients = await Patient.find({},{}).lean();
+
+    for (patient of allPatients) {
+      await calculateERate(patient._id);
+    }
+
+    const patients = await Patient.find({},{}).lean()
+    patients.sort((a, b) => {
+      return b.eRate - a.eRate;
+    })
+    const requestPat = patients.slice(0, 5);
+    res.render("rank.hbs", {patients:requestPat});
+  }catch(err){
+    console.log("error happens in render leadboard: ", err);
+
   }
 }
-
-
 
 module.exports = {
   renderRecordData,
@@ -360,5 +408,5 @@ module.exports = {
   renderClinicianDashboard,
   renderEditDetails,
   updateEditDetails,
-  
+  renderLeaderBoard,
 };

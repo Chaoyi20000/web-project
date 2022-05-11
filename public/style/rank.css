@@ -1,21 +1,23 @@
 .rank_container {  
     display: grid;
     background-color: #CDDCDB;
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr;
     width: 100vw;
     margin:auto;
   }
 
 #users{
-    grid-column: 1;
-    grid-row: auto;
+    grid-column: 1/span 2;
+    grid-row: 1;
+    margin:auto;
 }
 
 #trophy{
-    grid-column: 2;
-    grid-row: auto;
+    grid-column: 3;
+    grid-row: 1;
     display: block;
+    margin:auto;
 }
 
 #users table {
@@ -24,6 +26,9 @@
     background-color: #f0f0f0;
     border-radius: 35px;
     padding: auto;
+    height: 65vh;
+    width:65vw;
+    margin-top: 5vh;
   }
   
 #users th {
@@ -45,6 +50,26 @@
         flex-direction: column;
         font-size: 70%;
     }
+
+
+    #users table {
+        border-collapse: separate;
+        border-spacing: 2vw 3vh;
+        background-color: #f0f0f0;
+        border-radius: 35px;
+        padding: auto;
+        height: 50vh;
+        width: 90vw;
+        
+      }
+
+      #users th {
+        text-align: center;
+        font-weight: 600;
+        font-size: 1vh;
+        width:10vw;
+      }
+    
     
 
 }
