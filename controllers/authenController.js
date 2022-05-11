@@ -7,21 +7,23 @@ const Controller = require("./Controller.js");
 const SALT_FACTOR = 10;
 
 // logout part in patient_dashboard
-const logout = (req, res) => {
+  const logout = (req, res) => {
     req.logout();
     res.redirect("/login_page");
   };
   
-const renderLoginPatient = (req, res) => {
+  //login page for patient
+  const renderLoginPatient = (req, res) => {
     res.render("login_portal_patient.hbs", req.session.flash);
   
   };
   
-  
+  //login page for clinician
   const renderLoginClinician= (req, res) => {
     res.render("login_portal_clinician.hbs", req.session.flash);
   };
 
+  //displaying  register form 
   const registerPatient = async(req, res)=>{
     try{
       res.render("register_detail.hbs");

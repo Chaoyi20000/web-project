@@ -8,10 +8,11 @@ const supportMessage = require("../models/supportMessage.js");
 const Controller = require("./Controller.js");
 const SupportMessage = require("../models/supportMessage.js");
 
-
+// display all comments entered by patients 
 const renderCommentHistory = async(req, res)=>{
     try{
       const patientId = req.params.id;
+      // extracting patient information
       const patient = await Patient.findOne({_id:patientId })
       .populate({
         path: "records",
@@ -150,7 +151,7 @@ const addSuppMsgAndCliNote = async(req, res) => {
 };
 
 
-
+// displaying todays' record and last updated support message and clinical note
 const renderPatientDetail = async(req, res) => {
     try{
         // find all most recent data for support message and clinical note
@@ -188,11 +189,14 @@ const renderDataHistory = async(req, res) =>{
     try{
         //assign values needed 
         const userId = req.user.id;
+        // try find equivalent patient 
         const patient = await Patient.findById(userId).populate({
             path: "records",
             options: { lean: true },
           }).lean();
+        //try find equiivalent clinician 
         const clinician = await Clinician.findById(userId).lean();
+        //this is use if is render in clinicain view
         const reqPatient = req.params.id;
         // patient view
         if (patient) {
@@ -321,16 +325,6 @@ async function findNotesInTimeRange(range, patientId){
             // find the start date 
             const fromDate = new Date(today.setDate(today.getDate()-3));
             return filterInTimeRange(patientId, fromDate, true);
-
-           /*  const notes = await ClinicalNote.find({patientId: patientId}).lean();
-            // iterate all possible notes and filter out records not in range
-            for (let i=0; i<notes.length;i++){
-                const noteDate = new Date(notes[i].noteDate);
-                if (noteDate > fromDate) {
-                    reqNotes.push(notes[i]);
-                }
-            }
-            return reqNotes; */
         // records in last week (including today)
         }else if (range == "a week") {
             const fromDate = new Date(today.setDate(today.getDate()-7));
@@ -394,9 +388,11 @@ const noteHistoryInRange = async(req, res) =>{
     }
 };
 
+// helper function to create an array of required records or notes in specific time range 
 async function filterInTimeRange(patientId, fromDate, noteNotRecord) {
     try{
         const array = [];
+        // clinical note history is requestd 
         if (noteNotRecord==true) {
             const notes = await ClinicalNote.find({patientId: patientId}).lean();
             // iterate all possible notes and filter out records not in range
@@ -407,8 +403,10 @@ async function filterInTimeRange(patientId, fromDate, noteNotRecord) {
                 }
             }
             return array;
+        // health data history is requested 
         }else{
             const records = await Record.find({patientId: patientId}).lean();
+            // iterate all possible notes and filter out records not in range
             for (let i=0; i<records.length;i++){
                 const recordDate = new Date(records[i].recordDate);
                 if (recordDate > fromDate) {

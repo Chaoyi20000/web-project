@@ -63,7 +63,6 @@ async function searchAndCreateRecord(patientId) {
       }
 
       
-      
       // save data to database
       const record = await newRecord.save();
       
@@ -281,11 +280,12 @@ const renderClinicianDashboard = async (req, res) => {
 };
 
 
-
+//display patient's required record data and threshold
 const renderEditDetails = async (req, res) => {
   try {
     const patientId = req.params.id;
     const patient = await Patient.findById(patientId).lean();
+    // incase today's record is not updated to patient's database
     await searchAndCreateRecord(patientId);
     const record = await Record.findOne({patientId: patientId, recordDate: new Date().toDateString()}).lean();
     res.render("edit_patient_record.hbs", {patient:patient, record:record});
@@ -348,6 +348,7 @@ const updateEditDetails = async (req, res) => {
   }
 };
 
+// iterate record data and finds any recorded data
 function checkIfRecorded(record) {
   for (key in record.data) {
     if (record.data[key].status == "recorded") {
@@ -368,8 +369,9 @@ async function calculateERate(patientId) {
   const todayTime= new Date().getTime();
   // One day Time in ms (milliseconds)
   const oneDay =1000 * 24 * 60 * 60
+  // transform to exact day 
   const difference = Math.round((todayTime - startTime) / oneDay) + 1;
-  
+  // update erate in database
   patient.eRate = (recorded.length / difference).toFixed(3);
   await patient.save();
 
@@ -379,19 +381,21 @@ async function calculateERate(patientId) {
   
 };
 
-
+//render leaderboard 
 const renderLeaderBoard = async (req, res)=>{
   try{
+    //extract　all patient from database
     const allPatients = await Patient.find({},{}).lean();
-
+    // calculate each patients' engagement rate
     for (patient of allPatients) {
       await calculateERate(patient._id);
     }
-
+    // sort the patient list in descending order 
     const patients = await Patient.find({},{}).lean()
     patients.sort((a, b) => {
       return b.eRate - a.eRate;
     })
+    // only top 5 is displayed
     const requestPat = patients.slice(0, 5);
     res.render("rank.hbs", {patients:requestPat});
   }catch(err){
