@@ -148,7 +148,6 @@ const renderPatientDashboard = async (req, res) => {
   try{
     if (req.user) {
       const patientId = req.user.id;
-      searchAndCreateRecord(patientId);
 
       const patient = await Patient.findOne({_id:patientId}).lean();
       

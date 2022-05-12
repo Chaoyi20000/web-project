@@ -54,7 +54,11 @@
 
                     {{else}}
                     <td class="grey_block">
-                        not recorded
+                        {{#ifRequired this.status}} 
+                            not recorded
+                            {{else}}
+                            unrequired
+                        {{/ifRequired}}
                     </td>
                 {{/ifRecorded}}
                 {{/each}}
