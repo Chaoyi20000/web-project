@@ -13,23 +13,7 @@
 <form action="/home/health_history/{{patient._id}}" method="POST">
 {{/ifPatient}}
 
-<div "header-grid">
-    <div class ="date">
-        <label for="timeRange">Choose time range: </label>
-        <select name ="timeRange"class = "mode_background" style="padding: 2vw; font-size: large;">
-
-            <option value ="Date" > Date</option>
-            <option value ="3 days">3 days</option>
-            <option value="a week">a week</option>
-            <option value="a month">a month</option>
-            <option value="3 months">3 months</option>
-            <option value="6 months">6 months</option>
-            <option value="all">all</option>
-        </select>
-        <input type="submit" value="submit"></input>
-    </div>
-</div>
-</form>
+{{> choose-time-range}}
 
 
 <div class = "main_part">
