@@ -85,3 +85,11 @@ button{
     margin-right: 3vw
   }
 }
+
+.save-td{
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  border-radius: none;
+  width: 6vw;
+}

@@ -51,20 +51,6 @@ body {
     font-family: 'Courier New',cursive;
 }
 
-/* .dark-mode{
-    grid-area: 1/5/2/6;
-    text-align: right;    
-    padding-top: 0.5vw;
-}
-
-.dark-mode button{
-    background-color: #FFFFFF;
-    border-radius: 25px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 1vw;
-    font-family: 'Courier New',cursive;
-
-}*/
 
 
 a{
@@ -95,10 +81,3 @@ footer{
     grid-area: 1/4/2/5;
 }
 
-/* .footer-home{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-} */
