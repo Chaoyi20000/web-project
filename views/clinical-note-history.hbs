@@ -5,35 +5,36 @@
 {{> choose-time-range}}
 
 
- 
-<div class="flex_container1">
+{{!--  
+<div class="flex_container1"> --}}
     
-    <div class = "main_part">
-        <table style="width:88%">
+    {{!-- <div class = "main_part"> --}}
+        <table >
             <tr>
 
                 <th input type="text">{{patient.firstName}} {{patient.lastName}}</th>
             </tr>
             {{#each notes}}
-            <form action="/home/note_history/{{../patient._id}}" method="POST">
-            <tr>
-                <input type="hidden" name="target" value="{{this._id}}">
-                <td class="grey_block">
-                    <input class ="grey_block" type="submit" value="{{this.noteDate}}">
-                </td>
+                <form action="/home/note_history/{{../patient._id}}" method="POST">
+                    <tr>
+                        {{!-- <input type="hidden" name="target" value="{{this._id}}"> --}}
+                        <td class="grey_block">
+                            {{this.noteDate}}
+                            {{!-- <input class ="grey_block" type="submit" value="{{this.noteDate}}"> --}}
+                        </td>
 
-                <td class="grey_block"> 
-                    {{this.note}}
-                </td>
-            </tr>
-            </form>
+                        <td class="grey_block"> 
+                            {{this.note}}
+                        </td>
+                    </tr>
+                </form>
             {{/each}}
            
         </table>
         
-    </div>
+    {{!-- </div> --}}
 
-    {{#if target}}
+    {{!-- {{#if target}}
     <div class="note_content">
         <div class="note" >
             <h3> {{target.noteDate}}<h3>
@@ -41,6 +42,6 @@
         </div>
 
     </div>
-    {{/if}}
-</div>
+    {{/if}} --}}
+{{!-- </div> --}}
 
