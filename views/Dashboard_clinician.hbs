@@ -5,19 +5,19 @@
 {{!-- <form method="POST" action="/home/logout">
 <button>Logout</button>
 </form> --}}
-<div>
+
     <h2 id="Title">Clinician Dashboard</h2>
-    <h2 id="Title-comments">New comments:</h2>
+    {{!-- <h2 id="Title-comments">New comments:</h2> --}}
     {{!-- <a  href="/home/register"> regitser</a> --}}
         
     {{#each patient}}
 
     <div class="Patient">
         
-        <a href="/home/all_comment/{{this._id}}" class= "Avatar login_start_box" style="background-color: #E9F3FF;">
-            <img class="Avatar_img" src="../public/image/avatar/images.jpg" alt="user avatar">
+        <a href="/home/all_comment/{{this._id}}" >
+            {{!-- <img class="Avatar_img" src="../public/image/avatar/images.jpg" alt="user avatar"> --}}
            
-            <p class="login_start_element">{{this.firstName}} {{this.lastName}}</p>
+            <p class="login_start_element name">{{this.firstName}} {{this.lastName}}</p>
         </a> 
         
 
@@ -29,19 +29,19 @@
                     {{#each this.data}}
                         {{#ifRecorded this.status}}
                             {{#ifAbnormal this.valueMin this.valueMax this.value}}
-                                <div class="Data login_start_box" style="background-color: #ffbaa9;">
+                                <div class="login_start_box" style="background-color: #ffbaa9;">
                                     <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: {{this.value}}</p></a>
                                 </div>
                                 
                                 {{else}}
-                                <div class="Data login_start_box" style="background-color: #DFF1F0;">
+                                <div class="login_start_box" style="background-color: #DFF1F0;">
                                     <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: {{this.value}}</p></a>
                                 </div>
                             {{/ifAbnormal}}
                         {{/ifRecorded}}
 
                         {{#ifUnrecorded this.status}}
-                        <div class="Data login_start_box" style="background-color: #F0F0F0">
+                        <div class="login_start_box" style="background-color: #F0F0F0">
                             <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: </p></a>
                         </div>
                         {{/ifUnrecorded}}
@@ -52,7 +52,7 @@
                 
 
                   
-                <div class="New-comments">
+                {{!-- <div class="New-comments">
                     
                     {{#each this.data}}
                         {{#ifRecorded this.status}} 
@@ -63,7 +63,7 @@
                         
                         {{/ifRecorded}}
                     {{/each}}
-                </div>
+                </div> --}}
                     
             {{/ifRecent}}
         {{/each}}
@@ -71,7 +71,7 @@
 
     {{/each}}
     
-</div>
+
 
     <button class = "register-button">
        <a href="/home/register">Register <br> New&nbspPatient</a> 
