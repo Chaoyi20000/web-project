@@ -10,9 +10,9 @@ body {
     font-family: 'Roboto Slab';
 }
 
-header{
+/* header{
     grid-area: header;
-}
+} */
 
 .down_left{
     grid-area: down_left;
@@ -25,7 +25,6 @@ header{
 .grid_box{
     display: grid;
     grid-template-areas:
-        'header header'
         'down_left down_right';
         gap: 1vw;
         background-color: #CDDCDB;
@@ -39,17 +38,8 @@ header{
 }
 
 
-@media screen and (max-width: 640px) {  /* page layout for phones */
-    .grid_box {
-        display: flex;
-        flex-direction: column;
-    }
 
-    #video{
-        width:100vw;
-    }
-}
-.header_box{
+/* .header_box{
     display: grid;
     grid-template-areas: 'left left left right';
     gap: 1vw;
@@ -62,7 +52,7 @@ header{
 
 .right{
     grid-area: right;
-}
+} */
 
 .flex_box{
     display: flex;
@@ -96,7 +86,7 @@ header{
 #links{
     margin-top: 2vw;            
     padding: 1vw;
-    line-height: 1vw;        
+    /* line-height: 1vw;         */
 }
 
 #website-image{
@@ -106,4 +96,19 @@ header{
     border-radius: 45px;
 }
 
+@media screen and (max-width: 640px) {  /* page layout for phones */
+    .grid_box {
+        display: flex;
+        flex-direction: column;
+    }
 
+    #video {
+        width:90vw;
+        height: 45vw;
+        margin-bottom: 1vh;
+    }
+
+    .grid_box > div {
+        line-height: 3vh;
+    }
+}
