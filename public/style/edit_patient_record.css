@@ -1,9 +1,11 @@
 @import url("header-grid.css");
 @import url("login.css");
-@import url("patient_details\(clinican\).css");
 #avatar {
   grid-row: 2;
   grid-column: 4/span 6;
+}
+.login_start_element{
+  border-radius: 45px;
 }
 
 img {
@@ -32,6 +34,25 @@ button{
   
 }
 
+td {
+  text-align: center;
+  font-size:3vh;
+  width:20vw;
+  border-radius:45px;
+
+}
+
+td input{
+  font-size: 2vh;
+  border-radius: 45px;
+
+}
+
+input.checkbox{
+  width: 10vw;
+  height: 5vh;
+}
+
 
 @media screen and (max-width: 812px) {  /* page layout for phones */
   body {
@@ -56,20 +77,22 @@ button{
     border-collapse: separate;
     border-spacing: 1vw 2vh;
     height:50vh;    
+    width: 100vw;
     padding-left: auto;
   }
   
   th {
       text-align: left;
       font-weight: 600;
-      font-size: 1vh;
+      font-size: 2vh;
       width:5vw;
     }
 
   td {
       text-align: center;
-      font-size:1vh;
+      font-size:2vh;
       width:20vw;
+      border-radius:25px;
 
   }
 
@@ -80,10 +103,9 @@ button{
   }
 
 
-  input{
-    margin-left: 3vw;
-    margin-right: 3vw
-  }
+  td input{
+    border-radius: 25px;
+  } 
 }
 
 .save-td{

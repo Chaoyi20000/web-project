@@ -84,3 +84,13 @@ table, th, td {
 
     
 }
+
+@media screen and (max-width: 812px) { 
+  table{
+    height: 80vh;
+  }
+  .grey_block{
+    border-radius: 25px;
+
+  }
+}

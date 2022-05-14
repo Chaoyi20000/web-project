@@ -7,6 +7,11 @@ html,body {
     font-size:3vh;
     
 }
+
+.login_start_element{
+    border-radius: 45px;
+  }
+
 table {
     border-collapse: separate;
     border-spacing: 2vw 3vh;
@@ -25,9 +30,9 @@ td {
     text-align: center;
     font-size:2vh;
     width:30vw;
-    background-color: #F0F0F0;
-    border-radius: 45px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+/*     background-color: #F0F0F0;
+     border-radius: 45px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*/
 }
 
 td input{
@@ -35,7 +40,12 @@ td input{
     height: 100%;   
     background-color: transparent;
     border: none;
+    border-radius: 45px;
 }
+
+
+
+
 
 
 button{

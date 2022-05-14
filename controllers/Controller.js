@@ -156,6 +156,7 @@ const renderPatientDashboard = async (req, res) => {
     } else {
       const patientId = await searchAndCreatePatient();
       const patient = await Patient.findOne({_id:patientId}).lean();
+      await calculateERate(patientId);
       
       res.render("patient_dashboard.hbs", {patient: patient});
     }

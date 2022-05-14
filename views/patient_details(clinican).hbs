@@ -15,12 +15,12 @@
             <form action="/home/patient_details/{{patient._id}}" method="POST">
                 <tr >
                     <th>Patient name:</th>
-                    <td >{{patient.firstName}} {{patient.lastName}}</td>
+                    <td class="login_start_box login_start_element" >{{patient.firstName}} {{patient.lastName}}</td>
                 </tr>
                 {{#if notes}}
                 <tr>
                     <th>LatestClinical Notes:</th>
-                    <td>{{notes.note}}</td>
+                    <td class="login_start_box login_start_element" >{{notes.note}}</td>
                 
                 </tr>
                 {{/if}}
@@ -28,21 +28,20 @@
                 {{#if message}}
                 <tr>
                     <th>Latest Support message:</th>
-                    <td >{{message.message}}</td>
+                    <td class="login_start_box login_start_element" >{{message.message}}</td>
                 </tr>
                 {{/if}}
 
                 <tr>
                     <th>Add clinical notes:</th>
-                    <td ><input name="note"></td>
+                    <td class="login_start_box login_start_element" ><input name="note"></td>
                     <td class = "save-td"><button type="submit">save</button></td> 
                 </tr>
 
 
                 <tr>
                     <th>Update support message:</th>
-    {{!--                 <input type ="hidden" name="id" value="{{patient._id}}">
-    --}}                <td ><input name="supportMsg"></td>
+                    <td class="login_start_box login_start_element"  ><input name="supportMsg"></td>
                         <td class = "save-td"><button type="submit">save</button></td>
                         
                 </tr>
