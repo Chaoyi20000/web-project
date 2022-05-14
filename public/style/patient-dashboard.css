@@ -45,7 +45,7 @@ text-align: center;
 
 .image-and-button{
     display: grid;
-    grid-template-areas: 'photo  buttons';
+    grid-template-areas: 'photo  button-change-password';
 }
 
 .photo{
@@ -61,11 +61,16 @@ text-align: center;
     border: solid black;
 }
 
-.buttons{
-    grid-area: buttons;
+.button-change-password{
+    grid-area: button-change-password;
+    background-color: antiquewhite;
 }
 
-.buttons img{
+.button-change-password button{
+    margin-bottom: 3vh;
+}
+
+.button-change-password img{
     width: 6vw;
 }
 

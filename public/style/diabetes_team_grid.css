@@ -44,6 +44,10 @@ header{
         display: flex;
         flex-direction: column;
     }
+
+    #video{
+        width:100vw;
+    }
 }
 .header_box{
     display: grid;
