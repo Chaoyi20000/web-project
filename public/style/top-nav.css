@@ -31,7 +31,7 @@
 
 .toggle-button{
     position: absolute;
-    top: 4rem;
+    top: 5vh;
     right: 1rem;
     display: none;
     flex-direction: column;

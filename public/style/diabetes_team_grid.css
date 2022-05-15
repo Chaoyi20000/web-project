@@ -10,10 +10,6 @@ body {
     font-family: 'Roboto Slab';
 }
 
-/* header{
-    grid-area: header;
-} */
-
 .down_left{
     grid-area: down_left;
 
@@ -37,22 +33,6 @@ body {
     line-height: 3vw;
 }
 
-
-
-/* .header_box{
-    display: grid;
-    grid-template-areas: 'left left left right';
-    gap: 1vw;
-    padding: 10px;
-}
-
-.left{
-    grid-area: left;
-}
-
-.right{
-    grid-area: right;
-} */
 
 .flex_box{
     display: flex;
