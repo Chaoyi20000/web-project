@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>start_page</title>
     <link rel="stylesheet" href="../public/style/start_page.css">
-    <link rel="stylesheet" href="../public/style/login.css">
+    <!-- <link rel="stylesheet" href="../public/style/login.css"> -->
 
 
 </head>
@@ -14,14 +14,10 @@
 
     <header class="header-grid1">
         <div class="diabete-home1" >
-            <img class="logo_size" src="/public/image/logo.jpg"
-            alt="unable to show picture"/>
+            <img class="logo_size" src="/public/image/logo.png"
+            alt="logo"/>
         </div>
-        <div class = "dark-mode1">
-            <button>
-                <a href="">Dark Mode </a>
-            </button>
-        </div>
+        <div id = "dark-mode"><button >Dark&nbspMode</button> </div>
     </header>
 
     <main class = "flex_container">
@@ -53,9 +49,16 @@
     
     </main>
 
-    <footer class="footer-home" >
+    <footer>
         copy right reserved by Diabetes@home
     </footer>
+
+    <script>
+        const mode = document.getElementById("dark-mode");
+        mode.onclick = function(){
+          document.body.classList.toggle("dark-theme");
+        }
+    </script>
 
 </body>
 </html>

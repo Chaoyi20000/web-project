@@ -17,7 +17,7 @@
             </p>     
         </div>
         <div class = "buttons">
-            <div ><button>Dark&nbspMode</button> </div>
+            <div ><button id = "dark-mode">Dark&nbspMode</button> </div>
             <div ><button><a href="javascript:history.back()">Back</a></button></div>
         </div>
     </header>
@@ -46,6 +46,13 @@
     <footer class="footer-home" >
         copy right reserved by Diabetes@home
     </footer>
+
+    <script>
+        const mode = document.getElementById("dark-mode");
+        mode.onclick = function(){
+          document.body.classList.toggle("dark-theme");
+        }
+      </script>
 
 </body>
 

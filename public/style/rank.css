@@ -1,6 +1,6 @@
 .rank_container {  
     display: grid;
-    background-color: #CDDCDB;
+    background-color: var(--background-color);
     grid-template-columns: 1fr 1fr 1fr; 
     grid-template-rows: 1fr;
     width: 100vw;
@@ -23,7 +23,7 @@
 #users table {
     border-collapse: separate;
     border-spacing: 2vw 3vh;
-    background-color: #f0f0f0;
+    background-color: var(--text-bkgd-color);
     border-radius: 35px;
     padding: auto;
     height: 65vh;
@@ -55,7 +55,7 @@
     #users table {
         border-collapse: separate;
         border-spacing: 2vw 3vh;
-        background-color: #f0f0f0;
+        background-color: var(--text-bkgd-color);
         border-radius: 35px;
         padding: auto;
         height: 50vh;

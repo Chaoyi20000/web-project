@@ -2,9 +2,20 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
 
+:root{
+    --background-color: #CDDCDB;
+    --button-color:#FFFFFF;
+    --text-bkgd-color:#FFFFFF;
+}
+
+.dark-theme{
+    --background-color: #687DA8;
+    --button-color:#8498C5;
+    --text-bkgd-color:#8498C5; 
+}
 
 body { 
-    background-color: #CDDCDB;
+    background-color: var(--background-color);
     font-size: 3vh;
     box-sizing: border-box;
     font-family: 'Roboto Slab';
@@ -23,7 +34,7 @@ body {
     grid-template-areas:
         'down_left down_right';
         gap: 1vw;
-        background-color: #CDDCDB;
+        background-color: var(--background-color);
         padding: 10px;
 }
 
@@ -51,7 +62,7 @@ body {
 .text_background{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 45px; 
-    background-color: #FFFFFF;
+    background-color: var(--text-bkgd-color);
     text-align: center;
     padding: 2vw;
 }

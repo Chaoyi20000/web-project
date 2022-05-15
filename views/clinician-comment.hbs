@@ -20,7 +20,8 @@
                     {{#each this.data}}
                         {{#ifRecorded this.status}}
                             {{#ifAbnormal this.valueMin this.valueMax this.value}}
-                                <li style="background-color: #ffbaa9;">{{this.fullName}}: {{this.value}}</li>
+                                <li style="background-color: var(--danger);">
+                                    {{this.fullName}}: {{this.value}}</li>
                             {{else}}
                                 <li >{{this.fullName}}: {{this.value}}</li>
 
@@ -28,7 +29,7 @@
                         {{/ifRecorded}}
 
                         {{#ifUnrecorded this.status}}
-                            <li style="background-color: #F0F0F0;">{{this.fullName}}: </li>
+                            <li style="background-color: var(--unrecorded);">{{this.fullName}}: </li>
 
                         {{/ifUnrecorded}}
                     {{/each}}

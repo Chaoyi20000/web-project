@@ -15,11 +15,13 @@
 } 
 
 .nav-links  li:hover{
-    background-color:#DFF1F0;
+    background-color:var(--recorded);
+    border-radius: 30px;
 } 
 
 .about-nav-links li:hover{
-    background-color:#DFF1F0;
+    background-color:var(--recorded);
+    border-radius: 30px;
 } 
 
 .nav-links  ul a, .about-nav-links a{

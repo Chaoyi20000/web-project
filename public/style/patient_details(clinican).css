@@ -1,12 +1,5 @@
 
 @import url("login.css");
-html,body { 
-    background-color: #CDDCDB;
-    box-sizing: border-box;
-    font-family: 'Roboto Slab';
-    font-size:3vh;
-    
-}
 
 .login_start_element{
     border-radius: 45px;
@@ -50,7 +43,7 @@ td input{
 
 button{
    
-    background-color: #F8EAE7;
+    background-color: var(--pink-button-color);
     border-radius: 25px;
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -58,22 +51,22 @@ button{
     
 }
 #dangerous{
-    background-color: #F8EAE7;
+    background-color: var(--danger-inner);
     border:solid;
-    border-color: #FF977E;
+    border-color: var(--danger-border);
     border-radius: 45px;
 
 }
 
 #safe{
     border-radius:45px; 
-    background-color:#DFF1F0;
+    background-color:var(--text-bkgd-color);
 }
 
 /*grid for main body*/
 .patient_details_container {  
     display: grid;
-    background-color: #CDDCDB;
+    background-color: var(--background-color);
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
     grid-template-rows: auto;
     width: 100vw;
@@ -117,16 +110,6 @@ button{
     }
 
 
-
-.footer-grid{
-    display:grid;
-    grid-template-columns: 1fr;
-    grid-template-rows:1fr;
-    background-color: transparent;
-    text-align: center;
-    bottom:0;
-
-}
 
 @media screen and (max-width: 640px) {  /* page layout for phones */
     .patient_details_container{
