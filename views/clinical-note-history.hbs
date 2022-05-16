@@ -17,10 +17,8 @@
             {{#each notes}}
                 <form action="/home/note_history/{{../patient._id}}" method="POST">
                     <tr>
-                        {{!-- <input type="hidden" name="target" value="{{this._id}}"> --}}
                         <td >
                             {{this.noteDate}}
-                            {{!-- <input class ="grey_block" type="submit" value="{{this.noteDate}}"> --}}
                         </td>
 
                         <td class="grey_block"> 
@@ -34,16 +32,5 @@
 
 {{> logout}}
         
-    {{!-- </div> --}}
-
-    {{!-- {{#if target}}
-    <div class="note_content">
-        <div class="note" >
-            <h3> {{target.noteDate}}<h3>
-            <h4>{{target.note}}</h4>    
-        </div>
-
-    </div>
-    {{/if}} --}}
-{{!-- </div> --}}
+   
 

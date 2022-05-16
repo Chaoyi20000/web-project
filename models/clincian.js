@@ -14,6 +14,7 @@ const clinicanSchema = new mongoose.Schema({
     clinicalNote:[{type:mongoose.Schema.Types.ObjectId, ref: "ClinicalNote"}],
     suportMessage: [{type:mongoose.Schema.Types.ObjectId, ref:"SupportMessage"}],
     role: {type: String, default: "clinician" },
+
 },
     {timestamps:{createdAt: "createTime",updatedAt:"updateTime"}
 });

@@ -60,7 +60,13 @@ button{
 
 #safe{
     border-radius:45px; 
-    background-color:var(--text-bkgd-color);
+    background-color:var(--recorded);
+}
+
+#empty{
+    border-radius:45px; 
+    background-color:var(--unrecorded);
+
 }
 
 /*grid for main body*/

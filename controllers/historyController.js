@@ -367,18 +367,12 @@ const noteHistoryInRange = async(req, res) =>{
         const patient = await Patient.findById(patientId).lean();
         const notes = await ClinicalNote.find({patientId:patientId}).lean();
         const range = req.body.timeRange;
-        const targetId = req.body.target;
         // time range selected
         if(range) {
             const reqNotes = await findNotesInTimeRange(range, patientId);
             return res.render("clinical-note-history.hbs", {patient:patient, notes:reqNotes});
         }
-        //particular time selected
-        if (targetId) {
-            const target = await ClinicalNote.findById(targetId).lean();
-            return res.render("clinical-note-history.hbs", {patient:patient, notes:notes, target:target});
-
-        }
+       
         return res.render("clinical-note-history.hbs", {patient:patient, notes:notes});
 
 

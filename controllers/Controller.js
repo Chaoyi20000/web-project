@@ -403,7 +403,8 @@ const renderLeaderBoard = async (req, res)=>{
     console.log("error happens in render leadboard: ", err);
 
   }
-}
+};
+
 
 module.exports = {
   renderRecordData,
