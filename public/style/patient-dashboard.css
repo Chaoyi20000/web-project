@@ -20,6 +20,7 @@ button{
 .patient-nav{
     grid-area: 1/1/2/2;
     display: flex;
+    /* justify-content: center; */
     /* background-color: antiquewhite; */
     /* margin: auto; */
 }
@@ -30,6 +31,7 @@ nav ul{
 }
 
 nav ul li {
+    
     margin-bottom: 3vw;
     background-color:var(--text-bkgd-color);
     border-radius: 30px;
