@@ -19,10 +19,14 @@ button{
 
 .patient-nav{
     grid-area: 1/1/2/2;
+    display: flex;
+    /* background-color: antiquewhite; */
+    /* margin: auto; */
 }
 
 nav ul{
     list-style-type: none;
+    /* margin: auto; */
 }
 
 nav ul li {
