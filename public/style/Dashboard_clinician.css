@@ -126,3 +126,8 @@ body {
     z-index: 1;
     color: #505050;
 }
+
+#bottom-indentation {
+    display: flex;
+    padding: 20px;
+}
