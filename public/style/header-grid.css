@@ -100,4 +100,7 @@ footer{
 
 }
 
-
+#bottom-indentation {
+    display: flex;
+    padding: 20px;
+}
