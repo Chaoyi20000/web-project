@@ -3,7 +3,6 @@
     grid-area: 1/2/2/6;
 }
 
-
 .container {
     display: grid; 
     background-color: var(--background-color);
@@ -11,8 +10,7 @@
     grid-template-rows: 0.2fr 0.5fr 1.5fr 1fr; 
     gap: 10px; 
     height: 80%;
-
-  }
+}
 
 .List1 {  display: grid;
     grid-template-columns: 1fr;
@@ -23,21 +21,17 @@
     grid-gap: 5%;
     margin: 5%;
     height: 80%;
-   
-  }
-  
-  .email { grid-area: 1 / 1 / 2 / 2; }
-  
-  .first { grid-area: 2 / 1 / 3 / 2; }
-  
-  .date-of-birth { grid-area: 3 / 1 / 4 / 2; }
-  
-  .password { grid-area: 4 / 1 / 5 / 2; }
-  .confirm {grid-area: 5 / 1 / 6 / 2;}
+}
 
-  
+.email { grid-area: 1 / 1 / 2 / 2; }
 
+.first { grid-area: 2 / 1 / 3 / 2; }
 
+.date-of-birth { grid-area: 3 / 1 / 4 / 2; }
+
+.password { grid-area: 4 / 1 / 5 / 2; }
+
+.confirm {grid-area: 5 / 1 / 6 / 2;}
 
 .List {  
     display: grid;
@@ -62,8 +56,6 @@
 
 .clinician { grid-area: 3 / 1 / 3/ 2; }
 
-
-
 .submit { 
     grid-area: 5 / 1/ 5 /2; 
     height:70%;
@@ -77,13 +69,13 @@ input{
     display: inline-block;
     border: none;
     background: var(--text-bkgd-color);
-  }
+}
 
 label{
     padding-left: 1vw;
 }
+
 html, body , .container {
     height: 100%;
     margin: 0;
 }
-
