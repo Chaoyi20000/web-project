@@ -16,9 +16,19 @@ button{
     text-align: center;
     padding: 1vw; 
     border: none;
- 
 }
 #time-range{
     font-size: 2.5vw;
     margin-top: 1vh;
+}
+#choose-time-range{
+    margin-left: 15px;
+}
+
+@media screen and (max-width: 640px) {  /* page layout for phones */
+    *{font-size: 2.5vw;}
+
+    #choose-time-range{
+        margin-left: 2vw;
+    }
 }
