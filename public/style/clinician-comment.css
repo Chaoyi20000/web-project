@@ -46,3 +46,27 @@ aside img{
 .comment-section ul li{
     padding: 1vw;
 }
+
+@media screen and (max-width: 640px) {  /* page layout for phones */
+
+    *{
+        font-size: 4vw;
+    }
+
+    .user-image-info{
+        width: 200px;
+        padding-top: 20px;
+    }
+
+    aside img{
+        border-radius: 25px;
+    }
+
+    #user-info ul li{
+        border-radius: 20px;
+    }
+
+    .comment-section{
+        margin-left: 200px;
+    }
+}

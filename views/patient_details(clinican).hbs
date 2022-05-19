@@ -9,7 +9,6 @@
         
     </div>
 
-
     <div class = "login_start_element" id="notes">
         <table>
             <form action="/home/patient_details/{{patient._id}}" method="POST">
@@ -17,11 +16,11 @@
                     <th>Patient name:</th>
                     <td class="login_start_box login_start_element" >{{patient.firstName}} {{patient.lastName}}</td>
                 </tr>
+
                 {{#if notes}}
                 <tr>
                     <th>LatestClinical Notes:</th>
                     <td class="login_start_box login_start_element" >{{notes.note}}</td>
-                
                 </tr>
                 {{/if}}
 
@@ -38,15 +37,12 @@
                     <td class = "save-td"><button type="submit">save</button></td> 
                 </tr>
 
-
                 <tr>
                     <th>Update support message:</th>
                     <td class="login_start_box login_start_element"  ><input name="supportMsg"></td>
                         <td class = "save-td"><button type="submit">save</button></td>
                         
                 </tr>
-
-
             </form>
         </table>
     </div>
@@ -59,15 +55,14 @@
                     <th>Today's data</th>
                     <th>Safety thresholds (MIN)</th>
                     <th>Safety thresholds (MAX)</th>
-
                 <tr>
             </thead>
             
             <tbody>
                 {{#each record.data}}
-                
                 <tr>
                     {{#ifRequired this.status}}
+
                         {{#ifRecorded this.status}}
                             {{#ifAbnormal this.valueMin this.valueMax this.value}}
                                 <td class="login_start_box" id = "dangerous" >{{this.fullName}}: </td>
@@ -77,32 +72,26 @@
                                 <td class="login_start_box" id ="safe" >{{this.fullName}}: </td>
                                 <td class="login_start_box login_start_element" >{{this.value}}</td>
                             {{/ifAbnormal}}
-                                
-                            
                         {{/ifRecorded}}
 
                         {{#ifUnrecorded this.status}}
                             <td class="login_start_box" id = "empty" >{{this.fullName}}: </td>
                             <td class="login_start_box login_start_element" > </td>
-
                         {{/ifUnrecorded}}
                             
                         <td class="login_start_box login_start_element" >{{this.valueMin}}</td>
                         <td class="login_start_box login_start_element">{{this.valueMax}}</td>
+                    
                     {{/ifRequired}}
                 </tr>
                 {{/each}}
-            
-                
             </tbody>
-
         </table>
     </div>
 
     <div class="login_start_element login_start_box" id="edit">
         <a  href = '/home/edit_details/{{patient._id}}'>edit</a>
     </div>
-
 </div>
 
 {{> logout}}

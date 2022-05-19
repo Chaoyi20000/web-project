@@ -9,7 +9,7 @@
         <img src="/public/image/avatar/images.jpg" alt="user image">
         <figcaption>
             <a href="/home/patient_details/{{patient._id}}">{{patient.firstName}} {{patient.lastName}}</a>
-            </figcaption>
+        </figcaption>
     </aside>
 
     <aside id = "user-info">
@@ -38,85 +38,37 @@
             {{/each}}
         </ul>
 
-    </aside>    
-</aside>
-
-    <div class="comment-section">
-
-        <h3>All Comments:</h3>
-        <ul>
-            {{#each patient.records}}
-                {{#ifRecent this.recordDate}}
-                    {{#each this.data}}
-                        {{#ifRecorded this.status}}
-                            <li><a href="/home/patient_details/{{@root.patient._id}}">{{this.comment}}    Time: {{this.createdAt}}</a></li>
-                        {{/ifRecorded}}
-                    {{/each}}
-                {{/ifRecent}}
-            {{/each}}
-            
-            <li>...............................comment history...............................</li> 
-            {{#each patient.records}}  
-                {{#ifRecent this.recordDate}} 
-                {{else}}
-                    {{#each this.data}}   
-                        {{#ifRecorded this.status}}       
-                            <li><a href="/home/patient_details/{{@root.patient._id}}">{{this.comment}}    Time: {{this.createdAt}}</a></li>
-                        {{/ifRecorded}}
-                    {{/each}}
-                {{/ifRecent}}
-            {{/each}}
-            
-            
-        </ul>
-    </div>
-    {{!-- <aside class = "support">
-        <table>
-            <tr>
-                <th>
-                    Links:
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <a href="/home/patient_details/{{patient._id}}">See patient details</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="/home/health_history/{{patient._id}}">Patient health history</a>
-
-                </td>
-
-            </tr>
-            
-            <tr>
-                <td>
-                    <a href="/home/note_history/{{patient._id}}">Clinical note history</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="/home/clinician_dashboard">Dashboard</a>
-                </td>
-            </tr>
-           
-
-
-        </table> --}}
-       
-        {{!-- <form action="">
-            <label for="support-mes"></label>
-            <textarea name="support-mes" id="support-mes" cols="30" rows="10">
-                Support&nbspMessage:
-            </textarea>
-            <input type="submit" value="Submit">
-        </form> --}}
     </aside>
 
-    {{> logout}}
+</aside>
+
+<div class="comment-section">
+
+    <h3>All Comments:</h3>
+    <ul>
+        {{#each patient.records}}
+            {{#ifRecent this.recordDate}}
+                {{#each this.data}}
+                    {{#ifRecorded this.status}}
+                        <li><a href="/home/patient_details/{{@root.patient._id}}">{{this.comment}}    Time: {{this.createdAt}}</a></li>
+                    {{/ifRecorded}}
+                {{/each}}
+            {{/ifRecent}}
+        {{/each}}
         
+        <li>...............................comment history...............................</li> 
+        {{#each patient.records}}  
+            {{#ifRecent this.recordDate}} 
+            {{else}}
+                {{#each this.data}}   
+                    {{#ifRecorded this.status}}       
+                        <li><a href="/home/patient_details/{{@root.patient._id}}">{{this.comment}}    Time: {{this.createdAt}}</a></li>
+                    {{/ifRecorded}}
+                {{/each}}
+            {{/ifRecent}}
+        {{/each}}
+    </ul>
 
+</div>
 
-
-    
+{{> logout}}

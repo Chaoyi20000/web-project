@@ -2,79 +2,50 @@
 
 {{> about-top-nav}}
 
-{{!-- <form method="POST" action="/home/logout">
-<button>Logout</button>
-</form> --}}
+<h2 id="Title">Clinician Dashboard</h2>
 
-    <h2 id="Title">Clinician Dashboard</h2>
-    {{!-- <h2 id="Title-comments">New comments:</h2> --}}
-    {{!-- <a  href="/home/register"> regitser</a> --}}
-        
-    {{#each patient}}
+{{#each patient}}
+<div class="Patient">
 
-    <div class="Patient">
-        
-        <a href="/home/all_comment/{{this._id}}" >
-            {{!-- <img class="Avatar_img" src="../public/image/avatar/images.jpg" alt="user avatar"> --}}
-           
-            <p class="login_start_element name">{{this.firstName}} {{this.lastName}}</p>
-        </a> 
-        
+    <a href="/home/all_comment/{{this._id}}" >
+        <p class="login_start_element name">{{this.firstName}} {{this.lastName}}</p>
+    </a> 
 
-        {{#each this.records}}
-        
-            {{#ifRecent this.recordDate}}
+    {{#each this.records}}
+    
+        {{#ifRecent this.recordDate}}
 
-                <div  class="Data-block">
-                    {{#each this.data}}
-                        {{#ifRecorded this.status}}
-                            {{#ifAbnormal this.valueMin this.valueMax this.value}}
-                                <div class="login_start_box" style="background-color: var(--danger);">
-                                    <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: {{this.value}}</p></a>
-                                </div>
-                                
-                                {{else}}
-                                <div class="login_start_box" style="background-color: var(--recorded);">
-                                    <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: {{this.value}}</p></a>
-                                </div>
-                            {{/ifAbnormal}}
-                        {{/ifRecorded}}
+            <div  class="Data-block">
+                {{#each this.data}}
+                    {{#ifRecorded this.status}}
+                        {{#ifAbnormal this.valueMin this.valueMax this.value}}
+                            <div class="login_start_box" style="background-color: var(--danger);">
+                                <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: {{this.value}}</p></a>
+                            </div>
+                            
+                            {{else}}
+                            <div class="login_start_box" style="background-color: var(--recorded);">
+                                <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: {{this.value}}</p></a>
+                            </div>
+                        {{/ifAbnormal}}
+                    {{/ifRecorded}}
 
-                        {{#ifUnrecorded this.status}}
-                        <div class="login_start_box" style="background-color: var(--unrecorded)">
-                            <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: </p></a>
-                        </div>
-                        {{/ifUnrecorded}}
-                    {{/each}}
-                
+                    {{#ifUnrecorded this.status}}
+                    <div class="login_start_box" style="background-color: var(--unrecorded)">
+                        <a href="/home/all_comment/{{../patientId}}"><p>{{this.fullName}}: </p></a>
+                    </div>
+                    {{/ifUnrecorded}}
+                {{/each}}
+            </div>  
 
-                </div>                
-                
-
-                  
-                {{!-- <div class="New-comments">
-                    
-                    {{#each this.data}}
-                        {{#ifRecorded this.status}} 
-                        
-                        <a  href ="/home/all_comment/{{../patientId}}">
-                        <p  class="login_start_element login_start_box Data" >{{this.comment}}</p>
-                        </a>
-                        
-                        {{/ifRecorded}}
-                    {{/each}}
-                </div> --}}
-                    
-            {{/ifRecent}}
-        {{/each}}
-    </div>
-
+        {{/ifRecent}}
     {{/each}}
 
-    <button class = "register-button">
-       <a href="/home/register">Register <br> New&nbspPatient</a> 
-    </button>
+</div>
+{{/each}}
 
-    {{> logout}}  
+<button class = "register-button">
+    <a href="/home/register">Register <br> New&nbspPatient</a> 
+</button>
 
-    <div id="bottom-indentation"></div>
+{{> logout}}  

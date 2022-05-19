@@ -4,31 +4,26 @@
 {{> c-top-nav}}
 {{> choose-time-range}}
 
+<table >
+    <tr>
 
-{{!--  
-<div class="flex_container1"> --}}
-    
-    {{!-- <div class = "main_part"> --}}
-        <table >
+        <th input type="text">{{patient.firstName}} {{patient.lastName}}</th>
+    </tr>
+    {{#each notes}}
+        <form action="/home/note_history/{{../patient._id}}" method="POST">
             <tr>
+                <td >
+                    {{this.noteDate}}
+                </td>
 
-                <th input type="text">{{patient.firstName}} {{patient.lastName}}</th>
+                <td class="grey_block"> 
+                    {{this.note}}
+                </td>
             </tr>
-            {{#each notes}}
-                <form action="/home/note_history/{{../patient._id}}" method="POST">
-                    <tr>
-                        <td >
-                            {{this.noteDate}}
-                        </td>
-
-                        <td class="grey_block"> 
-                            {{this.note}}
-                        </td>
-                    </tr>
-                </form>
-            {{/each}}
-           
-        </table>
+        </form>
+    {{/each}}
+    
+</table>
 
 {{> logout}}
         
