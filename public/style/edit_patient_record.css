@@ -7,7 +7,7 @@
   grid-column: 4/span 6;
 }
 .login_start_element{
-  border-radius: 45px;
+  border-radius: 25px;
 }
 
 img {
@@ -36,17 +36,21 @@ button{
   
 }
 
+th {
+  text-align: center;
+}
+
 td {
   text-align: center;
   font-size:3vh;
-  width:20vw;
-  border-radius:45px;
+  width:25vw;
+  border-radius:25px;
 
 }
 
 td input{
   font-size: 2vh;
-  border-radius: 45px;
+  border-radius: 25px;
 
 }
 
@@ -64,14 +68,6 @@ input.checkbox{
 }
 
 @media screen and (max-width: 812px) {  /* page layout for phones */
-  /* body {
-    display: flex;
-    flex-direction: column;
-    font-size: 80%;
-    grid-template-rows: auto;
-    
-  } */
-
   #avatar {
     grid-row: 3;
   }

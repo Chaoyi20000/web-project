@@ -71,11 +71,11 @@
                         {{#ifRecorded this.status}}
                             {{#ifAbnormal this.valueMin this.valueMax this.value}}
                                 <td class="login_start_box" id = "dangerous" >{{this.fullName}}: </td>
-                                <td class="login_start_box" style="border-radius:45px;">{{this.value}}</td>
+                                <td class="login_start_box login_start_element" >{{this.value}}</td>
                 
                             {{else}}
                                 <td class="login_start_box" id ="safe" >{{this.fullName}}: </td>
-                                <td class="login_start_box" style="border-radius:45px;">{{this.value}}</td>
+                                <td class="login_start_box login_start_element" >{{this.value}}</td>
                             {{/ifAbnormal}}
                                 
                             
@@ -83,12 +83,12 @@
 
                         {{#ifUnrecorded this.status}}
                             <td class="login_start_box" id = "empty" >{{this.fullName}}: </td>
-                            <td class="login_start_box" style="border-radius:45px;"> </td>
+                            <td class="login_start_box login_start_element" > </td>
 
                         {{/ifUnrecorded}}
                             
-                        <td class="login_start_box" style="border-radius:45px;">{{this.valueMin}}</td>
-                        <td class="login_start_box" style="border-radius:45px;">{{this.valueMax}}</td>
+                        <td class="login_start_box login_start_element" >{{this.valueMin}}</td>
+                        <td class="login_start_box login_start_element">{{this.valueMax}}</td>
                     {{/ifRequired}}
                 </tr>
                 {{/each}}

@@ -1,13 +1,10 @@
 @import url("header-grid.css");
-/* @import url("patient_details\(clinican\).css"); */
 
 body { 
   background-color: var(--background-color);
   box-sizing: border-box;
   font-family: 'Roboto Slab';
 }
-
-
 
 a:link, a:visited{
   text-decoration: none;
@@ -19,7 +16,6 @@ a:hover, a:active{
 }
 
 button{
-  
   background-color: var(--pink-button-color);
   border-radius: 25px;
   border: none;
@@ -27,16 +23,15 @@ button{
   padding: 1vw;
 }
 
+
+
 #list_vert {
   list-style-type: none;
-  /* justify-content:space-around; */
   display: inline;
   flex-direction: column;
   align-content: center;
   
- }
-
-
+}
 
 .main_text{
   border-radius: 45px; 
@@ -70,16 +65,19 @@ button{
   border: none;
   background-color: var(--text-bkgd-color);
 }
+
+
+
 .login_portal {  
-    display: grid;
-    background-color: var(--background-color);
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ; 
-    grid-template-rows: 0.1fr 2fr 0.5fr 0.5fr 1fr 0.5fr;
-    width: 100vw;
-    height:90vh;
-    margin:auto;
-   
-  }
+  display: grid;
+  background-color: var(--background-color);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ; 
+  grid-template-rows: 0.1fr 2fr 0.5fr 0.5fr 1fr 0.5fr;
+  width: 100vw;
+  height:90vh;
+  margin:auto;
+  
+}
   
 #login { 
   grid-row: 1;
@@ -123,6 +121,7 @@ button{
 }
 
 
+
 .container {
   display: grid; 
   background-color: var(--background-color);
@@ -130,6 +129,7 @@ button{
   grid-template-rows: 0.2fr 0.5fr 1.5fr; 
   gap: 10px; 
 }
+
 .container div{
   text-align: center;
 }
@@ -139,26 +139,30 @@ button{
   text-align: center;
   border-radius: 25px;
 }
+
 .login_start_box {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: var(--text-bkgd-color);
   box-sizing: 2em;
 }
 
+
+
 #Patient {
   grid-area: 4 / 2 / 5 / 3;
 }
+
 #Clinician {
   grid-area: 4 / 5/ 5 / 6;
 
 }
+
 #Patient, #Clinician{
   background-color:var(--text-bkgd-color);
   align-self: center; 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
 }
-
 
 #Subtitle {
   grid-area: 3 / 1 / 4 / 7;
@@ -177,9 +181,6 @@ button{
     width: 25vw;
     height:5vh;
     
-  }
-  ul{
-    height: 60vh;
   }
 
 }

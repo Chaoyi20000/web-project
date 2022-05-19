@@ -22,9 +22,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="text-align: center;">Today's data</th>
-                        <th style="text-align: center;">Value</th>
-                        <th style="text-align: center;">Comments</th>
+                        <th >Today's data</th>
+                        <th >Value</th>
+                        <th >Comments</th>
                     <tr>
                 </thead>
             
@@ -37,7 +37,7 @@
                         {{!-- print record name --}}
                         <input type="hidden" name="key" value="{{@key}}">
                         {{#ifRequired this.status}}
-                            <td class="login_start_box">{{this.fullName}}</td>
+                            <td class="login_start_box login_start_element">{{this.fullName}}</td>
 
                             {{#ifUnrecorded this.status}}
                             {{!-- input data if not already in database --}}
